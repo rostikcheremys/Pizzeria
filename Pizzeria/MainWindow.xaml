@@ -7,6 +7,7 @@
         Title="Pizzeria" Width="1200" Height="800" Icon="images/icon.png">
     <Grid>
         <Image Source="images/main-window.png" Stretch="UniformToFill"/>
-        <Button Content="Menu" FontSize="25" Width="180" Height="70" Margin="460 50 0 0" Foreground="White" Background="Brown" BorderBrush="Transparent"/>
+        <Button Content="Menu" FontSize="25" Width="180" Height="70" Margin="460 50 0 0" Foreground="White" Background="Brown" BorderBrush="Transparent" Click="MenuButton_Click_1"/>
+        <Frame x:Name="MyFrame"></Frame>
     </Grid>
 </Window>

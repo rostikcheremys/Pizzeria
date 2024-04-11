@@ -20,4 +20,9 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+
+    private void MenuButton_Click_1(object sender, RoutedEventArgs e)
+    {
+        MyFrame.Content = new Menu();
+    }
 }

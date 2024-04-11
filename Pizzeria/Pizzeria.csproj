@@ -9,6 +9,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="Page1.xaml.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
       <None Remove="images\background-pizzeria.jpg" />
       <None Remove="images\im.png" />
       <None Remove="images\134543-OSIBNU-868.jpg" />
@@ -16,6 +20,9 @@
       <None Remove="images\background-pizzeria.png" />
       <None Remove="images\icon.png" />
       <Resource Include="images\icon.png" />
+      <None Remove="images\main-window.png" />
+      <Page Remove="Page1.xaml" />
+      <Resource Include="images\main-window.png" />
     </ItemGroup>
 
 </Project>
