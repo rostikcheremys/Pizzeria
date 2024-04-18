@@ -21,3 +21,5 @@ D:\Programming\OOP\Pizzeria\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria.
 D:\Programming\OOP\Pizzeria\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Menu.g.cs
 D:\Programming\OOP\Pizzeria\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria_MarkupCompile.lref
 D:\Programming\OOP\Pizzeria\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Menu.baml
+D:\Programming\OOP\Pizzeria\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Delivery.g.cs
+D:\Programming\OOP\Pizzeria\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Delivery.baml

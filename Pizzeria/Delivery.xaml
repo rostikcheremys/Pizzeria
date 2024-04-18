@@ -1,0 +1,42 @@
+﻿<Page x:Class="Pizzeria.Delivery"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Pizzeria"
+      mc:Ignorable="d"
+      Title="Delivery" Width="1200" Height="800" Background="White">
+    <Grid>
+        <StackPanel>
+            <Label Content="Delivery Details:" FontWeight="Bold" FontSize="16" Margin="0,20,0,10"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Name:"/>
+                <TextBox x:Name="NameTextBox" Width="150"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Phone:"/>
+                <TextBox x:Name="PhoneTextBox" Width="150"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Delivery Option:"/>
+                <ComboBox x:Name="DeliveryOptionComboBox" Width="150">
+                    <ComboBoxItem Content="Delivery to home"/>
+                    <ComboBoxItem Content="Takeaway"/>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Cooking Time:"/>
+                <TextBox x:Name="CookingTimeTextBox" Width="150"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Delivery Time:"/>
+                <TextBox x:Name="DeliveryTimeTextBox" Width="150"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Price:"/>
+                <TextBox x:Name="PriceTextBox" Width="150"/>
+            </StackPanel>
+            <Button Content="Deliver" Click="DeliverButton_Click" Margin="0,20,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>

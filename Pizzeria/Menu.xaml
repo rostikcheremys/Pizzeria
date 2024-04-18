@@ -5,9 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Pizzeria"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="Menu" Background="White">
+      Title="Menu" Width="1200" Height="800"  Background="White">
     <Grid>
-      
+        <StackPanel Margin="20">
+            <Label Content="Select Pizza:" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
+            <CheckBox Name="MargheritaCheckbox" Content="Margherita"/>
+            <CheckBox Name="PepperoniCheckbox" Content="Pepperoni"/>
+            <CheckBox Name="VegetarianCheckbox" Content="Vegetarian"/>
+            <CheckBox Name="HawaiianCheckbox" Content="Hawaiian"/>
+            <Button Content="Order" Click="OrderButton_Click" Margin="0,20,0,10"/>
+        </StackPanel>
+        <Frame x:Name="MenuPage"></Frame>
     </Grid>
 </Page>
