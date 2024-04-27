@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Pizzeria\\Pizzeria.csproj",
+      "projectUniqueName": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Pizzeria.csproj",
       "projectName": "Pizzeria",
-      "projectPath": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Pizzeria\\Pizzeria.csproj",
+      "projectPath": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Pizzeria.csproj",
       "packagesPath": "C:\\Users\\rosti\\.nuget\\packages\\",
-      "outputPath": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Pizzeria\\obj\\",
+      "outputPath": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rosti\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -15,19 +15,19 @@ using System.Windows.Shapes;
 
 namespace Pizzeria
 {
-    public partial class Menu 
+    public partial class Menu
     {
+        protected new string Name { get; set; }
+        protected string Description { get; set; }
+        protected double Price { get; set; }
         
-        protected Menu(string name, string description)
+        public Menu()
         {
-            Name = name;
-            Description = description;
+            Name = "";
+            Description = ""; 
+            Price = 0.0;
             InitializeComponent();
         }
-        
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public double Price { get; set; }
         
         public Menu(string name, string description, double price)
         {
@@ -51,10 +51,12 @@ namespace Pizzeria
 
             Order newOrder = new Order(selectedItems);
             newOrder.DisplayOrder();
-            MenuPage.Content = new Delivery();
+            
+            Delivery deliveryPage = new Delivery();
+            MenuFrame.Navigate(deliveryPage);
         }
-
     }
+    
     public class PizzaMenuItem : Menu
     {
         public string Toppings { get; set; }
