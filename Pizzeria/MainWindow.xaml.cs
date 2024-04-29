@@ -23,22 +23,9 @@ public partial class MainWindow : Window
     private void MenuButton_Click(object sender, RoutedEventArgs e)
     {
         Menu menuPage = new Menu();
-        MainFrame.Navigate(menuPage);
+        MainPage.Navigate(menuPage);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 public class PizzaMenu
 {

@@ -26,16 +26,17 @@ namespace Pizzeria
             Name = "";
             Description = ""; 
             Price = 0.0;
+            
             InitializeComponent();
         }
-        
-        public Menu(string name, string description, double price)
+
+        protected Menu(string name, string description, double price)
         {
             Name = name;
             Description = description;
             Price = price;
         }
-
+     /*
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
             List<string> selectedItems = new List<string>();
@@ -55,16 +56,12 @@ namespace Pizzeria
             Delivery deliveryPage = new Delivery();
             MenuFrame.Navigate(deliveryPage);
         }
+        */
     }
     
-    public class PizzaMenuItem : Menu
+    public class PizzaMenuItem(string name, string description, double price, string toppings) : Menu(name, description, price)
     {
-        public string Toppings { get; set; }
-
-        public PizzaMenuItem(string name, string description, double price, string toppings) : base(name, description, price)
-        {
-            Toppings = toppings;
-        }
+        private string Toppings { get; set; } = toppings;
 
         public virtual string GetDetails()
         {
@@ -72,14 +69,9 @@ namespace Pizzeria
         }
     }
 
-    public class DrinkMenuItem : Menu
+    public class DrinkMenuItem(string name, string description, double price, string size) : Menu(name, description, price)
     {
-        public string Size { get; set; }
-
-        public DrinkMenuItem(string name, string description, double price, string size) : base(name, description, price)
-        {
-            Size = size;
-        }
+        private string Size { get; set; } = size;
 
         public virtual string GetDetails()
         {

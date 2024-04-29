@@ -5,14 +5,61 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       Title="Menu" Width="1200" Height="800" Background="White">
     <Grid>
-        <StackPanel Margin="20">
-            <Label Content="Select Pizza:" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
-            <CheckBox Name="MargheritaCheckbox" Content="Margherita"/>
-            <CheckBox Name="PepperoniCheckbox" Content="Pepperoni"/>
-            <CheckBox Name="VegetarianCheckbox" Content="Vegetarian"/>
-            <CheckBox Name="HawaiianCheckbox" Content="Hawaiian"/>
-            <Button Content="Order" Click="OrderButton_Click" Margin="0,20,0,10"/>
-        </StackPanel>
-        <Frame x:Name="MenuFrame"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" Background="Brown" Height="55"> 
+            <Label Content="Menu" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            <Button Content="🛒" FontSize="26" FontWeight="Bold" Width="40" Height="40" Margin="0 0 30 0" HorizontalAlignment="Right" Background="Brown" Foreground="White" BorderBrush="Transparent"/>
+        </Grid>
+        
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" Margin="0 2 0 0">
+            <Button Content="Pizza" FontSize="20" FontWeight="Bold" Width="599" Height="45" HorizontalAlignment="Left" Background="Brown" Foreground="White" BorderBrush="Transparent"/>
+            <Button Content="Drink" FontSize="20" FontWeight="Bold" Width="599" Height="45" HorizontalAlignment="Right" Background="Brown" Foreground="White" BorderBrush="Transparent"/>
+        </Grid>
+        
+        <Grid Grid.Row="2" Grid.Column="0" Margin="0 10 0 0">
+            <Image Source="images/Pizza/pepperoni-pizza.png" Width="300" Margin="10"/>
+            <Label Content="Pepperoni" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <ToggleButton Content="Add to cart" Width="100" Height="40" Margin="10 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1" Margin="0 10 0 0">
+            <Image Source="images/Pizza/sicilian-pizza.png" Width="300" Margin="10"/>
+            <Label Content="Sicilian" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Button Content="Add to cart" Width="100" Height="40" Margin="10 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="2" Margin="0 10 0 0">
+            <Image Source="images/Pizza/hawaiian-pizza.png" Width="300" Margin="10"/>
+            <Label Content="Hawaiian" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Button Content="Add to cart" Width="100" Height="40" Margin="10 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="0">
+            <Image Source="images/Pizza/four-cheese-pizza.png" Width="300" Margin="10"/>
+            <Label Content="Four Cheese" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Button Content="Add to cart" Width="100" Height="40" Margin="10 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Image Source="images/Pizza/prosciutto-e-funghi-pizza.png" Width="300" Margin="10"/>
+            <Label Content="Prosciutto e Funghi" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Button Content="Add to cart" Width="100" Height="40" Margin="10 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="2">
+            <Image Source="images/Pizza/сhicken-with-mushrooms-pizza.png" Width="300" Margin="10"/>
+            <Label Content="Chicken with Mushrooms" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Button Content="Add to cart" Width="100" Height="40" Margin="10 0 0 10" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+        
+        <Frame Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="MenuFrame"/>
     </Grid>
 </Page>

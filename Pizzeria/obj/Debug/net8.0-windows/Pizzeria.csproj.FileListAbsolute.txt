@@ -47,3 +47,6 @@ D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria.csproj.Co
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria.sourcelink.json
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria.genruntimeconfig.cache
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\ref\Pizzeria.dll
+D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizza.g.cs
+D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria_MarkupCompile.lref
+D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizza.baml
