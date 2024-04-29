@@ -28,6 +28,9 @@ namespace Pizzeria
             Price = 0.0;
             
             InitializeComponent();
+            
+            Pizza pizzaPage = new Pizza();
+            MenuPage.Navigate(pizzaPage); 
         }
 
         protected Menu(string name, string description, double price)
@@ -36,46 +39,49 @@ namespace Pizzeria
             Description = description;
             Price = price;
         }
-     /*
-        private void OrderButton_Click(object sender, RoutedEventArgs e)
+
+        private void PizzaButton_Click(object sender, RoutedEventArgs e)
         {
-            List<string> selectedItems = new List<string>();
+                      
 
-            if (MargheritaCheckbox.IsChecked == true)
-                selectedItems.Add("Margherita");
-            if (PepperoniCheckbox.IsChecked == true)
-                selectedItems.Add("Pepperoni");
-            if (VegetarianCheckbox.IsChecked == true)
-                selectedItems.Add("Vegetarian");
-            if (HawaiianCheckbox.IsChecked == true)
-                selectedItems.Add("Hawaiian");
-
-            Order newOrder = new Order(selectedItems);
-            newOrder.DisplayOrder();
-            
-            Delivery deliveryPage = new Delivery();
-            MenuFrame.Navigate(deliveryPage);
         }
-        */
-    }
-    
-    public class PizzaMenuItem(string name, string description, double price, string toppings) : Menu(name, description, price)
-    {
-        private string Toppings { get; set; } = toppings;
 
-        public virtual string GetDetails()
+        private void DrinkButton_Click(object sender, RoutedEventArgs e)
         {
-            return $"Pizza: {Name}\nDescription: {Description}\nToppings: {Toppings}\nPrice: {Price}";
+           
         }
-    }
 
-    public class DrinkMenuItem(string name, string description, double price, string size) : Menu(name, description, price)
-    {
-        private string Size { get; set; } = size;
-
-        public virtual string GetDetails()
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            return $"Drink: {Name}\nDescription: {Description}\nSize: {Size}\nPrice: {Price}";
+
         }
+
+
+
+
+
+
+
+        /*
+           private void OrderButton_Click(object sender, RoutedEventArgs e)
+           {
+               List<string> selectedItems = new List<string>();
+
+               if (MargheritaCheckbox.IsChecked == true)
+                   selectedItems.Add("Margherita");
+               if (PepperoniCheckbox.IsChecked == true)
+                   selectedItems.Add("Pepperoni");
+               if (VegetarianCheckbox.IsChecked == true)
+                   selectedItems.Add("Vegetarian");
+               if (HawaiianCheckbox.IsChecked == true)
+                   selectedItems.Add("Hawaiian");
+
+               Order newOrder = new Order(selectedItems);
+               newOrder.DisplayOrder();
+
+               Delivery deliveryPage = new Delivery();
+               MenuFrame.Navigate(deliveryPage);
+           }
+           */
     }
 }
