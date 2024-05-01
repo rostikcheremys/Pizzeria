@@ -7,7 +7,31 @@
         Title="Pizzeria" Width="1200" Height="800" Icon="images/icon.png">
     <Grid>
         <Image Source="images/main-window.png" Stretch="UniformToFill"/>
-        <Button Content="Menu" FontSize="25" Width="180" Height="70" Margin="460 50 0 0" Foreground="White" Background="Brown" BorderBrush="Transparent" Click="MenuButton_Click"/>
+        
+        <Button Content="Menu" FontSize="36" FontWeight="Bold" Width="180" Height="70" Margin="460 50 0 0" Foreground="White" Background="Brown" Click="MenuButton_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Grid>
+                        <Border CornerRadius="20" BorderBrush="White" BorderThickness="3" Background="{TemplateBinding Background}" x:Name="border">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="90" CenterY="35"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        
         <Frame x:Name="MainPage" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

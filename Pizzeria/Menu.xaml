@@ -19,13 +19,13 @@
         </Grid.ColumnDefinitions>
         
         <Grid Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" Background="Brown" Height="55"> 
-            <Label Content="Menu" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            <Label Content="Menu" FontSize="32" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
             <Button Content="🛒" FontSize="26" FontWeight="Bold" Width="40" Height="40" Margin="0 0 30 0" HorizontalAlignment="Right" Background="Brown" Foreground="White" BorderBrush="Transparent" Click="CardButton_Click"/>
         </Grid>
         
-        <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" Margin="0 2 0 0">
-            <Button Content="Pizza" FontSize="20" FontWeight="Bold" Width="599" Height="45" HorizontalAlignment="Left" Background="Brown" Foreground="White" BorderBrush="Transparent" Click="PizzaButton_Click"/>
-            <Button Content="Drink" FontSize="20" FontWeight="Bold" Width="599" Height="45" HorizontalAlignment="Right" Background="Brown" Foreground="White" BorderBrush="Transparent" Click="DrinkButton_Click"/>
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" Margin="-1 2 0 0">
+            <Button Content="Pizza" FontSize="26" FontWeight="Bold" Width="599" Height="45" HorizontalAlignment="Left" Background="Brown" Foreground="White" BorderBrush="Transparent" Click="PizzaButton_Click"/>
+            <Button Content="Drink" FontSize="26" FontWeight="Bold" Width="599" Height="45" HorizontalAlignment="Right" Background="Brown" Foreground="White" BorderBrush="Transparent" Click="DrinkButton_Click"/>
         </Grid>
         
         <Frame Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="MenuPage" NavigationUIVisibility="Hidden"/>
