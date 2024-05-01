@@ -19,33 +19,33 @@
         </Grid.ColumnDefinitions>
         
         <Grid Grid.Row="0" Grid.Column="0">
-            <Image Source="images/pizza/pepperoni.png" Width="300" Margin="10"/>
+            <Image Source="images/pizza/pepperoni.png" Width="290" Margin="0 5 0 25"/>
             <Label Content="Pepperoni" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
             <Button Content="Add to cart" Width="100" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="1">
-            <Image Source="images/pizza/sicilian.png" Width="300" Margin="10"/>
+            <Image Source="images/pizza/sicilian.png" Width="290"  Margin="0 5 0 25"/>
             <Label Content="Sicilian" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
             <Button Content="Add to cart" Width="100" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="2">
-            <Image Source="images/pizza/hawaiian.png" Width="300" Margin="10"/>
+            <Image Source="images/pizza/hawaiian.png" Width="290"  Margin="0 5 0 25"/>
             <Label Content="Hawaiian" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
             <Button Content="Add to cart" Width="100" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="0">
-            <Image Source="images/pizza/four-cheese.png" Width="300" Margin="10"/>
+            <Image Source="images/pizza/four-cheese.png" Width="290" Margin="0 5 0 25"/>
             <Label Content="Four Cheese" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
             <Button Content="Add to cart" Width="100" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
-            <Image Source="images/pizza/prosciutto-e-funghi.png" Width="300" Margin="10"/>
+            <Image Source="images/pizza/prosciutto-e-funghi.png" Width="290" Margin="0 5 0 25"/>
             <Label Content="Prosciutto e Funghi" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
             <Button Content="Add to cart" Width="100" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="2">
-            <Image Source="images/pizza/сhicken-with-mushrooms.png" Width="300" Margin="10"/>
+            <Image Source="images/pizza/сhicken-with-mushrooms.png" Width="290" Margin="0 5 0 25"/>
             <Label Content="Chicken with Mushrooms" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
             <Button Content="Add to cart" Width="100" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
         </Grid>
