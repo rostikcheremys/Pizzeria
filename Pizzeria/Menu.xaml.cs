@@ -33,13 +33,6 @@ namespace Pizzeria
             MenuPage.Navigate(pizzaPage); 
         }
 
-        protected Menu(string name, string description, double price)
-        {
-            Name = name;
-            Description = description;
-            Price = price;
-        }
-
         private void PizzaButton_Click(object sender, RoutedEventArgs e)
         {
             if (MenuPage.Content is Pizza)
@@ -66,8 +59,6 @@ namespace Pizzeria
         {
 
         }
-        
-
 
         /*
            private void OrderButton_Click(object sender, RoutedEventArgs e)

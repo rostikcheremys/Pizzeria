@@ -18,9 +18,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <Grid Grid.Row="0" Grid.Column="0">
+        <Grid Grid.Row="0" Grid.Column="0" Margin="0 10 0 0"> 
             <Image Source="images/drink/coca-cola.png" Width="270" Margin="0 10 0 40"/>
             <Label Content="Coca Cola" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
             <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -47,9 +48,10 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="0" Grid.Column="1">
+        <Grid Grid.Row="0" Grid.Column="1" Margin="0 10 0 0">
             <Image Source="images/drink/sprite.png" Width="250" Margin="0 10 0 20"/>
             <Label Content="Sprite" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
             <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -76,9 +78,10 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="0" Grid.Column="2">
+        <Grid Grid.Row="0" Grid.Column="2" Margin="0 10 0 0">
             <Image Source="images/drink/fanta.png" Width="240" Margin="0 10 0 25"/>
             <Label Content="Fanta" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
             <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -105,9 +108,10 @@
             </Button>
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="0">
+        <Grid Grid.Row="1" Grid.Column="0" Margin="0 10 0 0">
             <Image Source="images/drink/pepsi.png" Width="230" Margin="0 40 0 50"/>
             <Label Content="Pepsi" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
             <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -134,9 +138,10 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="1" Margin="0 10 0 0">
             <Image Source="images/drink/corona-extra.png" Width="260" Margin="0 -15 0  0"/>
             <Label Content="Corona Extra" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
             <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -163,9 +168,10 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="1" Grid.Column="2">
+        <Grid Grid.Row="1" Grid.Column="2" Margin="0 10 0 0">
             <Image Source="images/drink/mineral-water.png" Width="235" Margin="0 -15 0 0 "/>
             <Label Content="Mineral Water" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
             <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">

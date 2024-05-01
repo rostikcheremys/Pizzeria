@@ -21,6 +21,7 @@
         <Grid Grid.Row="0" Grid.Column="0" Margin=" 0 10 0 0">
             <Image Source="images/pizza/pepperoni.png" Width="290" Margin="0 5 0 25"/>
             <Label Content="Pepperoni" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
             <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -47,9 +48,10 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="0" Grid.Column="1" Margin=" 0 10 0 0">
+        <Grid Grid.Row="0" Grid.Column="1" Margin="0 10 0 0">
             <Image Source="images/pizza/sicilian.png" Width="290"  Margin="0 5 0 25"/>
             <Label Content="Sicilian" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
             <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -76,9 +78,10 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="0" Grid.Column="2" Margin=" 0 10 0 0">
+        <Grid Grid.Row="0" Grid.Column="2" Margin="0 10 0 0">
             <Image Source="images/pizza/hawaiian.png" Width="290"  Margin="0 5 0 25"/>
             <Label Content="Hawaiian" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
             <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -105,9 +108,10 @@
             </Button>
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="0">
+        <Grid Grid.Row="1" Grid.Column="0" Margin="0 10 0 0">
             <Image Source="images/pizza/four-cheese.png" Width="290" Margin="0 5 0 25"/>
             <Label Content="Four Cheese" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
             <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -134,9 +138,10 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="1" Margin="0 10 0 0">
             <Image Source="images/pizza/prosciutto-e-funghi.png" Width="290" Margin="0 5 0 25"/>
             <Label Content="Prosciutto e Funghi" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
             <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -163,9 +168,10 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="1" Grid.Column="2">
+        <Grid Grid.Row="1" Grid.Column="2" Margin="0 10 0 0">
             <Image Source="images/pizza/сhicken-with-mushrooms.png" Width="290" Margin="0 5 0 25"/>
             <Label Content="Chicken with Mushrooms" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            
             <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
