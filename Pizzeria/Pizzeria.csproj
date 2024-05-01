@@ -22,7 +22,6 @@
       <Resource Include="images\icon.png" />
       <None Remove="images\main-window.png" />
       <Page Remove="Page1.xaml" />
-      <Resource Include="images\main-window.png" />
       <None Remove="images\Pizza\four-cheese-pizza.png" />
       <None Remove="images\Pizza\hawaiian-pizza.png" />
       <None Remove="images\Pizza\pepperoni-pizza.png" />
@@ -53,6 +52,8 @@
       <Resource Include="images\drink\pepsi.png" />
       <None Remove="images\drink\sprite.png" />
       <Resource Include="images\drink\sprite.png" />
+      <None Remove="images\pizzeria.png" />
+      <Resource Include="images\pizzeria.png" />
     </ItemGroup>
 
 </Project>

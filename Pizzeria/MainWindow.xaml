@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Pizzeria" Width="1200" Height="800" Icon="images/icon.png">
+        Title="Pizzeria" Width="1200" Height="900" Icon="images/icon.png">
     <Grid>
-        <Image Source="images/main-window.png" Stretch="UniformToFill"/>
+        <Image Source="images/pizzeria.png" Stretch="UniformToFill"/>
         
-        <Button Content="Menu" FontSize="36" FontWeight="Bold" Width="180" Height="70" Margin="460 50 0 0" Foreground="White" Background="Brown" Click="MenuButton_Click">
+        <Button Content="Menu" FontSize="36" FontWeight="Bold" Width="180" Height="70" Margin="430 50 0 0" Foreground="White" Background="Brown" Click="MenuButton_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>

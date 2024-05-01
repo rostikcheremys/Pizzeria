@@ -16,8 +16,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        MaxHeight = 800; 
-        MaxWidth = 1200;
     }
 
     private void MenuButton_Click(object sender, RoutedEventArgs e)
