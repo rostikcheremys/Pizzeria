@@ -24,17 +24,23 @@
       <Page Remove="Page1.xaml" />
       <Resource Include="images\main-window.png" />
       <None Remove="images\Pizza\four-cheese-pizza.png" />
-      <Resource Include="images\Pizza\four-cheese-pizza.png" />
       <None Remove="images\Pizza\hawaiian-pizza.png" />
-      <Resource Include="images\Pizza\hawaiian-pizza.png" />
       <None Remove="images\Pizza\pepperoni-pizza.png" />
-      <Resource Include="images\Pizza\pepperoni-pizza.png" />
       <None Remove="images\Pizza\prosciutto-e-funghi-pizza.png" />
-      <Resource Include="images\Pizza\prosciutto-e-funghi-pizza.png" />
       <None Remove="images\Pizza\sicilian-pizza.png" />
-      <Resource Include="images\Pizza\sicilian-pizza.png" />
       <None Remove="images\Pizza\сhicken-with-mushrooms-pizza.png" />
-      <Resource Include="images\Pizza\сhicken-with-mushrooms-pizza.png" />
+      <None Remove="images\Pizza\four-cheese.png" />
+      <Resource Include="images\Pizza\four-cheese.png" />
+      <None Remove="images\Pizza\hawaiian.png" />
+      <Resource Include="images\Pizza\hawaiian.png" />
+      <None Remove="images\Pizza\pepperoni.png" />
+      <Resource Include="images\Pizza\pepperoni.png" />
+      <None Remove="images\Pizza\prosciutto-e-funghi.png" />
+      <Resource Include="images\Pizza\prosciutto-e-funghi.png" />
+      <None Remove="images\Pizza\sicilian.png" />
+      <Resource Include="images\Pizza\sicilian.png" />
+      <None Remove="images\Pizza\сhicken-with-mushrooms.png" />
+      <Resource Include="images\Pizza\сhicken-with-mushrooms.png" />
     </ItemGroup>
 
 </Project>
