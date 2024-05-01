@@ -28,6 +28,6 @@
             <Button Content="Drink" FontSize="20" FontWeight="Bold" Width="599" Height="45" HorizontalAlignment="Right" Background="Brown" Foreground="White" BorderBrush="Transparent" Click="DrinkButton_Click"/>
         </Grid>
         
-        <Frame Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="MenuPage"/>
+        <Frame Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="MenuPage" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

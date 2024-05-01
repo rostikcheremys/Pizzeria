@@ -29,18 +29,30 @@
       <None Remove="images\Pizza\prosciutto-e-funghi-pizza.png" />
       <None Remove="images\Pizza\sicilian-pizza.png" />
       <None Remove="images\Pizza\сhicken-with-mushrooms-pizza.png" />
-      <None Remove="images\Pizza\four-cheese.png" />
-      <Resource Include="images\Pizza\four-cheese.png" />
       <None Remove="images\Pizza\hawaiian.png" />
-      <Resource Include="images\Pizza\hawaiian.png" />
+      <Resource Include="images\pizza\hawaiian.png" />
       <None Remove="images\Pizza\pepperoni.png" />
-      <Resource Include="images\Pizza\pepperoni.png" />
+      <Resource Include="images\pizza\pepperoni.png" />
       <None Remove="images\Pizza\prosciutto-e-funghi.png" />
-      <Resource Include="images\Pizza\prosciutto-e-funghi.png" />
+      <Resource Include="images\pizza\prosciutto-e-funghi.png" />
       <None Remove="images\Pizza\sicilian.png" />
-      <Resource Include="images\Pizza\sicilian.png" />
+      <Resource Include="images\pizza\sicilian.png" />
       <None Remove="images\Pizza\сhicken-with-mushrooms.png" />
-      <Resource Include="images\Pizza\сhicken-with-mushrooms.png" />
+      <Resource Include="images\pizza\сhicken-with-mushrooms.png" />
+      <None Remove="images\Pizza\four-cheese.png" />
+      <Resource Include="images\pizza\four-cheese.png" />
+      <None Remove="images\drink\coca-cola.png" />
+      <Resource Include="images\drink\coca-cola.png" />
+      <None Remove="images\drink\corona-extra.png" />
+      <Resource Include="images\drink\corona-extra.png" />
+      <None Remove="images\drink\fanta.png" />
+      <Resource Include="images\drink\fanta.png" />
+      <None Remove="images\drink\mineral-water.png" />
+      <Resource Include="images\drink\mineral-water.png" />
+      <None Remove="images\drink\pepsi.png" />
+      <Resource Include="images\drink\pepsi.png" />
+      <None Remove="images\drink\sprite.png" />
+      <Resource Include="images\drink\sprite.png" />
     </ItemGroup>
 
 </Project>

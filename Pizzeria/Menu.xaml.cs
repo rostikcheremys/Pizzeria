@@ -42,13 +42,14 @@ namespace Pizzeria
 
         private void PizzaButton_Click(object sender, RoutedEventArgs e)
         {
-                      
-
+            Pizza pizzaPage = new Pizza();
+            MenuPage.Navigate(pizzaPage); 
         }
 
         private void DrinkButton_Click(object sender, RoutedEventArgs e)
         {
-           
+            Drink drinkPage = new Drink();
+            MenuPage.Navigate(drinkPage); 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -57,8 +58,7 @@ namespace Pizzeria
         }
 
 
-
-
+        
 
 
 

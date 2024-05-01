@@ -1,0 +1,55 @@
+﻿<Page x:Class="Pizzeria.Drink"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:Pizzeria"
+      mc:Ignorable="d"
+      Title="Drink"  Width="1200" Height="800" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Image Source="images/drink/coca-cola.png" Width="270" Margin="0 10 0 40"/>
+            <Label Content="Coca Cola" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Button Content="Add to cart" Width="100" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Image Source="images/drink/sprite.png" Width="250" Margin="0 10 0 20"/>
+            <Label Content="Sprite" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Button Content="Add to cart" Width="100" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2">
+            <Image Source="images/drink/fanta.png" Width="240" Margin="0 10 0 25"/>
+            <Label Content="Fanta" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Button Content="Add to cart" Width="100" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Image Source="images/drink/pepsi.png" Width="230" Margin="0 40 0 50"/>
+            <Label Content="Pepsi" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Button Content="Add to cart" Width="100" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Image Source="images/drink/corona-extra.png" Width="260" Margin="0 -15 0  0"/>
+            <Label Content="Corona Extra" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Button Content="Add to cart" Width="100" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Image Source="images/drink/mineral-water.png" Width="235" Margin="0 -15 0 0 "/>
+            <Label Content="Mineral Water" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"/>
+            <Button Content="Add to cart" Width="100" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        </Grid>
+        
+        <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="DrinkPage" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Page>

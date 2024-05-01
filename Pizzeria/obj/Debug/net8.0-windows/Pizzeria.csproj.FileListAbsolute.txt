@@ -50,3 +50,5 @@ D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\ref\Pizzeria.dll
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizza.g.cs
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria_MarkupCompile.lref
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizza.baml
+D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Drink.g.cs
+D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Drink.baml
