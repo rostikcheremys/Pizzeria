@@ -11,6 +11,9 @@
             <Image x:Name="PizzaImage" Width="300" />
             <Label x:Name="PizzaName" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" />
             <TextBlock x:Name="PizzaIngredients" TextWrapping="Wrap" TextAlignment="Center" Margin="10" />
+            
+            <!-- Показ ціни -->
+            <TextBlock x:Name="PizzaPrice" FontSize="20" FontWeight="Bold" TextAlignment="Center" Margin="10 20 0 10" />
 
             <!-- Вибір розміру піци -->
             <Label Content="Select Size:" FontWeight="Bold" HorizontalAlignment="Left" Margin="10 20 0 10" />
@@ -26,6 +29,14 @@
                 <CheckBox Content="Extra Cheese" />
                 <CheckBox Content="Mushrooms" Margin="20 0 20 0" />
                 <CheckBox Content="Olives" />
+            </StackPanel>
+
+            <!-- Вибір кількості -->
+            <Label Content="Quantity:" FontWeight="Bold" HorizontalAlignment="Left" Margin="10 20 0 10" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="-" Width="30" Click="DecreaseQuantity_Click" />
+                <TextBox x:Name="PizzaQuantity" Width="50" Text="1" TextAlignment="Center" IsReadOnly="True" />
+                <Button Content="+" Width="30" Click="IncreaseQuantity_Click" />
             </StackPanel>
 
             <!-- Кнопки для замовлення або додавання до корзини -->

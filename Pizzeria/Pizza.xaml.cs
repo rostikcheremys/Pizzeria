@@ -15,7 +15,8 @@ public partial class Pizza : Page
         Order orderPage = new Order(
             "Pepperoni",
             "images/pizza/pepperoni.png",
-            "Pepperoni, Chili pepper, Cheese, Tomato Sauce"
+            "Pepperoni, Chili pepper, Cheese, Tomato Sauce",
+            10
         );
         PizzaPage.Navigate(orderPage);
     }
@@ -25,7 +26,8 @@ public partial class Pizza : Page
         Order orderPage = new Order(
             "Sicilian",
             "images/pizza/sicilian.png", 
-            "Pepperoni, Olives, Tomato, Pepper, Cheese"
+            "Pepperoni, Olives, Tomato, Pepper, Cheese",
+            10
         );
         PizzaPage.Navigate(orderPage);
     }
@@ -35,7 +37,8 @@ public partial class Pizza : Page
         Order orderPage = new Order(
             "Hawaiian",
             "images/pizza/hawaiian.png",
-            "Mozzarella, Chicken, Pineapple, Tomato Sauce"
+            "Mozzarella, Chicken, Pineapple, Tomato Sauce",
+            10
         );
         PizzaPage.Navigate(orderPage);
     }
@@ -45,7 +48,8 @@ public partial class Pizza : Page
         Order orderPage = new Order(
             "Four Cheese",
             "images/pizza/four-cheese.png",
-            "Mozzarella, Parmesan, Feta, Gorgonzola"
+            "Mozzarella, Parmesan, Feta, Gorgonzola",
+            10
         );
         PizzaPage.Navigate(orderPage);
     }
@@ -55,7 +59,8 @@ public partial class Pizza : Page
         Order orderPage = new Order(
             "Prosciutto e Funghi",
             "images/pizza/prosciutto-e-funghi.png",
-            "Ham, Mushrooms, Cheese, Tomato Sauce"
+            "Ham, Mushrooms, Cheese, Tomato Sauce",
+            10
         );
         PizzaPage.Navigate(orderPage);
     }
@@ -65,7 +70,8 @@ public partial class Pizza : Page
         Order orderPage = new Order(
             "Chicken with Mushrooms",
             "images/pizza/сhicken-with-mushrooms.png",
-            "Chicken, Mushrooms, Tomato, Cheese"
+            "Chicken, Mushrooms, Tomato, Cheese",
+            10
         );
         PizzaPage.Navigate(orderPage);
     }
