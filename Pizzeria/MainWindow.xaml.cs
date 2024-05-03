@@ -30,10 +30,3 @@ public class PizzaMenu
     public List<string> MenuItems { get; } = ["Margherita", "Pepperoni", "Vegetarian", "Hawaiian"];
 }
 
-public class Order(List<string> orderItems)
-{
-    public void DisplayOrder()
-    {
-        MessageBox.Show("Your order:\n" + string.Join("\n", orderItems));
-    }
-}

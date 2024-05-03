@@ -23,7 +23,7 @@
             <Label Content="Pepperoni" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock Text="Price: $10" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
             <TextBlock Text="Pepperoni, Chili pepper, Cheese, Tomato Sauce" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50">
+            <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPepperoni_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -54,7 +54,7 @@
             <Label Content="Sicilian" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock Text="Price: $10" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
             <TextBlock Text="Pepperoni, Olives, Tomato, Pepper, Cheese" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50">
+            <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderSicilian_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -85,7 +85,7 @@
             <Label Content="Hawaiian" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock Text="Price: $10" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
             <TextBlock Text="Mozzarella, Chicken, Pineapple, Tomato Sauce" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
-            <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50">
+            <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderHawaiian_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -116,7 +116,7 @@
             <Label Content="Four Cheese" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 10 0 0"/>
             <TextBlock Text="Price: $10" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
             <TextBlock Text="Mozzarella, Parmesan, Feta, Gorgonzolae" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50">
+            <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderFourCheese_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -147,7 +147,7 @@
             <Label Content="Prosciutto e Funghi" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 10 0 0"/>
             <TextBlock Text="Price: $10" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
             <TextBlock Text="Ham, Mushrooms, Cheese, Tomato Sauce" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50">
+            <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderProsciuttoEFunghi_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -178,7 +178,7 @@
             <Label Content="Chicken with Mushrooms" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 10 0 0"/>
             <TextBlock Text="Price: $10" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
             <TextBlock Text="Chicken, Mushrooms, Tomato, Cheese" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50">
+            <Button Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderChickenWithMushrooms_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
