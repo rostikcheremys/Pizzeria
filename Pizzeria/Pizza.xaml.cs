@@ -64,7 +64,7 @@ public partial class Pizza : Page
     {
         Order orderPage = new Order(
             "Chicken with Mushrooms",
-            "images/pizza/chicken-with-mushrooms.png",
+            "images/pizza/сhicken-with-mushrooms.png",
             "Chicken, Mushrooms, Tomato, Cheese"
         );
         PizzaPage.Navigate(orderPage);

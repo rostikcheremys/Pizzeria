@@ -55,4 +55,8 @@
       <Resource Include="images\pizzeria.png" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Resource Include="images\pizza\сhicken-with-mushrooms.png" />
+    </ItemGroup>
+
 </Project>
