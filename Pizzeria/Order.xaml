@@ -6,7 +6,33 @@
       xmlns:local="clr-namespace:Pizzeria"
       mc:Ignorable="d"
       Title="Order" Width="1200" Height="900" Background="White">
-    <Grid>
-        <Frame x:Name="OrderPage" NavigationUIVisibility="Hidden"/>
+    <Grid Margin="20">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+            <Image x:Name="PizzaImage" Width="300" />
+            <Label x:Name="PizzaName" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" />
+            <TextBlock x:Name="PizzaIngredients" TextWrapping="Wrap" TextAlignment="Center" Margin="10" />
+
+            <!-- Вибір розміру піци -->
+            <Label Content="Select Size:" FontWeight="Bold" HorizontalAlignment="Left" Margin="10 20 0 10" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <RadioButton GroupName="PizzaSize" Content="Small" IsChecked="True" />
+                <RadioButton GroupName="PizzaSize" Content="Medium" Margin="20 0 20 0" />
+                <RadioButton GroupName="PizzaSize" Content="Large" />
+            </StackPanel>
+
+            <!-- Додаткові топінги -->
+            <Label Content="Select Toppings:" FontWeight="Bold" HorizontalAlignment="Left" Margin="10 20 0 10" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <CheckBox Content="Extra Cheese" />
+                <CheckBox Content="Mushrooms" Margin="20 0 20 0" />
+                <CheckBox Content="Olives" />
+            </StackPanel>
+
+            <!-- Кнопки для замовлення або додавання до корзини -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                <Button Content="Add to Cart" Width="150" Click="AddToCart_Click" />
+                <Button Content="Order Now" Width="150" Margin="20 0 0 0" Click="OrderNow_Click" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

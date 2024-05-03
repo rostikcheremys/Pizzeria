@@ -37,7 +37,6 @@
       <None Remove="images\Pizza\sicilian.png" />
       <Resource Include="images\pizza\sicilian.png" />
       <None Remove="images\Pizza\сhicken-with-mushrooms.png" />
-      <Resource Include="images\pizza\сhicken-with-mushrooms.png" />
       <None Remove="images\Pizza\four-cheese.png" />
       <Resource Include="images\pizza\four-cheese.png" />
       <None Remove="images\drink\coca-cola.png" />
