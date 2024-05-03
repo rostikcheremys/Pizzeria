@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Pizzeria"
       mc:Ignorable="d"
       Title="Pizza" Width="1200" Height="900" Background="White">
-    <Grid x:Name="MainGrid">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -19,11 +19,11 @@
         </Grid.ColumnDefinitions>
         
         <Grid Grid.Row="0" Grid.Column="0" Margin="0 0 0 30">
-            <Image x:Name="PizzaImage1" Width="290" Margin="0 10 0 25"/>
-            <Label x:Name="PizzaName1" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
-            <TextBlock x:Name="PizzaPrice1" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
-            <TextBlock x:Name="PizzaIngredients1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button x:Name="OrderPizzaButton1" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
+            <Image x:Name="PepperoniImage" Width="290" Margin="0 10 0 25"/>
+            <Label x:Name="PepperoniName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
+            <TextBlock x:Name="PepperoniPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
+            <TextBlock x:Name="PepperoniIngredients" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <Button x:Name="PepperoniOrder" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -50,11 +50,11 @@
         </Grid>
         
         <Grid Grid.Row="0" Grid.Column="1" Margin="0 0 0 30">
-            <Image x:Name="PizzaImage2" Width="290" Margin="0 10 0 25"/>
-            <Label x:Name="PizzaName2" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
-            <TextBlock x:Name="PizzaPrice2" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
-            <TextBlock x:Name="PizzaIngredients2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button x:Name="OrderPizzaButton2" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
+            <Image x:Name="SicilianImage" Width="290" Margin="0 10 0 25"/>
+            <Label x:Name="SicilianName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
+            <TextBlock x:Name="SicilianPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
+            <TextBlock x:Name="SicilianIngredients" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <Button x:Name="SicilianOrder" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -81,11 +81,11 @@
         </Grid>
         
         <Grid Grid.Row="0" Grid.Column="2" Margin="0 0 0 30">
-            <Image x:Name="PizzaImage3" Width="290" Margin="0 10 0 25"/>
-            <Label x:Name="PizzaName3" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
-            <TextBlock x:Name="PizzaPrice3" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
-            <TextBlock x:Name="PizzaIngredients3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button x:Name="OrderPizzaButton3" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
+            <Image x:Name="HawaiianImage" Width="290" Margin="0 10 0 25"/>
+            <Label x:Name="HawaiianName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
+            <TextBlock x:Name="HawaiianPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
+            <TextBlock x:Name="HawaiianIngredients" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <Button x:Name="HawaiianOrder" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -112,11 +112,11 @@
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="0" Margin="0 15 0 0">
-            <Image x:Name="PizzaImage4" Width="290" Margin="0 10 0 25"/>
-            <Label x:Name="PizzaName4" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
-            <TextBlock x:Name="PizzaPrice4" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
-            <TextBlock x:Name="PizzaIngredients4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button x:Name="OrderPizzaButton4" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
+            <Image x:Name="FourCheeseImage" Width="290" Margin="0 10 0 25"/>
+            <Label x:Name="FourCheeseName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
+            <TextBlock x:Name="FourCheesePrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
+            <TextBlock x:Name="FourCheeseIngredients" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <Button x:Name="FourCheeseOrder" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -143,11 +143,11 @@
         </Grid>
         
         <Grid Grid.Row="1" Grid.Column="1" Margin="0 15 0 0">
-            <Image x:Name="PizzaImage5" Width="290" Margin="0 10 0 25"/>
-            <Label x:Name="PizzaName5" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
-            <TextBlock x:Name="PizzaPrice5" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
-            <TextBlock x:Name="PizzaIngredients5" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button x:Name="OrderPizzaButton5" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
+            <Image x:Name="ProsciuttoEFunghiImage" Width="290" Margin="0 10 0 25"/>
+            <Label x:Name="ProsciuttoEFunghiName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
+            <TextBlock x:Name="ProsciuttoEFunghiPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
+            <TextBlock x:Name="ProsciuttoEFunghiIngredients" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <Button x:Name="ProsciuttoEFunghiOrder" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -174,11 +174,11 @@
         </Grid>
         
         <Grid Grid.Row="1" Grid.Column="2" Margin="0 15 0 0">
-            <Image x:Name="PizzaImage6" Width="290" Margin="0 10 0 25"/>
-            <Label x:Name="PizzaName6" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
-            <TextBlock x:Name="PizzaPrice6" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
-            <TextBlock x:Name="PizzaIngredients6" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button x:Name="OrderPizzaButton6" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
+            <Image x:Name="ChickenWithMushroomsImage" Width="290" Margin="0 10 0 25"/>
+            <Label x:Name="ChickenWithMushroomsName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
+            <TextBlock x:Name="ChickenWithMushroomsPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
+            <TextBlock x:Name="ChickenWithMushroomsIngredients" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <Button x:Name="ChickenWithMushroomsOrder" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>

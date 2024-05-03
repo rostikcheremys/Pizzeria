@@ -4,30 +4,18 @@ using System.Windows.Media.Imaging;
 
 namespace Pizzeria
 {
-    public static class PizzaData
-    {
-        public static List<PizzaDetails> AllPizzas = new List<PizzaDetails>
-        {
-            new PizzaDetails("Pepperoni", "images/pizza/pepperoni.png", "Pepperoni, Chili pepper, Cheese, Tomato Sauce", 15),
-            new PizzaDetails("Sicilian", "images/pizza/sicilian.png", "Pepperoni, Olives, Tomato, Pepper, Cheese", 12),
-            new PizzaDetails("Hawaiian", "images/pizza/hawaiian.png", "Mozzarella, Chicken, Pineapple, Tomato Sauce", 11),
-            new PizzaDetails("Four Cheese", "images/pizza/four-cheese.png", "Mozzarella, Parmesan, Feta, Gorgonzola", 15),
-            new PizzaDetails("Prosciutto e Funghi", "images/pizza/prosciutto-e-funghi.png", "Ham, Mushrooms, Cheese, Tomato Sauce", 13),
-            new PizzaDetails("Chicken with Mushrooms", "images/pizza/сhicken-with-mushrooms.png", "Chicken, Mushrooms, Tomato, Cheese", 12)
-        };
-    }
     public partial class Pizza : Page
     {
         public Pizza()
         {
             InitializeComponent();
 
-            List<PizzaDetails> pizzaDetails = PizzaData.AllPizzas;
+            List<PizzaDetails> pizzaDetails = PizzaData.Pizza;
             
-            Image[] pizzaImages = { PizzaImage1, PizzaImage2, PizzaImage3, PizzaImage4, PizzaImage5, PizzaImage6 };
-            Label[] pizzaNames = { PizzaName1, PizzaName2, PizzaName3, PizzaName4, PizzaName5, PizzaName6 };
-            TextBlock[] pizzaPrices = { PizzaPrice1, PizzaPrice2, PizzaPrice3, PizzaPrice4, PizzaPrice5, PizzaPrice6 };
-            TextBlock[] pizzaIngredients = { PizzaIngredients1, PizzaIngredients2, PizzaIngredients3, PizzaIngredients4, PizzaIngredients5, PizzaIngredients6 };
+            Image[] pizzaImages = [PepperoniImage, SicilianImage, HawaiianImage, FourCheeseImage, ProsciuttoEFunghiImage, ChickenWithMushroomsImage];
+            Label[] pizzaNames = [PepperoniName, SicilianName, HawaiianName, FourCheeseName, ProsciuttoEFunghiName, ChickenWithMushroomsName];
+            TextBlock[] pizzaPrices = [PepperoniPrice, SicilianPrice, HawaiianPrice, FourCheesePrice, ProsciuttoEFunghiPrice, ChickenWithMushroomsPrice];
+            TextBlock[] pizzaIngredients = [PepperoniIngredients, SicilianIngredients, HawaiianIngredients, FourCheeseIngredients, ProsciuttoEFunghiIngredients, ChickenWithMushroomsIngredients];
 
             for (int i = 0; i < pizzaDetails.Count; i++)
             {
@@ -42,29 +30,29 @@ namespace Pizzeria
         {
             Button? clickedButton = sender as Button;
 
-            if (clickedButton == OrderPizzaButton1)
+            if (clickedButton == PepperoniOrder)
             {
-                NavigateToOrderPage(PizzaData.AllPizzas[0]);
+                NavigateToOrderPage(PizzaData.Pizza[0]);
             }
-            else if (clickedButton == OrderPizzaButton2)
+            else if (clickedButton == SicilianOrder)
             {
-                NavigateToOrderPage(PizzaData.AllPizzas[1]);
+                NavigateToOrderPage(PizzaData.Pizza[1]);
             }
-            else if (clickedButton == OrderPizzaButton3)
+            else if (clickedButton == HawaiianOrder)
             {
-                NavigateToOrderPage(PizzaData.AllPizzas[2]);
+                NavigateToOrderPage(PizzaData.Pizza[2]);
             }
-            else if (clickedButton == OrderPizzaButton4)
+            else if (clickedButton == FourCheeseOrder)
             {
-                NavigateToOrderPage(PizzaData.AllPizzas[3]);
+                NavigateToOrderPage(PizzaData.Pizza[3]);
             }
-            else if (clickedButton == OrderPizzaButton5)
+            else if (clickedButton == ProsciuttoEFunghiOrder)
             {
-                NavigateToOrderPage(PizzaData.AllPizzas[4]);
+                NavigateToOrderPage(PizzaData.Pizza[4]);
             }
-            else if (clickedButton == OrderPizzaButton6)
+            else if (clickedButton == ChickenWithMushroomsOrder)
             {
-                NavigateToOrderPage(PizzaData.AllPizzas[5]);
+                NavigateToOrderPage(PizzaData.Pizza[5]);
             }
         }
 

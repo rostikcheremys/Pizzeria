@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
@@ -12,19 +11,18 @@ namespace Pizzeria
         public Order(PizzaDetails details)
         {
             InitializeComponent();
+            
             PizzaDetails pizzaDetails = details;
 
             PizzaName.Content = pizzaDetails.Name;
             PizzaImage.Source = new BitmapImage(new Uri(pizzaDetails.ImagePath, UriKind.Relative));
             PizzaIngredients.Text = pizzaDetails.Ingredients;
             _basePrice = pizzaDetails.Price;
-
-            // Додаємо обробники подій для RadioButton
+            
             PizzaSizeSmall.Checked += PizzaSize_Checked;
             PizzaSizeMedium.Checked += PizzaSize_Checked;
             PizzaSizeLarge.Checked += PizzaSize_Checked;
 
-            // Додаємо обробники подій для CheckBox
             foreach (CheckBox cb in ToppingStackPanel.Children)
             {
                 cb.Checked += ToppingChanged;
@@ -45,7 +43,7 @@ namespace Pizzeria
             UpdatePriceDisplay();
         }
 
-        private double GetBasePrice()
+        private double GetPrice()
         {
             double multiplier = 1.0;
             
@@ -63,7 +61,7 @@ namespace Pizzeria
 
         private double GetToppingsPrice()
         {
-            double toppingPrice = 2; // ціна за один топінг
+            double toppingPrice = 1; 
             double totalToppingsPrice = 0;
 
             foreach (CheckBox cb in ToppingStackPanel.Children)
@@ -80,7 +78,7 @@ namespace Pizzeria
         private void UpdatePriceDisplay()
         {
             int quantity = GetCurrentQuantity();
-            double total = (GetBasePrice() + GetToppingsPrice()) * quantity;
+            double total = (GetPrice() + GetToppingsPrice()) * quantity;
 
             PizzaPrice.Text = $"Total Price: ${total}";
         }
@@ -102,6 +100,7 @@ namespace Pizzeria
         private void DecreaseQuantity_Click(object sender, RoutedEventArgs e)
         {
             int currentQuantity = GetCurrentQuantity();
+            
             if (currentQuantity > 1)
             {
                 currentQuantity--;
@@ -113,10 +112,10 @@ namespace Pizzeria
         private void AddToCart_Click(object sender, RoutedEventArgs e)
         {
             int quantity = GetCurrentQuantity();
-            MessageBox.Show($"Added {quantity} to Cart");
+            MessageBox.Show($"Add {quantity} to Cart");
         }
 
-        private void OrderNow_Click(object sender, RoutedEventArgs e)
+        private void Order_Click(object sender, RoutedEventArgs e)
         {
             int quantity = GetCurrentQuantity();
             MessageBox.Show($"Order placed for {quantity}");

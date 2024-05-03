@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:Pizzeria"
       mc:Ignorable="d"
       Title="Order" Width="1200" Height="900" Background="White">
     <Grid Margin="20">
@@ -42,8 +41,10 @@
             <!-- Кнопки для замовлення або додавання до корзини -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
                 <Button Content="Add to Cart" Width="150" Click="AddToCart_Click" />
-                <Button Content="Order Now" Width="150" Margin="20 0 0 0" Click="OrderNow_Click" />
+                <Button Content="Order Now" Width="150" Margin="20 0 0 0" Click="Order_Click" />
             </StackPanel>
         </StackPanel>
+        
+        <Frame Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="OrderPage" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>
