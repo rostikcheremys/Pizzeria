@@ -7,18 +7,82 @@ namespace Pizzeria
 {
     public partial class Order : Page
     {
-        private double pizzaPrice;
+        private readonly double _basePrice;
 
-        public Order(string name, string imagePath, string ingredients, double price)
+        public Order(PizzaDetails details)
         {
             InitializeComponent();
-            
-            PizzaName.Content = name;
-            PizzaImage.Source = new BitmapImage(new Uri(imagePath, UriKind.Relative));
-            PizzaIngredients.Text = ingredients;
-            pizzaPrice = price;
+            PizzaDetails pizzaDetails = details;
+
+            PizzaName.Content = pizzaDetails.Name;
+            PizzaImage.Source = new BitmapImage(new Uri(pizzaDetails.ImagePath, UriKind.Relative));
+            PizzaIngredients.Text = pizzaDetails.Ingredients;
+            _basePrice = pizzaDetails.Price;
+
+            // Додаємо обробники подій для RadioButton
+            PizzaSizeSmall.Checked += PizzaSize_Checked;
+            PizzaSizeMedium.Checked += PizzaSize_Checked;
+            PizzaSizeLarge.Checked += PizzaSize_Checked;
+
+            // Додаємо обробники подій для CheckBox
+            foreach (CheckBox cb in ToppingStackPanel.Children)
+            {
+                cb.Checked += ToppingChanged;
+                cb.Unchecked += ToppingChanged;
+            }
 
             UpdatePriceDisplay();
+        }
+        
+
+        private void PizzaSize_Checked(object sender, RoutedEventArgs e)
+        {
+            UpdatePriceDisplay();
+        }
+
+        private void ToppingChanged(object sender, RoutedEventArgs e)
+        {
+            UpdatePriceDisplay();
+        }
+
+        private double GetBasePrice()
+        {
+            double multiplier = 1.0;
+            
+            if (PizzaSizeMedium.IsChecked == true)
+            {
+                multiplier = 1.5;
+            }
+            else if (PizzaSizeLarge.IsChecked == true)
+            {
+                multiplier = 2.0;
+            }
+            
+            return _basePrice * multiplier;
+        }
+
+        private double GetToppingsPrice()
+        {
+            double toppingPrice = 2; // ціна за один топінг
+            double totalToppingsPrice = 0;
+
+            foreach (CheckBox cb in ToppingStackPanel.Children)
+            {
+                if (cb.IsChecked == true)
+                {
+                    totalToppingsPrice += toppingPrice;
+                }
+            }
+
+            return totalToppingsPrice;
+        }
+
+        private void UpdatePriceDisplay()
+        {
+            int quantity = GetCurrentQuantity();
+            double total = (GetBasePrice() + GetToppingsPrice()) * quantity;
+
+            PizzaPrice.Text = $"Total Price: ${total}";
         }
 
         private int GetCurrentQuantity()
@@ -44,14 +108,6 @@ namespace Pizzeria
                 PizzaQuantity.Text = currentQuantity.ToString();
                 UpdatePriceDisplay();
             }
-        }
-
-        private void UpdatePriceDisplay()
-        {
-            int quantity = GetCurrentQuantity();
-            double total = pizzaPrice * quantity;
-
-            PizzaPrice.Text = $"Total Price: ${total}";
         }
 
         private void AddToCart_Click(object sender, RoutedEventArgs e)

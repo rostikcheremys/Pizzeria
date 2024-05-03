@@ -20,6 +20,8 @@ namespace Pizzeria
         protected new string Name { get; set; }
         protected string Description { get; set; }
         protected double Price { get; set; }
+
+        private PizzaDetails _pizzaDetails ;
         
         public Menu()
         {
@@ -29,8 +31,8 @@ namespace Pizzeria
             
             InitializeComponent();
             
-            Pizza pizzaPage = new Pizza();
-            MenuPage.Navigate(pizzaPage); 
+            Pizza pizzaPage = new Pizza(); // Pass the required parameter
+            MenuPage.Navigate(pizzaPage);
         }
 
         private void PizzaButton_Click(object sender, RoutedEventArgs e)
@@ -40,7 +42,7 @@ namespace Pizzeria
                 return;
             }
             
-            Pizza pizzaPage = new Pizza();
+            Pizza pizzaPage = new Pizza(); // Pass the required parameter
             MenuPage.Navigate(pizzaPage);
         }
 
