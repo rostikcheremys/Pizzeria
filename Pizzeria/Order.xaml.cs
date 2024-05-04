@@ -111,8 +111,8 @@ namespace Pizzeria
             
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Pizza pizzaPage = new Pizza();
-            OrderPage.Navigate(pizzaPage);
+            Pizza menuPage = new Pizza();
+            OrderPage.Navigate(menuPage);
         }
         
         private void AddToCart_Click(object sender, RoutedEventArgs e)

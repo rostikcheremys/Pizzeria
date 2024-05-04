@@ -26,6 +26,28 @@ namespace Pizzeria
             }
         }
         
+        private void PizzaButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (PizzaPage.Content is Pizza)
+            {
+                return;
+            }
+            
+            Pizza pizzaPage = new Pizza(); 
+            PizzaPage.Navigate(pizzaPage);
+        }
+
+        private void DrinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (PizzaPage.Content is Drink)
+            {
+                return;
+            }
+            
+            Drink drinkPage = new Drink();
+            PizzaPage.Navigate(drinkPage); 
+        }
+        
         private void OrderPizza_Click(object sender, RoutedEventArgs e)
         {
             Button? clickedButton = sender as Button;

@@ -8,6 +8,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
@@ -15,13 +18,13 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <Grid Grid.Row="0" Grid.Column="0" Margin="0 10 0 0">
+        <Grid Grid.Row="0" Grid.Column="0" Margin="15 10 0 0">
             <Image x:Name="PizzaImage" Width="600" Margin="0 35 0 0"/>
-            <Button Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25 5 0 0" Click="Back_Click">
+            <Button Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 5 0 0" Click="Back_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
-                            <Border CornerRadius="15" Background="Brown" x:Name="border">
+                            <Border CornerRadius="20" Background="Brown" x:Name="border">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </Grid>
@@ -102,14 +105,14 @@
             </StackPanel>
         </Grid>
         
-        <Grid Grid.Row="0" Grid.Column="1" Margin=" 0 50 0 0">
-            <Label Content="Select Size:" FontSize="30" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10 70 0 0" />
+        <Grid Grid.Row="0" Grid.Column="1" Margin=" 10 50 0 0">
+            <Label Content="Select Size:" FontSize="28" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10 70 0 0" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 170 0 0">
                 <RadioButton x:Name="SizeSmall" Content="Small" FontSize="20"  Style="{DynamicResource CustomRadioButton}" IsChecked="True"/>
                 <RadioButton x:Name="SizeMedium" Content="Medium" FontSize="20" Margin="30 0 30 0" Style="{DynamicResource CustomRadioButton}"/>
                 <RadioButton x:Name="SizeLarge" Content="Large" FontSize="20" Style="{DynamicResource CustomRadioButton}"/>
             </StackPanel>
-            <Label Content="Add Toppings:"  FontSize="30" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 -60 0 10" />
+            <Label Content="Add Toppings:"  FontSize="28" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 -60 0 10" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 70 0 0">
                 <Grid x:Name="ToppingStackPanel" VerticalAlignment="Center" Margin="00 130 0 0">
                     <Grid.RowDefinitions>
@@ -143,11 +146,11 @@
                 </Grid>
             </StackPanel>
             
-            <Button Width="150" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="120 0 0 -135" Click="AddToCart_Click">
+            <Button Width="150" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="120 0 0 -135" Click="AddToCart_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
-                            <Border CornerRadius="20" Background="Brown" x:Name="border">
+                            <Border CornerRadius="30" Background="Brown" x:Name="border">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </Grid>
@@ -168,11 +171,11 @@
                 <TextBlock Foreground="White" Text="Add to Cart" FontSize="20" TextAlignment="Center" FontWeight="Bold" Margin="0 -2 0 0"/>
             </Button>
             
-            <Button Width="150" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 15 120 -135" Click="OrderNow_Click">
+            <Button Width="150" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 15 120 -135" Click="OrderNow_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
-                            <Border CornerRadius="20" Background="Brown" x:Name="border">
+                            <Border CornerRadius="30" Background="Brown" x:Name="border">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </Grid>
@@ -194,7 +197,7 @@
             </Button>
         </Grid>
         
-        <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="OrderPage" NavigationUIVisibility="Hidden"/>
+        <Frame Grid.Row="0" Grid.RowSpan="4"  Grid.Column="0" Grid.ColumnSpan="2" x:Name="OrderPage" NavigationUIVisibility="Hidden"/>
     </Grid>
     
     <Page.Resources>

@@ -40,44 +40,6 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" Margin="0 2 0 0">
-            <Button Width="599" Height="45" HorizontalAlignment="Left" Click="PizzaButton_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Grid>
-                            <Border Background="Brown" x:Name="border" BorderBrush="Transparent">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-                <TextBlock Foreground="White" Text="Pizza" FontSize="26" FontWeight="Bold"/>
-            </Button>
-            
-            <Button Width="599" Height="45" HorizontalAlignment="Right" Click="DrinkButton_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Grid>
-                            <Border Background="Brown" x:Name="border" BorderBrush="Transparent">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-                <TextBlock Foreground="White" Text="Drink" FontSize="26" FontWeight="Bold"/>
-            </Button>
-        </Grid>
-        
-        <Frame Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="MenuPage" NavigationUIVisibility="Hidden"/>
+        <Frame Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="MenuPage" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

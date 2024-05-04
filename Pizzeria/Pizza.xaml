@@ -10,6 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
@@ -18,7 +19,45 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <Grid Grid.Row="0" Grid.Column="0" Margin="0 0 0 30">
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" Margin="0 2 0 0">
+            <Button Width="599" Height="45" HorizontalAlignment="Left" Click="PizzaButton_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border Background="Brown" x:Name="border" BorderBrush="Transparent">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Foreground="White" Text="Pizza" FontSize="26" FontWeight="Bold"/>
+            </Button>
+            
+            <Button Width="599" Height="45" HorizontalAlignment="Right" Click="DrinkButton_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border Background="Brown" x:Name="border" BorderBrush="Transparent">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Foreground="White" Text="Drink" FontSize="26" FontWeight="Bold"/>
+            </Button>
+        </Grid>
+        
+        <Grid Grid.Row="1" Grid.Column="0" Margin="0 0 0 30">
             <Image x:Name="PepperoniImage" Width="290" Margin="0 10 0 25"/>
             <Label x:Name="PepperoniName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="PepperoniPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
@@ -49,7 +88,7 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="0" Grid.Column="1" Margin="0 0 0 30">
+        <Grid Grid.Row="1" Grid.Column="1" Margin="0 0 0 30">
             <Image x:Name="SicilianImage" Width="290" Margin="0 10 0 25"/>
             <Label x:Name="SicilianName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="SicilianPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
@@ -80,7 +119,7 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="0" Grid.Column="2" Margin="0 0 0 30">
+        <Grid Grid.Row="1" Grid.Column="2" Margin="0 0 0 30">
             <Image x:Name="HawaiianImage" Width="290" Margin="0 10 0 25"/>
             <Label x:Name="HawaiianName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="HawaiianPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
@@ -111,7 +150,7 @@
             </Button>
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="0" Margin="0 15 0 0">
+        <Grid Grid.Row="2" Grid.Column="0" Margin="0 15 0 0">
             <Image x:Name="FourCheeseImage" Width="290" Margin="0 10 0 25"/>
             <Label x:Name="FourCheeseName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="FourCheesePrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
@@ -138,11 +177,11 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Foreground="White" Text="Order" FontSize="18" FontWeight="Bold"/>
             </Button>
         </Grid>
         
-        <Grid Grid.Row="1" Grid.Column="1" Margin="0 15 0 0">
+        <Grid Grid.Row="2" Grid.Column="1" Margin="0 15 0 0">
             <Image x:Name="ProsciuttoEFunghiImage" Width="290" Margin="0 10 0 25"/>
             <Label x:Name="ProsciuttoEFunghiName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="ProsciuttoEFunghiPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
@@ -169,11 +208,11 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Foreground="White" Text="Order" FontSize="18" FontWeight="Bold"/>
             </Button>
         </Grid>
         
-        <Grid Grid.Row="1" Grid.Column="2" Margin="0 15 0 0">
+        <Grid Grid.Row="2" Grid.Column="2" Margin="0 15 0 0">
             <Image x:Name="ChickenWithMushroomsImage" Width="290" Margin="0 10 0 25"/>
             <Label x:Name="ChickenWithMushroomsName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="ChickenWithMushroomsPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
@@ -200,10 +239,10 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Foreground="White" Text="Order" FontSize="18" FontWeight="Bold"/>
             </Button>
         </Grid>
         
-        <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="PizzaPage" NavigationUIVisibility="Hidden"/>
+        <Frame Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="PizzaPage" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>
