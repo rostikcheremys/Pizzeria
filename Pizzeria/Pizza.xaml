@@ -45,7 +45,7 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Foreground="White" Text="Order" FontSize="18" FontWeight="Bold"/>
             </Button>
         </Grid>
         
@@ -76,7 +76,7 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Foreground="White" Text="Order" FontSize="18" FontWeight="Bold"/>
             </Button>
         </Grid>
         
@@ -107,7 +107,7 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Foreground="White" Text="Order" FontSize="18" FontWeight="Bold"/>
             </Button>
         </Grid>
 

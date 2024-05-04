@@ -5,46 +5,246 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
       Title="Order" Width="1200" Height="900" Background="White">
-    <Grid Margin="20">
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-            <Image x:Name="PizzaImage" Width="300" />
-            <Label x:Name="PizzaName" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" />
-            <TextBlock x:Name="PizzaIngredients" TextWrapping="Wrap" TextAlignment="Center" Margin="10" />
-
-            <!-- Показ ціни -->
-            <TextBlock x:Name="PizzaPrice" FontSize="20" FontWeight="Bold" TextAlignment="Center" Margin="10 20 0 10" />
-
-            <!-- Вибір розміру піци -->
-            <Label Content="Select Size:" FontWeight="Bold" HorizontalAlignment="Left" Margin="10 20 0 10" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <RadioButton x:Name="PizzaSizeSmall" Content="Small" IsChecked="True"/>
-                <RadioButton x:Name="PizzaSizeMedium" Content="Medium" Margin="20 0 20 0"/>
-                <RadioButton x:Name="PizzaSizeLarge" Content="Large" />
-            </StackPanel>
-
-            <!-- Додаткові топінги -->
-            <Label Content="Select Toppings:" FontWeight="Bold" HorizontalAlignment="Left" Margin="10 20 0 10" />
-            <StackPanel x:Name="ToppingStackPanel" Orientation="Horizontal" HorizontalAlignment="Center">
-                <CheckBox Content="Extra Cheese" />
-                <CheckBox Content="Mushrooms" Margin="20 0 20 0" />
-                <CheckBox Content="Olives" />
-            </StackPanel>
-
-            <!-- Вибір кількості -->
-            <Label Content="Quantity:" FontWeight="Bold" HorizontalAlignment="Left" Margin="10 20 0 10" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="-" Width="30" Click="DecreaseQuantity_Click" />
-                <TextBox x:Name="PizzaQuantity" Width="50" Text="1" TextAlignment="Center" IsReadOnly="True" />
-                <Button Content="+" Width="30" Click="IncreaseQuantity_Click" />
-            </StackPanel>
-
-            <!-- Кнопки для замовлення або додавання до корзини -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
-                <Button Content="Add to Cart" Width="150" Click="AddToCart_Click" />
-                <Button Content="Order Now" Width="150" Margin="20 0 0 0" Click="Order_Click" />
-            </StackPanel>
-        </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         
-        <Frame Grid.Row="2" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="OrderPage" NavigationUIVisibility="Hidden"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid Grid.Row="0" Grid.Column="0" Margin="0 10 0 0">
+            <Image x:Name="PizzaImage" Width="600" Margin="0 35 0 0"/>
+            <Button Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25 5 0 0" Click="Back_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border CornerRadius="15" Background="Brown" x:Name="border">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="55" CenterY="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Foreground="White" Text="◀️" FontSize="28" TextAlignment="Center" FontWeight="Bold" Margin="0 -2 0 0"/>
+            </Button>
+            
+            <Label x:Name="PizzaName" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0"/>
+            <TextBlock x:Name="PizzaIngredients" FontSize="24" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 0 " />
+            <TextBlock x:Name="PizzaPrice" FontSize="30" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 -65" />
+            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="0 0 0 -135 ">
+                
+                <Button Width="40" Click="DecreaseQuantity_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Border CornerRadius="20" Background="Brown" x:Name="border">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="55" CenterY="20"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock Foreground="White" Text="-" FontSize="30" TextAlignment="Center" FontWeight="Bold" Margin="0 -8 0 0"/>
+                </Button>
+                
+                <TextBox x:Name="PizzaQuantity" Width="60" Text="1" FontSize="20" FontWeight="Bold" TextAlignment="Center" IsReadOnly="True" BorderBrush="White" Margin="0 4 0 0"/>
+                
+                <Button Width="40" Click="IncreaseQuantity_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Grid>
+                                <Border CornerRadius="20" Background="Brown" x:Name="border">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="border" Property="RenderTransform">
+                                        <Setter.Value>
+                                            <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="55" CenterY="20"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock Foreground="White" Text="+" FontSize="30" TextAlignment="Center" FontWeight="Bold" Margin="0 -7 0 0"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+        
+        <Grid Grid.Row="0" Grid.Column="1" Margin=" 0 50 0 0">
+            <Label Content="Select Size:" FontSize="30" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10 70 0 0" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 170 0 0">
+                <RadioButton x:Name="SizeSmall" Content="Small" FontSize="20"  Style="{DynamicResource CustomRadioButton}" IsChecked="True"/>
+                <RadioButton x:Name="SizeMedium" Content="Medium" FontSize="20" Margin="30 0 30 0" Style="{DynamicResource CustomRadioButton}"/>
+                <RadioButton x:Name="SizeLarge" Content="Large" FontSize="20" Style="{DynamicResource CustomRadioButton}"/>
+            </StackPanel>
+            <Label Content="Add Toppings:"  FontSize="30" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 -60 0 10" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 70 0 0">
+                <Grid x:Name="ToppingStackPanel" VerticalAlignment="Center" Margin="00 130 0 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <CheckBox Content="Extra Cheese" Style="{DynamicResource CustomCheckBox}" Grid.Row="0" Grid.Column="0"/>
+                    <CheckBox Content="Mushrooms" Style="{DynamicResource CustomCheckBox}" Grid.Row="0" Grid.Column="1" Margin="30 0 30 0"/>
+                    <CheckBox Content="Olives" Style="{DynamicResource CustomCheckBox}" Grid.Row="0" Grid.Column="2" />
+                    
+                    <CheckBox Content="Peppers" Style="{DynamicResource CustomCheckBox}" Grid.Row="1" Grid.Column="0" />
+                    <CheckBox Content="Onions" Style="{DynamicResource CustomCheckBox}" Grid.Row="1" Grid.Column="1" Margin="30 0 30 0"/>
+                    <CheckBox Content="Tomatoes" Style="{DynamicResource CustomCheckBox}" Grid.Row="1" Grid.Column="2" />
+                    
+                    <CheckBox Content="Broccoli" Style="{DynamicResource CustomCheckBox}" Grid.Row="2" Grid.Column="0" />
+                    <CheckBox Content="Pineapple" Style="{DynamicResource CustomCheckBox}" Grid.Row="2" Grid.Column="1" Margin="30 0 30 0"/>
+                    <CheckBox Content="Meatballs" Style="{DynamicResource CustomCheckBox}" Grid.Row="2" Grid.Column="2" />
+                    
+                    <CheckBox Content="Sausage" Style="{DynamicResource CustomCheckBox}" Grid.Row="3" Grid.Column="0" />
+                    <CheckBox Content="Ham" Style="{DynamicResource CustomCheckBox}" Grid.Row="3" Grid.Column="1" Margin="30 0 30 0"/>
+                    <CheckBox Content="Bacon" Style="{DynamicResource CustomCheckBox}" Grid.Row="3" Grid.Column="2" />
+                </Grid>
+            </StackPanel>
+            
+            <Button Width="150" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="120 0 0 -135" Click="AddToCart_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border CornerRadius="20" Background="Brown" x:Name="border">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="55" CenterY="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Foreground="White" Text="Add to Cart" FontSize="20" TextAlignment="Center" FontWeight="Bold" Margin="0 -2 0 0"/>
+            </Button>
+            
+            <Button Width="150" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 15 120 -135" Click="OrderNow_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border CornerRadius="20" Background="Brown" x:Name="border">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="55" CenterY="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Foreground="White" Text="Order Now" FontSize="20" TextAlignment="Center" FontWeight="Bold" Margin="0 -2 0 0"/>
+            </Button>
+        </Grid>
+        
+        <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" x:Name="OrderPage" NavigationUIVisibility="Hidden"/>
     </Grid>
+    
+    <Page.Resources>
+        <Style x:Key="CustomRadioButton" TargetType="{x:Type RadioButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <Grid>
+                                <Ellipse Width="20" Height="20" Stroke="Black" StrokeThickness="2" Fill="Transparent"/>
+                                <Ellipse Width="10" Height="10" Fill="Black" Visibility="Hidden" x:Name="InnerCircle"/>
+                            </Grid>
+                            <ContentPresenter Margin="7 0 0 0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="InnerCircle" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        
+        <Style x:Key="CustomCheckBox" TargetType="{x:Type CheckBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle Grid.Column="0" Width="20" Height="20" Stroke="Black" StrokeThickness="2" Fill="Transparent"/>
+                            <Path Grid.Column="0" x:Name="CheckMark" Data="M 4 8 L 8 12 L 16 4" Stroke="Black" StrokeThickness="2" Visibility="Hidden" Margin="0 16 0 0"/>
+                            <ContentPresenter Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="7 0 0 0"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Page.Resources>
 </Page>
+
+

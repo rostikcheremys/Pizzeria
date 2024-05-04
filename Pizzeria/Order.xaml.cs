@@ -19,9 +19,9 @@ namespace Pizzeria
             PizzaIngredients.Text = pizzaDetails.Ingredients;
             _basePrice = pizzaDetails.Price;
             
-            PizzaSizeSmall.Checked += PizzaSize_Checked;
-            PizzaSizeMedium.Checked += PizzaSize_Checked;
-            PizzaSizeLarge.Checked += PizzaSize_Checked;
+            SizeSmall.Checked += PizzaSize_Checked;
+            SizeMedium.Checked += PizzaSize_Checked;
+            SizeLarge.Checked += PizzaSize_Checked;
 
             foreach (CheckBox cb in ToppingStackPanel.Children)
             {
@@ -47,11 +47,11 @@ namespace Pizzeria
         {
             double multiplier = 1.0;
             
-            if (PizzaSizeMedium.IsChecked == true)
+            if (SizeMedium.IsChecked == true)
             {
                 multiplier = 1.5;
             }
-            else if (PizzaSizeLarge.IsChecked == true)
+            else if (SizeLarge.IsChecked == true)
             {
                 multiplier = 2.0;
             }
@@ -80,7 +80,7 @@ namespace Pizzeria
             int quantity = GetCurrentQuantity();
             double total = (GetPrice() + GetToppingsPrice()) * quantity;
 
-            PizzaPrice.Text = $"Total Price: ${total}";
+            PizzaPrice.Text = $"Price: ${total}";
         }
 
         private int GetCurrentQuantity()
@@ -108,14 +108,20 @@ namespace Pizzeria
                 UpdatePriceDisplay();
             }
         }
-
+            
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Pizza pizzaPage = new Pizza();
+            OrderPage.Navigate(pizzaPage);
+        }
+        
         private void AddToCart_Click(object sender, RoutedEventArgs e)
         {
             int quantity = GetCurrentQuantity();
             MessageBox.Show($"Add {quantity} to Cart");
         }
 
-        private void Order_Click(object sender, RoutedEventArgs e)
+        private void OrderNow_Click(object sender, RoutedEventArgs e)
         {
             int quantity = GetCurrentQuantity();
             MessageBox.Show($"Order placed for {quantity}");
