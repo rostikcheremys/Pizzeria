@@ -11,6 +11,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
@@ -19,7 +20,31 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <Grid Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" Margin="0 2 0 0">
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" Background="Brown" Height="55"> 
+            <Label Content="Menu" FontSize="32" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            
+            <Button Content="🛒" FontSize="28" FontWeight="Bold" Width="40" Height="40" Margin="0 0 30 0" HorizontalAlignment="Right" Background="Brown" BorderBrush="Transparent" Click="CardButton_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Foreground" Value="White" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="SandyBrown" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+        
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" Margin="0 2 0 0">
             <Button Width="599" Height="45" HorizontalAlignment="Left" Click="PizzaButton_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -57,7 +82,7 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="1" Grid.Column="0" Margin="0 0 0 30">
+        <Grid Grid.Row="2" Grid.Column="0" Margin="0 0 0 30">
             <Image x:Name="PepperoniImage" Width="290" Margin="0 10 0 25"/>
             <Label x:Name="PepperoniName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="PepperoniPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
@@ -88,7 +113,7 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="1" Grid.Column="1" Margin="0 0 0 30">
+        <Grid Grid.Row="2" Grid.Column="1" Margin="0 0 0 30">
             <Image x:Name="SicilianImage" Width="290" Margin="0 10 0 25"/>
             <Label x:Name="SicilianName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="SicilianPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
@@ -119,7 +144,7 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="1" Grid.Column="2" Margin="0 0 0 30">
+        <Grid Grid.Row="2" Grid.Column="2" Margin="0 0 0 30">
             <Image x:Name="HawaiianImage" Width="290" Margin="0 10 0 25"/>
             <Label x:Name="HawaiianName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="HawaiianPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
@@ -150,7 +175,7 @@
             </Button>
         </Grid>
 
-        <Grid Grid.Row="2" Grid.Column="0" Margin="0 15 0 0">
+        <Grid Grid.Row="3" Grid.Column="0" Margin="0 15 0 0">
             <Image x:Name="FourCheeseImage" Width="290" Margin="0 10 0 25"/>
             <Label x:Name="FourCheeseName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="FourCheesePrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
@@ -181,7 +206,7 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="2" Grid.Column="1" Margin="0 15 0 0">
+        <Grid Grid.Row="3" Grid.Column="1" Margin="0 15 0 0">
             <Image x:Name="ProsciuttoEFunghiImage" Width="290" Margin="0 10 0 25"/>
             <Label x:Name="ProsciuttoEFunghiName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="ProsciuttoEFunghiPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
@@ -212,7 +237,7 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="2" Grid.Column="2" Margin="0 15 0 0">
+        <Grid Grid.Row="3" Grid.Column="2" Margin="0 15 0 0">
             <Image x:Name="ChickenWithMushroomsImage" Width="290" Margin="0 10 0 25"/>
             <Label x:Name="ChickenWithMushroomsName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="ChickenWithMushroomsPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>

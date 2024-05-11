@@ -4,13 +4,13 @@ using System.Windows.Media.Imaging;
 
 namespace Pizzeria
 {
-    public partial class Pizza : Page
+    public partial class Pizza
     {
         public Pizza()
         {
             InitializeComponent();
 
-            List<PizzaDetails> pizzaDetails = PizzaData.Pizza;
+            List<PizzaInfo> pizzaDetails = PizzaData.Pizza;
             
             Image[] pizzaImages = [PepperoniImage, SicilianImage, HawaiianImage, FourCheeseImage, ProsciuttoEFunghiImage, ChickenWithMushroomsImage];
             Label[] pizzaNames = [PepperoniName, SicilianName, HawaiianName, FourCheeseName, ProsciuttoEFunghiName, ChickenWithMushroomsName];
@@ -48,6 +48,11 @@ namespace Pizzeria
             PizzaPage.Navigate(drinkPage); 
         }
         
+        private void CardButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        
         private void OrderPizza_Click(object sender, RoutedEventArgs e)
         {
             Button? clickedButton = sender as Button;
@@ -78,9 +83,9 @@ namespace Pizzeria
             }
         }
 
-        private void NavigateToOrderPage(PizzaDetails pizzaDetails)
+        private void NavigateToOrderPage(PizzaInfo pizzaInfo)
         {
-            Order orderPage = new Order(pizzaDetails);
+            Order orderPage = new Order(pizzaInfo);
             PizzaPage.Navigate(orderPage);
         }
     }

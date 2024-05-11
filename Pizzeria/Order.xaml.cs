@@ -7,17 +7,17 @@ namespace Pizzeria
     public partial class Order : Page
     {
         private readonly double _basePrice;
-
-        public Order(PizzaDetails details)
+        
+        public Order(PizzaInfo info)
         {
             InitializeComponent();
             
-            PizzaDetails pizzaDetails = details;
+            PizzaInfo pizzaInfo = info;
 
-            PizzaName.Content = pizzaDetails.Name;
-            PizzaImage.Source = new BitmapImage(new Uri(pizzaDetails.ImagePath, UriKind.Relative));
-            PizzaIngredients.Text = pizzaDetails.Ingredients;
-            _basePrice = pizzaDetails.Price;
+            PizzaName.Content = pizzaInfo.Name;
+            PizzaImage.Source = new BitmapImage(new Uri(pizzaInfo.ImagePath, UriKind.Relative));
+            PizzaIngredients.Text = pizzaInfo.Ingredients;
+            _basePrice = pizzaInfo.Price;
             
             SizeSmall.Checked += PizzaSize_Checked;
             SizeMedium.Checked += PizzaSize_Checked;
@@ -31,7 +31,6 @@ namespace Pizzeria
 
             UpdatePriceDisplay();
         }
-        
 
         private void PizzaSize_Checked(object sender, RoutedEventArgs e)
         {
@@ -123,8 +122,8 @@ namespace Pizzeria
 
         private void OrderNow_Click(object sender, RoutedEventArgs e)
         {
-            int quantity = GetCurrentQuantity();
-            MessageBox.Show($"Order placed for {quantity}");
+            Delivery deliveryPage = new Delivery(); 
+            OrderPage.Navigate(deliveryPage);
         }
     }
 }

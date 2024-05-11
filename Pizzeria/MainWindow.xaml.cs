@@ -16,17 +16,15 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        MinWidth = MaxWidth = 1200;
+        MinHeight = MaxHeight = 900;
     }
 
     private void MenuButton_Click(object sender, RoutedEventArgs e)
     {
-        Menu menuPage = new Menu();
-        MainPage.Navigate(menuPage);
+        Pizza pizzaPage = new Pizza();
+        MainPage.Navigate(pizzaPage);
     }
 }
 
-public class PizzaMenu
-{
-    public List<string> MenuItems { get; } = ["Margherita", "Pepperoni", "Vegetarian", "Hawaiian"];
-}
 

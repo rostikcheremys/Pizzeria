@@ -3,39 +3,120 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d"
-      Title="Delivery" Width="1200" Height="800" Background="White">
+      Title="Delivery" Width="1200" Height="900" Background="White">
     <Grid>
-        <StackPanel>
-            <Label Content="Delivery Details:" FontWeight="Bold" FontSize="16" Margin="0,20,0,10"/>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Name:"/>
-                <TextBox x:Name="NameTextBox" Width="150"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <Button Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15 15 0 0" Click="Back_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border CornerRadius="20" Background="Brown" x:Name="border">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="55" CenterY="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Foreground="White" Text="◀️" FontSize="28" TextAlignment="Center" FontWeight="Bold" Margin="0 -2 0 0"/>
+            </Button>
+        </Grid>
+        
+        <Label Grid.Row="0" Content="Delivery Details:" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,40"/>
+        
+        <Grid Grid.Row="1">
+            <StackPanel HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Name:" FontSize="24" FontWeight="Bold"/>
+                    <TextBox x:Name="NameTextBox" FontSize="18" Width="200" Height="40">
+                    </TextBox>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Phone:" FontSize="24" FontWeight="Bold"/>
+                    <TextBox x:Name="PhoneTextBox" FontSize="18" Width="200" Height="40"/>
+
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Delivery:" FontSize="24" FontWeight="Bold"/>
+                    <ComboBox x:Name="DeliveryOptionComboBox" Width="150">
+                        <ComboBoxItem Content="Delivery to home"/>
+                        <ComboBoxItem Content="Self-pickup"/>
+                    </ComboBox>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Time:" FontSize="24" FontWeight="Bold"/>
+                    <TextBox x:Name="DeliveryTimeTextBox" Width="150" Height="40"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Price:" FontSize="24" FontWeight="Bold"/>
+                </StackPanel>
+                
+                <StackPanel.Resources>
+                    <Style TargetType="TextBox">
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TextBox">
+                                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                        <ScrollViewer x:Name="PART_ContentHost"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </StackPanel.Resources>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Phone:"/>
-                <TextBox x:Name="PhoneTextBox" Width="150"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Delivery Option:"/>
-                <ComboBox x:Name="DeliveryOptionComboBox" Width="150">
-                    <ComboBoxItem Content="Delivery to home"/>
-                    <ComboBoxItem Content="Takeaway"/>
-                </ComboBox>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Cooking Time:"/>
-                <TextBox x:Name="CookingTimeTextBox" Width="150"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Delivery Time:"/>
-                <TextBox x:Name="DeliveryTimeTextBox" Width="150"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Price:"/>
-                <TextBox x:Name="PriceTextBox" Width="150"/>
-            </StackPanel>
-            <Button Content="Deliver" Click="DeliverButton_Click" Margin="0,20,0,0"/>
-        </StackPanel>
+        </Grid>
+        
+        <Grid Grid.Row="2">
+            <Button Width="150" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 100 0 0" Click="DeliverButton_Click">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border CornerRadius="30" Background="Brown" x:Name="border">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="55" CenterY="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Foreground="White" Text="Order" FontSize="24" TextAlignment="Center" FontWeight="Bold" Margin="0 -2 0 0"/>
+            </Button>
+        </Grid>
+       
+        <Frame Grid.Row="0" Grid.RowSpan="4"  Grid.Column="0" Grid.ColumnSpan="2" x:Name="DeliveryPage" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

@@ -26,7 +26,6 @@ D:\Programming\OOP\Pizzeria\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Delivery.
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\MainWindow.baml
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Delivery.g.cs
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\MainWindow.g.cs
-D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Menu.g.cs
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\App.g.cs
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria_MarkupCompile.cache
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria.dll
@@ -38,7 +37,6 @@ D:\Programming\OOP\Pizzeria\Pizzeria\bin\Debug\net8.0-windows\Pizzeria.runtimeco
 D:\Programming\OOP\Pizzeria\Pizzeria\bin\Debug\net8.0-windows\Pizzeria.dll
 D:\Programming\OOP\Pizzeria\Pizzeria\bin\Debug\net8.0-windows\Pizzeria.pdb
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Delivery.baml
-D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Menu.baml
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria.g.resources
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria.GeneratedMSBuildEditorConfig.editorconfig
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria.AssemblyInfoInputs.cache
