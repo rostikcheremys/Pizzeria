@@ -11,6 +11,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition />
         </Grid.RowDefinitions>
         
         <Grid Grid.Row="0">
@@ -40,38 +41,58 @@
             </Button>
         </Grid>
         
-        <Label Grid.Row="0" Content="Delivery Details:" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,40"/>
-        
-        <Grid Grid.Row="1">
-            <StackPanel HorizontalAlignment="Center">
-                <StackPanel Orientation="Horizontal">
+        <Grid Grid.Row="1" Margin="0 20 0 0 ">
+            <Label Content="Delivery:" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0 80 0 0">    
+                <StackPanel Orientation="Horizontal" >
                     <Label Content="Name:" FontSize="24" FontWeight="Bold"/>
-                    <TextBox x:Name="NameTextBox" FontSize="18" Width="200" Height="40">
-                    </TextBox>
+                    <TextBox x:Name="NameTextBox" FontSize="20" Width="250" Height="32"/>
                 </StackPanel>
                 
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="-4 10 0 0">
                     <Label Content="Phone:" FontSize="24" FontWeight="Bold"/>
-                    <TextBox x:Name="PhoneTextBox" FontSize="18" Width="200" Height="40"/>
-
+                    <TextBox x:Name="PhoneTextBox" FontSize="20" Width="250" Height="32"/>
                 </StackPanel>
                 
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="-26 10 0 0">
                     <Label Content="Delivery:" FontSize="24" FontWeight="Bold"/>
-                    <ComboBox x:Name="DeliveryOptionComboBox" Width="150">
+                    <ComboBox x:Name="DeliveryComboBox" FontSize="20" Width="250" Height="32">
                         <ComboBoxItem Content="Delivery to home"/>
                         <ComboBoxItem Content="Self-pickup"/>
                     </ComboBox>
                 </StackPanel>
                 
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Time:" FontSize="24" FontWeight="Bold"/>
-                    <TextBox x:Name="DeliveryTimeTextBox" Width="150" Height="40"/>
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0 ">
+                    <Label Content="Street:" FontSize="24" FontWeight="Bold"/>
+                    <TextBox x:Name="StreetTextBox" FontSize="20" Width="250" Height="32"/>
                 </StackPanel>
                 
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Price:" FontSize="24" FontWeight="Bold"/>
+                <StackPanel Orientation="Horizontal" Margin="-4 10 0  0">
+                    <Label Content="House:" FontSize="24" FontWeight="Bold"/>
+                    <TextBox x:Name="HouseTextBox" FontSize="20" Width="250" Height="32"/>
                 </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" Margin="-56 10 0 0">
+                    <Label Content="Apartment:" FontSize="24" FontWeight="Bold"/>
+                    <TextBox x:Name="ApartmentTextBox" FontSize="20" Width="250" Height="32"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" Margin="15 10 0 0">
+                    <Label Content="Date:" FontSize="24" FontWeight="Bold"/>
+                    <DatePicker x:Name="DatePicker" FontSize="20" Width="140" Height="32" Language="en-US" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" Margin="12 10 0 0">
+                    <Label Content="Time:" FontSize="24" FontWeight="Bold"/>
+                    <ComboBox x:Name="HourComboBox" FontSize="20" Width="50" Height="32">
+                    </ComboBox>
+                    <Label Content=":" FontSize="24"/>
+                    <ComboBox x:Name="MinuteComboBox" FontSize="20" Width="50" Height="32">
+                    </ComboBox>
+                </StackPanel>
+                
+                <TextBlock x:Name="Price" FontSize="30" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 30 0 0 "/>
                 
                 <StackPanel.Resources>
                     <Style TargetType="TextBox">
@@ -91,7 +112,7 @@
         </Grid>
         
         <Grid Grid.Row="2">
-            <Button Width="150" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 100 0 0" Click="DeliverButton_Click">
+            <Button Width="200" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 40 0 0" Click="DeliverButton_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -113,10 +134,10 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="24" TextAlignment="Center" FontWeight="Bold" Margin="0 -2 0 0"/>
+                <TextBlock Foreground="White" Text="Order" FontSize="30" TextAlignment="Center" FontWeight="Bold" Margin="0 -2 0 0"/>
             </Button>
         </Grid>
-       
-        <Frame Grid.Row="0" Grid.RowSpan="4"  Grid.Column="0" Grid.ColumnSpan="2" x:Name="DeliveryPage" NavigationUIVisibility="Hidden"/>
+            
+        <Frame Grid.Row="0" Grid.RowSpan="4"  Grid.Column="0" x:Name="DeliveryPage" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Page>

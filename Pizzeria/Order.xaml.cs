@@ -6,7 +6,7 @@ namespace Pizzeria
 {
     public partial class Order : Page
     {
-        private readonly double _basePrice;
+        private double _basePrice;
         
         public Order(PizzaInfo info)
         {
@@ -40,6 +40,15 @@ namespace Pizzeria
         private void ToppingChanged(object sender, RoutedEventArgs e)
         {
             UpdatePriceDisplay();
+        }
+        public void SetPizzaInfo(PizzaInfo info)
+        {
+            PizzaInfo pizzaInfo = info;
+
+            PizzaName.Content = pizzaInfo.Name;
+            PizzaImage.Source = new BitmapImage(new Uri(pizzaInfo.ImagePath, UriKind.Relative));
+            PizzaIngredients.Text = pizzaInfo.Ingredients;
+            _basePrice = pizzaInfo.Price;
         }
 
         private double GetPrice()
@@ -122,8 +131,27 @@ namespace Pizzeria
 
         private void OrderNow_Click(object sender, RoutedEventArgs e)
         {
-            Delivery deliveryPage = new Delivery(); 
+            double currentOrderPrice = GetCurrentPrice();
+            PizzaInfo pizzaInfo = GetCurrentPizzaInfo(); // Отримуємо поточну інформацію про піцу
+            Delivery deliveryPage = new Delivery(currentOrderPrice, pizzaInfo); // Передаємо інформацію про піцу
             OrderPage.Navigate(deliveryPage);
+        }
+        private double GetCurrentPrice()
+        {
+            double.TryParse(PizzaPrice.Text.Replace("Price: $", ""), out var currentPrice);
+            return currentPrice;
+        }
+        private PizzaInfo GetCurrentPizzaInfo()
+        {
+            // Отримуємо інформацію про піцу з поточної сторінки Order
+            PizzaInfo pizzaInfo = new PizzaInfo(
+                PizzaName.Content.ToString(),          
+                ((BitmapImage)PizzaImage.Source).UriSource.ToString(),
+                PizzaIngredients.Text,                    
+                _basePrice                               
+            );
+
+            return pizzaInfo;
         }
     }
 }

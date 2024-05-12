@@ -11,31 +11,102 @@ public partial class Delivery
     private string ChoiceDelivery { get; set; }
     private string CookingTime { get; set; }
     private string DeliveryTime { get; set; }
-    private string Price { get; set; }
+    private PizzaInfo _pizzaInfo;
 
-    public Delivery()
+    public Delivery(double currentOrderPrice, PizzaInfo pizzaInfo)
     {
         InitializeComponent();
+        InitializeTimeComboBox();
+    
+        Price.Text = $"Price: ${currentOrderPrice}";
+
+        _pizzaInfo = pizzaInfo; 
+    }
+    public PizzaInfo GetPizzaInfo()
+    {
+        return _pizzaInfo;
     }
 
-    public Delivery(string fullName, string phoneNumber, string choiceDelivery, string cookingTime, string deliveryTime, string price)
+    public Delivery(string fullName, string phoneNumber, string choiceDelivery, string cookingTime, string deliveryTime, double price)
     {
         FullName = fullName;
         PhoneNumber = phoneNumber;
         ChoiceDelivery = choiceDelivery;
         CookingTime = cookingTime;
         DeliveryTime = deliveryTime;
-        Price = price;
+        //Price = price;
     }
     
-
     private void Back_Click(object sender, RoutedEventArgs e)
     {
-        Pizza pizzaPage = new Pizza(); 
-        DeliveryPage.Navigate(pizzaPage);
+        PizzaInfo currentOrderPrice = GetPizzaInfo();
+        Order orderPage = new Order(currentOrderPrice); 
+        DeliveryPage.Navigate(orderPage);
     }
-    
     private void DeliverButton_Click(object sender, RoutedEventArgs e)
     {
+    }
+    
+    private void InitializeTimeComboBox()
+    {
+        // Очищаємо вміст ComboBox
+        HourComboBox.Items.Clear();
+        MinuteComboBox.Items.Clear();
+
+        // Перевіряємо, чи обрана дата є сьогоднішньою
+        if (DatePicker.SelectedDate.HasValue && DatePicker.SelectedDate.Value.Date == DateTime.Today)
+        {
+            int currentHour = DateTime.Now.Hour;
+            int currentMinute = DateTime.Now.Minute;
+
+            // Додаємо доступні години в HourComboBox
+            for (int i = currentHour; i < 24; i++)
+            {
+                HourComboBox.Items.Add(i);
+            }
+
+            if (HourComboBox.Items.Count > 0 && currentHour < Convert.ToInt32(HourComboBox.Items[0]))
+            {
+                for (int i = currentMinute; i < 60; i++)
+                {
+                    MinuteComboBox.Items.Add(i.ToString("D2"));
+                }
+            }
+            else if (HourComboBox.Items.Count > 0 && currentHour == Convert.ToInt32(HourComboBox.Items[0]))
+            {
+                for (int i = currentMinute; i < 60; i++)
+                {
+                    MinuteComboBox.Items.Add(i.ToString("D2"));
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 60; i++)
+                {
+                    MinuteComboBox.Items.Add(i.ToString("D2"));
+                }
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 24; i++)
+            {
+                HourComboBox.Items.Add(i);
+            }
+            for (int i = 0; i < 60; i++)
+            {
+                MinuteComboBox.Items.Add(i.ToString("D2"));
+            }
+        }
+    }
+    
+    private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (DatePicker.SelectedDate.HasValue && DatePicker.SelectedDate.Value.Date < DateTime.Today)
+        {
+            DatePicker.SelectedDate = DateTime.Today;
+        }
+        
+        InitializeTimeComboBox();
     }
 }

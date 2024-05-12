@@ -18,9 +18,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <Grid Grid.Row="0" Grid.Column="0" Margin="15 10 0 0">
+        <Grid Grid.Row="0" Grid.Column="0" Margin="15 30 0 0">
             <Image x:Name="PizzaImage" Width="600" Margin="0 35 0 0"/>
-            <Button Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 5 0 0" Click="Back_Click">
+            <Button Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 -15 0 0" Click="Back_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -105,7 +105,7 @@
             </StackPanel>
         </Grid>
         
-        <Grid Grid.Row="0" Grid.Column="1" Margin=" 10 50 0 0">
+        <Grid Grid.Row="0" Grid.Column="1" Margin=" 10 70 0 0">
             <Label Content="Select Size:" FontSize="28" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10 70 0 0" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 170 0 0">
                 <RadioButton x:Name="SizeSmall" Content="Small" FontSize="20"  Style="{DynamicResource CustomRadioButton}" IsChecked="True"/>

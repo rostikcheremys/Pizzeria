@@ -17,11 +17,11 @@ namespace Pizzeria
 {
     public class Menu
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public double Price { get; set; }
         public string ImagePath { get; set; }
 
-        protected Menu(string name, double price, string imagePath)
+        protected Menu(string? name, double price, string imagePath)
         {
             Name = name;
             Price = price;
