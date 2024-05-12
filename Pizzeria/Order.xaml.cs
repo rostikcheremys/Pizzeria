@@ -41,15 +41,6 @@ namespace Pizzeria
         {
             UpdatePriceDisplay();
         }
-        public void SetPizzaInfo(PizzaInfo info)
-        {
-            PizzaInfo pizzaInfo = info;
-
-            PizzaName.Content = pizzaInfo.Name;
-            PizzaImage.Source = new BitmapImage(new Uri(pizzaInfo.ImagePath, UriKind.Relative));
-            PizzaIngredients.Text = pizzaInfo.Ingredients;
-            _basePrice = pizzaInfo.Price;
-        }
 
         private double GetPrice()
         {
@@ -65,6 +56,31 @@ namespace Pizzeria
             }
             
             return _basePrice * multiplier;
+        }
+        
+        
+        public void SetSelectedSize(string size)
+        {
+            if (size == "Small")
+            {
+                SizeSmall.IsChecked = true;
+            }
+            else if (size == "Medium")
+            {
+                SizeMedium.IsChecked = true;
+            }
+            else if (size == "Large")
+            {
+                SizeLarge.IsChecked = true;
+            }
+        }
+
+        public void SetSelectedToppings(List<string?> toppings)
+        {
+            foreach (CheckBox cb in ToppingStackPanel.Children)
+            {
+                cb.IsChecked = toppings.Contains(cb.Content.ToString());
+            }
         }
 
         private double GetToppingsPrice()
@@ -116,7 +132,7 @@ namespace Pizzeria
                 UpdatePriceDisplay();
             }
         }
-            
+        
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             Pizza menuPage = new Pizza();
@@ -128,14 +144,18 @@ namespace Pizzeria
             int quantity = GetCurrentQuantity();
             MessageBox.Show($"Add {quantity} to Cart");
         }
-
+        
         private void OrderNow_Click(object sender, RoutedEventArgs e)
         {
+            
             double currentOrderPrice = GetCurrentPrice();
-            PizzaInfo pizzaInfo = GetCurrentPizzaInfo(); // Отримуємо поточну інформацію про піцу
-            Delivery deliveryPage = new Delivery(currentOrderPrice, pizzaInfo); // Передаємо інформацію про піцу
+            PizzaInfo pizzaInfo = GetCurrentPizzaInfo(); 
+            Delivery deliveryPage = new Delivery(currentOrderPrice, pizzaInfo, this); 
+    
             OrderPage.Navigate(deliveryPage);
         }
+        
+
         private double GetCurrentPrice()
         {
             double.TryParse(PizzaPrice.Text.Replace("Price: $", ""), out var currentPrice);
@@ -143,7 +163,6 @@ namespace Pizzeria
         }
         private PizzaInfo GetCurrentPizzaInfo()
         {
-            // Отримуємо інформацію про піцу з поточної сторінки Order
             PizzaInfo pizzaInfo = new PizzaInfo(
                 PizzaName.Content.ToString(),          
                 ((BitmapImage)PizzaImage.Source).UriSource.ToString(),

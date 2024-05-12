@@ -6,22 +6,24 @@ namespace Pizzeria;
 
 public partial class Delivery
 {
-    private string FullName { get; set; }
+    private new string Name { get; set; }
     private string PhoneNumber { get; set; }
     private string ChoiceDelivery { get; set; }
-    private string CookingTime { get; set; }
-    private string DeliveryTime { get; set; }
+    private string Data { get; set; }
+    private string Time { get; set; }
+    
     
     private readonly PizzaInfo _pizzaInfo;
+    private Order _orderPage; 
 
-    public Delivery(double currentOrderPrice, PizzaInfo pizzaInfo)
+    public Delivery(double currentOrderPrice, PizzaInfo pizzaInfo, Order orderPage)
     {
         InitializeComponent();
         InitializeTimeComboBox();
-    
         Price.Text = $"Price: ${currentOrderPrice}";
 
         _pizzaInfo = pizzaInfo; 
+        _orderPage = orderPage;
     }
 
     private PizzaInfo GetPizzaInfo()
@@ -29,24 +31,53 @@ public partial class Delivery
         return _pizzaInfo;
     }
 
-    public Delivery(string fullName, string phoneNumber, string choiceDelivery, string cookingTime, string deliveryTime, double price)
+    private string GetCurrentSize()
     {
-        FullName = fullName;
-        PhoneNumber = phoneNumber;
-        ChoiceDelivery = choiceDelivery;
-        CookingTime = cookingTime;
-        DeliveryTime = deliveryTime;
-        //Price = price;
+        if (_orderPage.SizeSmall.IsChecked == true)
+        {
+            return "Small";
+        }
+        if (_orderPage.SizeMedium.IsChecked == true)
+        {
+            return "Medium";
+        }
+        if (_orderPage.SizeLarge.IsChecked == true)
+        {
+            return "Large";
+        }
+        return null!; 
     }
-    
+
+    private List<string?> GetCurrentToppings()
+    {
+        List<string?> toppings = new List<string?>();
+
+        foreach (CheckBox cb in _orderPage.ToppingStackPanel.Children)
+        {
+            if (cb.IsChecked == true)
+            {
+                toppings.Add(cb.Content.ToString());
+            }
+        }
+
+        return toppings;
+    }
+
     private void BackButton_Click(object sender, RoutedEventArgs e)
     {
-        PizzaInfo currentOrderPrice = GetPizzaInfo();
-        Order orderPage = new Order(currentOrderPrice); 
+        string selectedSize = GetCurrentSize();
+        List<string?> selectedToppings = GetCurrentToppings();
+        
+        Order orderPage = new Order(GetPizzaInfo());
+        orderPage.SetSelectedSize(selectedSize);
+        orderPage.SetSelectedToppings(selectedToppings);
+        
         DeliveryPage.Navigate(orderPage);
     }
+    
     private void OrderButton_Click(object sender, RoutedEventArgs e)
     {
+        
     }
     
     private void InitializeTimeComboBox()
