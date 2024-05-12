@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:Pizzeria"
       mc:Ignorable="d"
       Title="Pizza" Width="1200" Height="900" Background="White">
     <Grid>
@@ -87,30 +86,7 @@
             <Label x:Name="PepperoniName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="PepperoniPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
             <TextBlock x:Name="PepperoniIngredients" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button x:Name="PepperoniOrder" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Grid>
-                            <Border CornerRadius="20" Background="Brown" x:Name="border">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="RenderTransform">
-                                    <Setter.Value>
-                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="55" CenterY="20"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="18" FontWeight="Bold"/>
-            </Button>
+            <Button x:Name="PepperoniOrder" Content="Order" Style="{DynamicResource OrderButtonStyle}" Click="OrderPizza_Click"/>
         </Grid>
         
         <Grid Grid.Row="2" Grid.Column="1" Margin="0 0 0 30">
@@ -118,30 +94,7 @@
             <Label x:Name="SicilianName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="SicilianPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
             <TextBlock x:Name="SicilianIngredients" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button x:Name="SicilianOrder" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Grid>
-                            <Border CornerRadius="20" Background="Brown" x:Name="border">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="RenderTransform">
-                                    <Setter.Value>
-                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="55" CenterY="20"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="18" FontWeight="Bold"/>
-            </Button>
+            <Button x:Name="SicilianOrder" Content="Order" Style="{DynamicResource OrderButtonStyle}" Click="OrderPizza_Click"/>
         </Grid>
         
         <Grid Grid.Row="2" Grid.Column="2" Margin="0 0 0 30">
@@ -149,30 +102,7 @@
             <Label x:Name="HawaiianName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="HawaiianPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
             <TextBlock x:Name="HawaiianIngredients" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button x:Name="HawaiianOrder" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Grid>
-                            <Border CornerRadius="20" Background="Brown" x:Name="border">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="RenderTransform">
-                                    <Setter.Value>
-                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="55" CenterY="20"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="18" FontWeight="Bold"/>
-            </Button>
+            <Button x:Name="HawaiianOrder" Content="Order" Style="{DynamicResource OrderButtonStyle}" Click="OrderPizza_Click"/>
         </Grid>
 
         <Grid Grid.Row="3" Grid.Column="0" Margin="0 15 0 0">
@@ -180,30 +110,7 @@
             <Label x:Name="FourCheeseName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="FourCheesePrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
             <TextBlock x:Name="FourCheeseIngredients" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button x:Name="FourCheeseOrder" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Grid>
-                            <Border CornerRadius="20" Background="Brown" x:Name="border">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="RenderTransform">
-                                    <Setter.Value>
-                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="55" CenterY="20"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="18" FontWeight="Bold"/>
-            </Button>
+            <Button x:Name="FourCheeseOrder" Content="Order" Style="{DynamicResource OrderButtonStyle}" Click="OrderPizza_Click"/>
         </Grid>
         
         <Grid Grid.Row="3" Grid.Column="1" Margin="0 15 0 0">
@@ -211,30 +118,7 @@
             <Label x:Name="ProsciuttoEFunghiName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="ProsciuttoEFunghiPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
             <TextBlock x:Name="ProsciuttoEFunghiIngredients" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button x:Name="ProsciuttoEFunghiOrder" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Grid>
-                            <Border CornerRadius="20" Background="Brown" x:Name="border">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                            </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="RenderTransform">
-                                    <Setter.Value>
-                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="55" CenterY="20"/>
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="18" FontWeight="Bold"/>
-            </Button>
+            <Button x:Name="ProsciuttoEFunghiOrder" Content="Order" Style="{DynamicResource OrderButtonStyle}" Click="OrderPizza_Click"/>
         </Grid>
         
         <Grid Grid.Row="3" Grid.Column="2" Margin="0 15 0 0">
@@ -242,8 +126,24 @@
             <Label x:Name="ChickenWithMushroomsName" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0 5 0 0"/>
             <TextBlock x:Name="ChickenWithMushroomsPrice" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
             <TextBlock x:Name="ChickenWithMushroomsIngredients" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-            <Button x:Name="ChickenWithMushroomsOrder" Width="120" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin=" 0 0 0 -50" Click="OrderPizza_Click">
-                <Button.Template>
+            <Button x:Name="ChickenWithMushroomsOrder" Content="Order" Style="{DynamicResource OrderButtonStyle}" Click="OrderPizza_Click"/>
+        </Grid>
+        
+        <Frame Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="PizzaPage" NavigationUIVisibility="Hidden"/>
+    </Grid>
+    
+    <Page.Resources>
+        <Style x:Key="OrderButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0 0 0 -50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Grid>
                             <Border CornerRadius="20" Background="Brown" x:Name="border">
@@ -263,11 +163,8 @@
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
-                </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="18" FontWeight="Bold"/>
-            </Button>
-        </Grid>
-        
-        <Frame Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="PizzaPage" NavigationUIVisibility="Hidden"/>
-    </Grid>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
 </Page>

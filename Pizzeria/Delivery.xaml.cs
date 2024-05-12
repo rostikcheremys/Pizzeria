@@ -11,7 +11,8 @@ public partial class Delivery
     private string ChoiceDelivery { get; set; }
     private string CookingTime { get; set; }
     private string DeliveryTime { get; set; }
-    private PizzaInfo _pizzaInfo;
+    
+    private readonly PizzaInfo _pizzaInfo;
 
     public Delivery(double currentOrderPrice, PizzaInfo pizzaInfo)
     {
@@ -22,7 +23,8 @@ public partial class Delivery
 
         _pizzaInfo = pizzaInfo; 
     }
-    public PizzaInfo GetPizzaInfo()
+
+    private PizzaInfo GetPizzaInfo()
     {
         return _pizzaInfo;
     }
@@ -37,13 +39,13 @@ public partial class Delivery
         //Price = price;
     }
     
-    private void Back_Click(object sender, RoutedEventArgs e)
+    private void BackButton_Click(object sender, RoutedEventArgs e)
     {
         PizzaInfo currentOrderPrice = GetPizzaInfo();
         Order orderPage = new Order(currentOrderPrice); 
         DeliveryPage.Navigate(orderPage);
     }
-    private void DeliverButton_Click(object sender, RoutedEventArgs e)
+    private void OrderButton_Click(object sender, RoutedEventArgs e)
     {
     }
     
