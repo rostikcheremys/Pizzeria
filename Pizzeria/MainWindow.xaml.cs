@@ -16,6 +16,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        
         MinWidth = MaxWidth = 1200;
         MinHeight = MaxHeight = 900;
     }

@@ -4,16 +4,17 @@ using System.Windows.Media.Imaging;
 
 namespace Pizzeria
 {
-    public partial class Order : Page
+    public partial class Order
     {
-        private double _basePrice;
-        
-        public Order(PizzaInfo info)
+        private readonly double _basePrice;
+        private readonly Cart _cartPage;
+
+        public Order(PizzaInfo info, Cart cartPage)
         {
             InitializeComponent();
-            
             PizzaInfo pizzaInfo = info;
-
+            _cartPage = cartPage;
+            
             PizzaName.Content = pizzaInfo.Name;
             PizzaImage.Source = new BitmapImage(new Uri(pizzaInfo.ImagePath, UriKind.Relative));
             PizzaIngredients.Text = pizzaInfo.Ingredients;
@@ -58,6 +59,11 @@ namespace Pizzeria
             return _basePrice * multiplier;
         }
         
+        private double GetCurrentPrice()
+        {
+            double.TryParse(PizzaPrice.Text.Replace("Price: $", ""), out var currentPrice);
+            return currentPrice;
+        }
         
         public void SetSelectedSize(string size)
         {
@@ -82,7 +88,16 @@ namespace Pizzeria
                 cb.IsChecked = toppings.Contains(cb.Content.ToString());
             }
         }
-
+        
+        public void SetCurrentPrice(double price)
+        {
+            PizzaPrice.Text = $"Price: ${price}";
+        }
+        
+        public void SetSelectedQuantity(int quantity)
+        {
+            PizzaQuantity.Text = quantity.ToString();
+        }
         private double GetToppingsPrice()
         {
             double toppingPrice = 1; 
@@ -135,32 +150,47 @@ namespace Pizzeria
         
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Pizza menuPage = new Pizza();
-            OrderPage.Navigate(menuPage);
+            Pizza pizzaPage = new Pizza();
+            OrderPage.Navigate(pizzaPage);
         }
         
-        private void AddToCart_Click(object sender, RoutedEventArgs e)
+        private void AddToCartButton_Click(object sender, RoutedEventArgs e)
         {
-            int quantity = GetCurrentQuantity();
-            MessageBox.Show($"Add {quantity} to Cart");
+            string? productName = PizzaName.Content.ToString();
+            int quantity = int.Parse(PizzaQuantity.Text);
+            double price = GetCurrentPrice();
+    
+            CartItemInfo cartItem = new CartItemInfo(productName, quantity, price);
+            _cartPage.AddToCart(cartItem);
+  
+            ResetFields();
         }
         
-        private void OrderNow_Click(object sender, RoutedEventArgs e)
+        private void ResetFields()
         {
+            PizzaQuantity.Text = "1";
             
+            SizeSmall.IsChecked = true;
+            SizeMedium.IsChecked = false;
+            SizeLarge.IsChecked = false;
+
+            foreach (CheckBox cb in ToppingStackPanel.Children)
+            {
+                cb.IsChecked = false;
+            }
+            
+            UpdatePriceDisplay();
+        }
+        
+        private void OrderNowButton_Click(object sender, RoutedEventArgs e)
+        {
             double currentOrderPrice = GetCurrentPrice();
             PizzaInfo pizzaInfo = GetCurrentPizzaInfo(); 
-            Delivery deliveryPage = new Delivery(currentOrderPrice, pizzaInfo, this); 
+            Delivery deliveryPage = new Delivery(currentOrderPrice, pizzaInfo, this, _cartPage); 
     
             OrderPage.Navigate(deliveryPage);
         }
         
-
-        private double GetCurrentPrice()
-        {
-            double.TryParse(PizzaPrice.Text.Replace("Price: $", ""), out var currentPrice);
-            return currentPrice;
-        }
         private PizzaInfo GetCurrentPizzaInfo()
         {
             PizzaInfo pizzaInfo = new PizzaInfo(
@@ -172,5 +202,11 @@ namespace Pizzeria
 
             return pizzaInfo;
         }
+    }
+    public class CartItemInfo(string? product, int quantity, double price)
+    {
+        public string? Product { get; set; } = product;
+        public int Quantity { get; set; } = quantity;
+        public double Price { get; set; } = price;
     }
 }

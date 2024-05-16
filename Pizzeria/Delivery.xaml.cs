@@ -12,11 +12,11 @@ public partial class Delivery
     private string Data { get; set; }
     private string Time { get; set; }
     
-    
     private readonly PizzaInfo _pizzaInfo;
-    private Order _orderPage; 
+    private readonly Order _orderPage;
+    private readonly Cart _cartPage;
 
-    public Delivery(double currentOrderPrice, PizzaInfo pizzaInfo, Order orderPage)
+    public Delivery(double currentOrderPrice, PizzaInfo pizzaInfo, Order orderPage, Cart cartPage)
     {
         InitializeComponent();
         InitializeTimeComboBox();
@@ -24,13 +24,25 @@ public partial class Delivery
 
         _pizzaInfo = pizzaInfo; 
         _orderPage = orderPage;
+        _cartPage = cartPage; 
     }
-
+    
     private PizzaInfo GetPizzaInfo()
     {
         return _pizzaInfo;
     }
+    
+    private double GetCurrentPrice()
+    {
+        double.TryParse(_orderPage.PizzaPrice.Text.Replace("Price: $", ""), out var currentPrice);
+        return currentPrice;
+    }
 
+    private int GetCurrentQuantity()
+    {
+        return int.Parse(_orderPage.PizzaQuantity.Text);
+    }
+    
     private string GetCurrentSize()
     {
         if (_orderPage.SizeSmall.IsChecked == true)
@@ -65,15 +77,21 @@ public partial class Delivery
 
     private void BackButton_Click(object sender, RoutedEventArgs e)
     {
+        double currentPrice = GetCurrentPrice(); 
+        int currentQuantity = GetCurrentQuantity();
         string selectedSize = GetCurrentSize();
         List<string?> selectedToppings = GetCurrentToppings();
-        
-        Order orderPage = new Order(GetPizzaInfo());
+
+        Order orderPage = new Order(GetPizzaInfo(), _cartPage);
+    
+        orderPage.SetCurrentPrice(currentPrice);
+        orderPage.SetSelectedQuantity(currentQuantity);
         orderPage.SetSelectedSize(selectedSize);
         orderPage.SetSelectedToppings(selectedToppings);
-        
+    
         DeliveryPage.Navigate(orderPage);
     }
+
     
     private void OrderButton_Click(object sender, RoutedEventArgs e)
     {

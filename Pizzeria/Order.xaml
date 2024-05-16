@@ -146,7 +146,7 @@
                 </Grid>
             </StackPanel>
             
-            <Button Width="150" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="120 0 0 -135" Click="AddToCart_Click">
+            <Button Width="150" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="120 0 0 -135" Click="AddToCartButton_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
@@ -171,7 +171,7 @@
                 <TextBlock Foreground="White" Text="Add to Cart" FontSize="20" TextAlignment="Center" FontWeight="Bold" Margin="0 -2 0 0"/>
             </Button>
             
-            <Button Width="150" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 15 120 -135" Click="OrderNow_Click">
+            <Button Width="150" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 15 120 -135" Click="OrderNowButton_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
