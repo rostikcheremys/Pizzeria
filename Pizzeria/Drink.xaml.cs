@@ -14,10 +14,10 @@ namespace Pizzeria
            
             List<DrinkInfo> drinkDetails = DrinkData.Drinks;
             
-            Image[] drinkImages = [PepperoniImage, SicilianImage, HawaiianImage, FourCheeseImage, ProsciuttoEFunghiImage, ChickenWithMushroomsImage];
-            Label[] drinkNames = [PepperoniName, SicilianName, HawaiianName, FourCheeseName, ProsciuttoEFunghiName, ChickenWithMushroomsName];
-            TextBlock[] drinkPrices = [PepperoniPrice, SicilianPrice, HawaiianPrice, FourCheesePrice, ProsciuttoEFunghiPrice, ChickenWithMushroomsPrice];
-            TextBlock[] drinkIngredients = [PepperoniIngredients, SicilianIngredients, HawaiianIngredients, FourCheeseIngredients, ProsciuttoEFunghiIngredients, ChickenWithMushroomsIngredients];
+            Image[] drinkImages = [CocaColaImage, SpriteImage, FantaImage, PepsiImage, MineralWaterImage, CoronaExtraImage];
+            Label[] drinkNames = [CocaColaName, SpriteName, FantaName, PepsiName, MineralWaterName, CoronaExtraName];
+            TextBlock[] drinkPrices = [CocaColaPrice, SpritePrice, FantaPrice, PepsiPrice, MineralWaterPrice, CoronaExtraPrice];
+            TextBlock[] drinkIngredients = [CocaColaIngredients, SpriteIngredients, FantaIngredients, PepsiIngredients, MineralWaterIngredients, CoronaExtraIngredients];
 
             for (int i = 0; i < drinkDetails.Count; i++)
             {
@@ -57,36 +57,37 @@ namespace Pizzeria
         }
        
         private void OrderPizza_Click(object sender, RoutedEventArgs e)
-        {
-            /*Button? clickedButton = sender as Button;
+        { 
+            Button? clickedButton = sender as Button;
+            
+            if (clickedButton == CocaColaOrder)
+            {
+                NavigateToOrderPage(DrinkData.Drinks[0]);
+            }
+            else if (clickedButton == SpriteOrder)
+            {
+                NavigateToOrderPage(DrinkData.Drinks[1]);
+            }
+            else if (clickedButton == FantaOrder)
+            {
+                NavigateToOrderPage(DrinkData.Drinks[2]);
+            }
+            else if (clickedButton == PepsiOrder)
+            {
+                NavigateToOrderPage(DrinkData.Drinks[3]);
+            }
+            else if (clickedButton == MineralWaterOrder)
+            {
+                NavigateToOrderPage(DrinkData.Drinks[4]);
+            }
+            else if (clickedButton == CoronaExtraOrder)
+            {
+                NavigateToOrderPage(DrinkData.Drinks[5]);
+            }
+        
+        }
 
-           if (clickedButton == PepperoniOrder)
-           {
-               NavigateToOrderPage(DrinkData.Drinks[0]);
-           }
-           else if (clickedButton == SicilianOrder)
-           {
-               NavigateToOrderPage(DrinkData.Drinks[1]);
-           }
-           else if (clickedButton == HawaiianOrder)
-           {
-               NavigateToOrderPage(DrinkData.Drinks[2]);
-           }
-           else if (clickedButton == FourCheeseOrder)
-           {
-               NavigateToOrderPage(DrinkData.Drinks[3]);
-           }
-           else if (clickedButton == ProsciuttoEFunghiOrder)
-           {
-               NavigateToOrderPage(DrinkData.Drinks[4]);
-           }
-           else if (clickedButton == ChickenWithMushroomsOrder)
-           {
-               NavigateToOrderPage(DrinkData.Drinks[5]);
-           }*/
-       }
-
-        private void NavigateToOrderPage(PizzaInfo drinkInfo)
+        private void NavigateToOrderPage(DrinkInfo drinkInfo)
         {
             //Order orderPage = new Order(drinkInfo);
             //DrinkPage.Navigate(orderPage);

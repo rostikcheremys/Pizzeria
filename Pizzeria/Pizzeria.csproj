@@ -53,6 +53,7 @@
       <Resource Include="images\drink\sprite.png" />
       <None Remove="images\pizzeria.png" />
       <Resource Include="images\pizzeria.png" />
+      <None Remove="images\drink\coca-cola1.png" />
     </ItemGroup>
 
     <ItemGroup>

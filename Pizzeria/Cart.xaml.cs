@@ -20,8 +20,8 @@ namespace Pizzeria
         public Cart(Cart previousCartPage)
         {
             InitializeComponent();
-            DataContext = this;
             
+            DataContext = this;
             _previousCartPage = previousCartPage;
             CardListView.ItemsSource = _cartItems;
            
@@ -29,18 +29,54 @@ namespace Pizzeria
             {
                 _cartItems.Add(item);
             }
+            
+            UpdateTotalPrice();
         }
         
         public void AddToCart(CartItem item)
         {
-            _cartItems.Add(item);
-            MessageBox.Show($"Cart now has {_cartItems.Count} items.");
+            bool existingPizza = false;
+            
+            foreach (var cartItem in _cartItems)
+            {
+                if (cartItem.Product == item.Product)
+                {
+                    cartItem.Quantity += item.Quantity;
+                    cartItem.Price += item.Price;
+                    
+                    existingPizza = true;
+                    break;
+                }
+            }
+            
+            if (!existingPizza)
+            {
+                _cartItems.Add(item);
+            }
         }
+        
+        private void UpdateTotalPrice()
+        {
+            double totalPrice = 0;
+
+            foreach (CartItem cartItem in _cartItems)
+            {
+                totalPrice += cartItem.Price;
+            }
+
+            TotalPrice.Text = $"Total Price: ${totalPrice}";
+        }
+
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Pizza pizzaPage = new Pizza(this);
             CartPage.Navigate(pizzaPage);
+        }
+        
+        private void OrderButton_Click(object sender, RoutedEventArgs e)
+        {
+        
         }
     }
 }

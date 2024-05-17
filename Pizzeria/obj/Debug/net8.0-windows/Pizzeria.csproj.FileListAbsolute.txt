@@ -54,3 +54,5 @@ D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Order.g.cs
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Order.baml
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Cart.baml
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Cart.g.cs
+D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\CustomMessageBox.g.cs
+D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\CustomMessageBox.baml

@@ -12,9 +12,11 @@ namespace Pizzeria
 
         public Order(PizzaInfo pizzas, Cart cartPage)
         {
-            _cartPage = cartPage;
             InitializeComponent();
+            
             PizzaInfo pizzaInfo = pizzas;
+            _cartPage = cartPage;
+            
             PizzaName.Content = pizzaInfo.Name;
             PizzaImage.Source = new BitmapImage(new Uri(pizzaInfo.ImagePath, UriKind.Relative));
             PizzaIngredients.Text = pizzaInfo.Ingredients;
@@ -162,8 +164,14 @@ namespace Pizzeria
             double price = GetCurrentPrice();
     
             CartItem cartItem = new CartItem(product, quantity, price);
-            _cartPage.AddToCart(cartItem);
-            MessageBox.Show($"Added {quantity} x {product} to cart at ${price} each.");
+            
+            bool? result = CustomMessageBox.Show($"Add {quantity} x {product} to cart for ${price}?", "OK");
+            
+            if (result == true)
+            {
+                _cartPage.AddToCart(cartItem);
+            }
+            
             ResetFields();
         }
 
