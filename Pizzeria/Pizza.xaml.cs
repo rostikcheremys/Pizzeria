@@ -6,8 +6,10 @@ namespace Pizzeria
 {
     public partial class Pizza
     {
-        public Pizza()
+        private readonly Cart _cartPage;
+        public Pizza(Cart cartPage)
         {
+            _cartPage = cartPage;
             InitializeComponent();
            
             List<PizzaInfo> pizzaDetails = PizzaData.Pizzas;
@@ -33,7 +35,7 @@ namespace Pizzeria
                 return;
             }
             
-            Pizza pizzaPage = new Pizza(); 
+            Pizza pizzaPage = new Pizza(_cartPage); 
             PizzaPage.Navigate(pizzaPage);
         }
 
@@ -44,14 +46,13 @@ namespace Pizzeria
                 return;
             }
             
-            Drink drinkPage = new Drink();
+            Drink drinkPage = new Drink(_cartPage);
             PizzaPage.Navigate(drinkPage); 
         }
         
         private void CartButton_Click(object sender, RoutedEventArgs e)
         {
-            Cart cartPage = new Cart();
-            PizzaPage.Navigate(cartPage); 
+            PizzaPage.Navigate(_cartPage); 
         }
         
         private void OrderPizza_Click(object sender, RoutedEventArgs e)
@@ -86,7 +87,7 @@ namespace Pizzeria
 
         private void NavigateToOrderPage(PizzaInfo pizzaInfo)
         {
-            Order orderPage = new Order(pizzaInfo);
+            Order orderPage = new Order(pizzaInfo, _cartPage);
             PizzaPage.Navigate(orderPage);
         }
     }

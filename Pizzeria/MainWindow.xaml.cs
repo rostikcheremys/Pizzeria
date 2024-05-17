@@ -11,19 +11,20 @@ using System.Windows.Shapes;
 
 namespace Pizzeria;
 
-public partial class MainWindow 
+public partial class MainWindow
 {
+    private readonly Cart _cartPage = new ();
     public MainWindow()
     {
         InitializeComponent();
-        
+       
         MinWidth = MaxWidth = 1200;
         MinHeight = MaxHeight = 900;
     }
     
     private void MenuButton_Click(object sender, RoutedEventArgs e)
     {
-        Pizza pizzaPage = new Pizza();
+        Pizza pizzaPage = new Pizza(_cartPage);
         MainPage.Navigate(pizzaPage);
     }
 }

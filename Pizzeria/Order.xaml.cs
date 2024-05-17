@@ -8,10 +8,11 @@ namespace Pizzeria
     public partial class Order
     {
         private readonly double _basePrice;
-        private readonly Cart _cartPage = new ();
+        private readonly Cart _cartPage;
 
-        public Order(PizzaInfo pizzas)
+        public Order(PizzaInfo pizzas, Cart cartPage)
         {
+            _cartPage = cartPage;
             InitializeComponent();
             PizzaInfo pizzaInfo = pizzas;
             PizzaName.Content = pizzaInfo.Name;
@@ -150,7 +151,7 @@ namespace Pizzeria
         
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Pizza pizzaPage = new Pizza();
+            Pizza pizzaPage = new Pizza(_cartPage);
             OrderPage.Navigate(pizzaPage);
         }
         
@@ -162,7 +163,7 @@ namespace Pizzeria
     
             CartItem cartItem = new CartItem(product, quantity, price);
             _cartPage.AddToCart(cartItem);
-            
+            MessageBox.Show($"Added {quantity} x {product} to cart at ${price} each.");
             ResetFields();
         }
 
@@ -187,7 +188,7 @@ namespace Pizzeria
         {
             double currentPrice = GetCurrentPrice();
             PizzaInfo currentPizzaInfo = GetCurrentPizzaInfo(); 
-            Delivery deliveryPage = new Delivery(currentPrice, currentPizzaInfo, this); 
+            Delivery deliveryPage = new Delivery(currentPrice, currentPizzaInfo, this, _cartPage); 
     
             OrderPage.Navigate(deliveryPage);
         }

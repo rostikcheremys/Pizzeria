@@ -6,8 +6,10 @@ namespace Pizzeria
 {
     public partial class Drink : Page
     {
-        public Drink()
+        private readonly Cart _cartPage;
+        public Drink(Cart cartPage)
         {
+            _cartPage = cartPage;
             InitializeComponent();
            
             List<DrinkInfo> drinkDetails = DrinkData.Drinks;
@@ -33,7 +35,7 @@ namespace Pizzeria
                 return;
             }
             
-            Pizza pizzaPage = new Pizza(); 
+            Pizza pizzaPage = new Pizza(_cartPage); 
             DrinkPage.Navigate(pizzaPage);
         }
 
@@ -44,14 +46,13 @@ namespace Pizzeria
                 return;
             }
             
-            Drink drinkPage = new Drink();
+            Drink drinkPage = new Drink(_cartPage);
             DrinkPage.Navigate(drinkPage); 
         }
         
         private void CartButton_Click(object sender, RoutedEventArgs e)
         {
-            Cart cartPage = new Cart();
-            DrinkPage.Navigate(cartPage); 
+            DrinkPage.Navigate(_cartPage); 
         }
        
         private void OrderPizza_Click(object sender, RoutedEventArgs e)
