@@ -6,13 +6,11 @@ namespace Pizzeria
 {
     public partial class Pizza
     {
-        private Cart _cartPage;
         public Pizza()
         {
             InitializeComponent();
-            _cartPage = new Cart();
-
-            List<PizzaInfo> pizzaDetails = PizzaData.Pizza;
+           
+            List<PizzaInfo> pizzaDetails = PizzaData.Pizzas;
             
             Image[] pizzaImages = [PepperoniImage, SicilianImage, HawaiianImage, FourCheeseImage, ProsciuttoEFunghiImage, ChickenWithMushroomsImage];
             Label[] pizzaNames = [PepperoniName, SicilianName, HawaiianName, FourCheeseName, ProsciuttoEFunghiName, ChickenWithMushroomsName];
@@ -62,33 +60,33 @@ namespace Pizzeria
 
             if (clickedButton == PepperoniOrder)
             {
-                NavigateToOrderPage(PizzaData.Pizza[0]);
+                NavigateToOrderPage(PizzaData.Pizzas[0]);
             }
             else if (clickedButton == SicilianOrder)
             {
-                NavigateToOrderPage(PizzaData.Pizza[1]);
+                NavigateToOrderPage(PizzaData.Pizzas[1]);
             }
             else if (clickedButton == HawaiianOrder)
             {
-                NavigateToOrderPage(PizzaData.Pizza[2]);
+                NavigateToOrderPage(PizzaData.Pizzas[2]);
             }
             else if (clickedButton == FourCheeseOrder)
             {
-                NavigateToOrderPage(PizzaData.Pizza[3]);
+                NavigateToOrderPage(PizzaData.Pizzas[3]);
             }
             else if (clickedButton == ProsciuttoEFunghiOrder)
             {
-                NavigateToOrderPage(PizzaData.Pizza[4]);
+                NavigateToOrderPage(PizzaData.Pizzas[4]);
             }
             else if (clickedButton == ChickenWithMushroomsOrder)
             {
-                NavigateToOrderPage(PizzaData.Pizza[5]);
+                NavigateToOrderPage(PizzaData.Pizzas[5]);
             }
         }
 
         private void NavigateToOrderPage(PizzaInfo pizzaInfo)
         {
-            Order orderPage = new Order(pizzaInfo, _cartPage);
+            Order orderPage = new Order(pizzaInfo);
             PizzaPage.Navigate(orderPage);
         }
     }

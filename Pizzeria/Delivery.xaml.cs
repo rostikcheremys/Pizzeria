@@ -14,9 +14,8 @@ public partial class Delivery
     
     private readonly PizzaInfo _pizzaInfo;
     private readonly Order _orderPage;
-    private readonly Cart _cartPage;
 
-    public Delivery(double currentOrderPrice, PizzaInfo pizzaInfo, Order orderPage, Cart cartPage)
+    public Delivery(double currentOrderPrice, PizzaInfo pizzaInfo, Order orderPage)
     {
         InitializeComponent();
         InitializeTimeComboBox();
@@ -24,7 +23,6 @@ public partial class Delivery
 
         _pizzaInfo = pizzaInfo; 
         _orderPage = orderPage;
-        _cartPage = cartPage; 
     }
     
     private PizzaInfo GetPizzaInfo()
@@ -82,8 +80,8 @@ public partial class Delivery
         string selectedSize = GetCurrentSize();
         List<string?> selectedToppings = GetCurrentToppings();
 
-        Order orderPage = new Order(GetPizzaInfo(), _cartPage);
-    
+        Order orderPage = new Order(GetPizzaInfo());
+        
         orderPage.SetCurrentPrice(currentPrice);
         orderPage.SetSelectedQuantity(currentQuantity);
         orderPage.SetSelectedSize(selectedSize);

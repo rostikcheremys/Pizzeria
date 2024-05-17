@@ -129,7 +129,7 @@
             <Button x:Name="ChickenWithMushroomsOrder" Content="Order" Style="{DynamicResource OrderButtonStyle}" Click="OrderPizza_Click"/>
         </Grid>
         
-        <Frame Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="PizzaPage" NavigationUIVisibility="Hidden"/>
+        <Frame Grid.Row="0" Grid.RowSpan="4" Grid.Column="0" Grid.ColumnSpan="3" x:Name="PizzaPage" NavigationUIVisibility="Hidden"/>
     </Grid>
     
     <Page.Resources>

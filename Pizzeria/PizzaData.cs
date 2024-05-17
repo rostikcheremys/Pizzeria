@@ -2,7 +2,7 @@
 
 public static class PizzaData
 {
-    public static readonly List<PizzaInfo> Pizza =
+    public static readonly List<PizzaInfo> Pizzas =
     [
         new PizzaInfo("Pepperoni", "images/pizza/pepperoni.png", "Pepperoni, Chili peppers, Cheese, Tomato Sauce", 8),
         new PizzaInfo("Sicilian", "images/pizza/sicilian.png", "Pepperoni, Olives, Tomatoes, Peppers, Cheese", 10),

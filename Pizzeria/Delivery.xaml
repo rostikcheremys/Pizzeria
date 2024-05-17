@@ -76,7 +76,7 @@
                 
                 <StackPanel Orientation="Horizontal" Margin="15 10 0 0">
                     <Label Content="Date:" FontSize="24" FontWeight="Bold"/>
-                    <DatePicker x:Name="DatePicker" FontSize="20" Width="140" Height="32" Language="en-US" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+                    <DatePicker x:Name="DatePicker" FontSize="20" Width="140" Height="32" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
                 </StackPanel>
                 
                 <StackPanel Orientation="Horizontal" Margin="12 10 0 0">

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
@@ -7,14 +8,12 @@ namespace Pizzeria
     public partial class Order
     {
         private readonly double _basePrice;
-        private readonly Cart _cartPage;
+        private readonly Cart _cartPage = new ();
 
-        public Order(PizzaInfo info, Cart cartPage)
+        public Order(PizzaInfo pizzas)
         {
             InitializeComponent();
-            PizzaInfo pizzaInfo = info;
-            _cartPage = cartPage;
-            
+            PizzaInfo pizzaInfo = pizzas;
             PizzaName.Content = pizzaInfo.Name;
             PizzaImage.Source = new BitmapImage(new Uri(pizzaInfo.ImagePath, UriKind.Relative));
             PizzaIngredients.Text = pizzaInfo.Ingredients;
@@ -98,6 +97,7 @@ namespace Pizzeria
         {
             PizzaQuantity.Text = quantity.ToString();
         }
+        
         private double GetToppingsPrice()
         {
             double toppingPrice = 1; 
@@ -156,15 +156,16 @@ namespace Pizzeria
         
         private void AddToCartButton_Click(object sender, RoutedEventArgs e)
         {
-            string? productName = PizzaName.Content.ToString();
+            string? product = PizzaName.Content.ToString();
             int quantity = int.Parse(PizzaQuantity.Text);
             double price = GetCurrentPrice();
     
-            CartItemInfo cartItem = new CartItemInfo(productName, quantity, price);
+            CartItem cartItem = new CartItem(product, quantity, price);
             _cartPage.AddToCart(cartItem);
-  
+            
             ResetFields();
         }
+
         
         private void ResetFields()
         {
@@ -184,9 +185,9 @@ namespace Pizzeria
         
         private void OrderNowButton_Click(object sender, RoutedEventArgs e)
         {
-            double currentOrderPrice = GetCurrentPrice();
-            PizzaInfo pizzaInfo = GetCurrentPizzaInfo(); 
-            Delivery deliveryPage = new Delivery(currentOrderPrice, pizzaInfo, this, _cartPage); 
+            double currentPrice = GetCurrentPrice();
+            PizzaInfo currentPizzaInfo = GetCurrentPizzaInfo(); 
+            Delivery deliveryPage = new Delivery(currentPrice, currentPizzaInfo, this); 
     
             OrderPage.Navigate(deliveryPage);
         }
@@ -203,10 +204,5 @@ namespace Pizzeria
             return pizzaInfo;
         }
     }
-    public class CartItemInfo(string? product, int quantity, double price)
-    {
-        public string? Product { get; set; } = product;
-        public int Quantity { get; set; } = quantity;
-        public double Price { get; set; } = price;
-    }
+   
 }
