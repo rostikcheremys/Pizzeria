@@ -52,7 +52,8 @@ namespace Pizzeria
         
         private void CartButton_Click(object sender, RoutedEventArgs e)
         {
-            DrinkPage.Navigate(_cartPage); 
+            Cart cartPage = new Cart(_cartPage);
+            DrinkPage.Navigate(cartPage); 
         }
        
         private void OrderPizza_Click(object sender, RoutedEventArgs e)

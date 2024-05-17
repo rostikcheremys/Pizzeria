@@ -13,11 +13,10 @@ namespace Pizzeria;
 
 public partial class MainWindow
 {
-    private readonly Cart _cartPage = new ();
+    private readonly  Cart _cartPage = new Cart();
     public MainWindow()
     {
         InitializeComponent();
-       
         MinWidth = MaxWidth = 1200;
         MinHeight = MaxHeight = 900;
     }

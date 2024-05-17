@@ -7,15 +7,30 @@ namespace Pizzeria
     public partial class Cart 
     {
         private readonly ObservableCollection<CartItem> _cartItems = new();
-        public ObservableCollection<CartItem> CartItems => _cartItems;
+       
+        private ObservableCollection<CartItem> CartItems => _cartItems;
+
+        private readonly Cart _previousCartPage = null!;
 
         public Cart()
         {
             InitializeComponent();
-            DataContext = this;
-            CardListView.ItemsSource = _cartItems;
         }
-
+        
+        public Cart(Cart previousCartPage)
+        {
+            InitializeComponent();
+            DataContext = this;
+            
+            _previousCartPage = previousCartPage;
+            CardListView.ItemsSource = _cartItems;
+           
+            foreach (var item in previousCartPage.CartItems)
+            {
+                _cartItems.Add(item);
+            }
+        }
+        
         public void AddToCart(CartItem item)
         {
             _cartItems.Add(item);
