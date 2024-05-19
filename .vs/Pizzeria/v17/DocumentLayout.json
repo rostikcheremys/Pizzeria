@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "D:\\Programming\\OOP\\Pizzeria\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|D:\\Programming\\OOP\\Pizzeria\\pizzeria\\menu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|solutionrelative:pizzeria\\menu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|D:\\Programming\\OOP\\Pizzeria\\pizzeria\\delivery.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|solutionrelative:pizzeria\\delivery.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|d:\\programming\\oop\\pizzeria\\pizzeria\\order.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|d:\\programming\\oop\\pizzeria\\pizzeria\\delivery.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|solutionrelative:pizzeria\\delivery.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|D:\\Programming\\OOP\\Pizzeria\\pizzeria\\order.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|solutionrelative:pizzeria\\order.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
@@ -22,23 +26,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Delivery.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Delivery.xaml.cs",
+              "RelativeDocumentMoniker": "Pizzeria\\Delivery.xaml.cs",
+              "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Delivery.xaml.cs",
+              "RelativeToolTip": "Pizzeria\\Delivery.xaml.cs",
+              "ViewState": "AQIAAPsAAAAAAAAAAAAmwBoBAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-19T12:22:27.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Delivery.xaml",
+              "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Delivery.xaml",
+              "RelativeDocumentMoniker": "Pizzeria\\Delivery.xaml",
+              "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Delivery.xaml",
+              "RelativeToolTip": "Pizzeria\\Delivery.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-19T11:44:56.109Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Order.xaml",
               "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Order.xaml",
               "RelativeDocumentMoniker": "Pizzeria\\Order.xaml",
               "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Order.xaml*",
               "RelativeToolTip": "Pizzeria\\Order.xaml*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-04T11:06:15.276Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-04T11:06:15.276Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Pizza.xaml.cs",
               "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Pizza.xaml.cs",
               "RelativeDocumentMoniker": "Pizzeria\\Pizza.xaml.cs",
@@ -46,20 +74,7 @@
               "RelativeToolTip": "Pizzeria\\Pizza.xaml.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T21:40:36.854Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Menu.xaml",
-              "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Menu.xaml",
-              "RelativeDocumentMoniker": "Pizzeria\\Menu.xaml",
-              "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Menu.xaml",
-              "RelativeToolTip": "Pizzeria\\Menu.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-04-11T19:08:38.041Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-01T21:40:36.854Z"
             }
           ]
         }

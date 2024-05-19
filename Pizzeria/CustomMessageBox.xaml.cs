@@ -23,10 +23,27 @@ namespace Pizzeria
             Close();
         }
 
-        public static bool? Show(string message)
+        public static bool Show(string message)
         {
             CustomMessageBox messageBox = new CustomMessageBox(message);
-            return messageBox.ShowDialog();
+            return (bool)messageBox.ShowDialog()!;
+        }
+        
+        public static void InfoShow(string message)
+        {
+            CustomMessageBox messageBox = new CustomMessageBox(message)
+            {
+                NoButton =
+                {
+                    Visibility = Visibility.Collapsed
+                },
+                YesButton =
+                {
+                    Content = "OK"
+                }
+            };
+
+            messageBox.ShowDialog();
         }
     }
 }

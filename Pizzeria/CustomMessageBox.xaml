@@ -4,13 +4,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d"
-        Width="400" Height="200" Icon="images/icon.png" WindowStartupLocation="CenterScreen">
+        Width="450" Height="200" Icon="images/icon.png" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBlock Name="MessageText" FontSize="16" Margin="0 0 0 30" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
         
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 15 ">
-            <Button Name="YesButton" Content="YES" Style="{DynamicResource CustomButtonStyle}" Margin="0 0 10 0" Click="YesButton_Click"/>
-            <Button Name="NoButton" Content="NO" Style="{DynamicResource CustomButtonStyle}" Margin="10 0 0 0"  Click="NoButton_Click"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 15">
+            <Button x:Name="YesButton" Content="YES" Style="{DynamicResource CustomButtonStyle}"  Click="YesButton_Click"/>
+            <Button x:Name="NoButton" Content="NO" Style="{DynamicResource CustomButtonStyle}" Margin="20 0 0 0" Click="NoButton_Click"/>
         </StackPanel>
     </Grid>
     

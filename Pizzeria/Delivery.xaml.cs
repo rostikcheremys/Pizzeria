@@ -1,17 +1,11 @@
-﻿using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 
 namespace Pizzeria
 {
     public partial class Delivery
     {
-        private new string Name { get; set; }
-        private string PhoneNumber { get; set; }
-        private string ChoiceDelivery { get; set; }
-        private string Data { get; set; }
-        private string Time { get; set; }
-
         private readonly PizzaInfo _pizzaInfo;
         private readonly Order _orderPage;
         private readonly Cart _cartPage;
@@ -26,7 +20,8 @@ namespace Pizzeria
             _orderPage = orderPage;
             _cartPage = cartPage;
             
-            
+            DatePicker.SelectedDate = DateTime.Today;
+            DatePicker.Language = XmlLanguage.GetLanguage("en-GB");
             DeliveryComboBox.SelectionChanged += DeliveryComboBox_SelectionChanged;
         }
 
@@ -70,11 +65,11 @@ namespace Pizzeria
         {
             List<string?> toppings = new List<string?>();
 
-            foreach (CheckBox cb in _orderPage.ToppingStackPanel.Children)
+            foreach (CheckBox checkBox in _orderPage.ToppingStackPanel.Children)
             {
-                if (cb.IsChecked == true)
+                if (checkBox.IsChecked == true)
                 {
-                    toppings.Add(cb.Content.ToString());
+                    toppings.Add(checkBox.Content.ToString());
                 }
             }
 
@@ -97,7 +92,35 @@ namespace Pizzeria
 
             DeliveryPage.Navigate(orderPage);
         }
+        
+        private void DeliveryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (DeliveryComboBox.SelectedItem != null)
+            {
+                ComboBoxItem selectedItem = (ComboBoxItem)DeliveryComboBox.SelectedItem;
+                
+                string? deliveryOption = selectedItem.Content.ToString();
 
+                if (deliveryOption == "On-site delivery")
+                {
+                    CityLabel.Visibility = Visibility.Collapsed;
+                    CityTextBox.IsEnabled = false;
+                    CityTextBox.Visibility = Visibility.Collapsed;
+                    AddressLabel.Visibility = Visibility.Collapsed;
+                    AddressTextBox.IsEnabled = false;
+                    AddressTextBox.Visibility = Visibility.Collapsed;
+                }
+                else if (deliveryOption == "Delivery to the address")
+                {
+                    CityLabel.Visibility = Visibility.Visible;
+                    CityTextBox.IsEnabled = true;
+                    CityTextBox.Visibility = Visibility.Visible;
+                    AddressLabel.Visibility = Visibility.Visible;
+                    AddressTextBox.IsEnabled = true;
+                    AddressTextBox.Visibility = Visibility.Visible;
+                }
+            }
+        }
 
         private void InitializeTimeComboBox()
         {
@@ -128,34 +151,6 @@ namespace Pizzeria
 
             InitializeTimeComboBox();
         }
-        private void DeliveryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (DeliveryComboBox.SelectedItem != null)
-            {
-                ComboBoxItem selectedItem = (ComboBoxItem)DeliveryComboBox.SelectedItem;
-                
-                string? deliveryOption = selectedItem.Content.ToString();
-
-                if (deliveryOption == "On-site delivery")
-                {
-                    CityLabel.Visibility = Visibility.Collapsed;
-                    CityTextBox.IsEnabled = false;
-                    CityTextBox.Visibility = Visibility.Collapsed;
-                    AddressLabel.Visibility = Visibility.Collapsed;
-                    AddressTextBox.IsEnabled = false;
-                    AddressTextBox.Visibility = Visibility.Collapsed;
-                }
-                else if (deliveryOption == "Delivery to the address")
-                {
-                    CityLabel.Visibility = Visibility.Visible;
-                    CityTextBox.IsEnabled = true;
-                    CityTextBox.Visibility = Visibility.Visible;
-                    AddressLabel.Visibility = Visibility.Visible;
-                    AddressTextBox.IsEnabled = true;
-                    AddressTextBox.Visibility = Visibility.Visible;
-                }
-            }
-        }
         
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
@@ -164,15 +159,23 @@ namespace Pizzeria
                 () => ValidateName(NameTextBox, "Please enter your name!"),
                 () => ValidatePhone(PhoneTextBox, "Please enter your phone number!"),
                 () => ValidateDelivery(DeliveryComboBox, "Please select a delivery option!"),
-                () => ValidateCity(CityTextBox, "Please enter your city!"),
-                () => ValidateAddress(AddressTextBox, "Please enter your delivery address!"),
+                () => ValidateCity(CityTextBox, "Please enter your city!", DeliveryComboBox.SelectedItem?.ToString()),
+                () => ValidateAddress(AddressTextBox, "Please enter your delivery address!", DeliveryComboBox.SelectedItem?.ToString()),
                 () => ValidateDate(DatePicker.SelectedDate, "Please select a delivery date!"),
                 () => ValidateTime(HourComboBox.Text, MinuteComboBox.Text)
             ];
+                
+            bool checkValidations = validations.All(validation => validation());
 
-            if (validations.All(validation => validation()))
+            if (checkValidations)
             {
-                MessageBox.Show("Order placed successfully!");
+                bool confirmOrder = CustomMessageBox.Show("Would you like to confirm your order?");
+
+                if (confirmOrder)
+                {
+                    CustomMessageBox.InfoShow("Order accepted. Wait for a call to confirm the delivery time.");
+                    ClearFields();
+                }
             }
         }
         
@@ -182,13 +185,13 @@ namespace Pizzeria
             
             if (string.IsNullOrEmpty(name))
             {
-                MessageBox.Show(errorMessage);
+                CustomMessageBox.InfoShow(errorMessage);
                 return false;
             }
             
             if (System.Text.RegularExpressions.Regex.IsMatch(name, @"\d"))
             {
-                MessageBox.Show("Name should not contain any digits!");
+                CustomMessageBox.InfoShow("Name should not contain any digits!");
                 return false;
             }
 
@@ -201,13 +204,13 @@ namespace Pizzeria
             
             if (string.IsNullOrEmpty(phone))
             {
-                MessageBox.Show(errorMessage);
+                CustomMessageBox.InfoShow(errorMessage);
                 return false;
             }
             
             if (!System.Text.RegularExpressions.Regex.IsMatch(phone, @"^\d+$"))
             {
-                MessageBox.Show("Phone number should contain only digits!");
+                CustomMessageBox.InfoShow("Phone number should contain only digits!");
                 return false;
             }
             
@@ -218,38 +221,49 @@ namespace Pizzeria
         {
             if (comboBox.SelectedItem == null)
             {
-                MessageBox.Show(errorMessage);
+                CustomMessageBox.InfoShow(errorMessage);
                 return false;
             }
             return true;
         }
         
-        private bool ValidateCity(TextBox textBox, string errorMessage)
+        private bool ValidateCity(TextBox textBox, string errorMessage, string? deliveryOption)
         {
+            if (deliveryOption == "System.Windows.Controls.ComboBoxItem: On-site delivery")
+            {
+                return true;
+            }
+
             string city = textBox.Text;
-            
+
             if (string.IsNullOrEmpty(city))
             {
-                MessageBox.Show(errorMessage);
+                CustomMessageBox.InfoShow(errorMessage);
                 return false;
             }
-            
+
             if (System.Text.RegularExpressions.Regex.IsMatch(city, @"\d"))
             {
-                MessageBox.Show("City should not contain any digits!");
+                CustomMessageBox.InfoShow("City should not contain any digits!");
                 return false;
             }
 
             return true;
         }
 
-        private bool ValidateAddress(TextBox textBox, string errorMessage)
+        private bool ValidateAddress(TextBox textBox, string errorMessage, string? deliveryOption)
         {
+            if (deliveryOption == "System.Windows.Controls.ComboBoxItem: On-site delivery")
+            {
+                return true;
+            }
+
             if (string.IsNullOrEmpty(textBox.Text))
             {
-                MessageBox.Show(errorMessage);
+                CustomMessageBox.InfoShow(errorMessage);
                 return false;
             }
+    
             return true;
         }
         
@@ -257,7 +271,7 @@ namespace Pizzeria
         {
             if (!date.HasValue || date < DateTime.Today)
             {
-                MessageBox.Show(errorMessage);
+                CustomMessageBox.InfoShow(errorMessage);
                 return false;
             }
             return true;
@@ -267,7 +281,7 @@ namespace Pizzeria
         {
             if (string.IsNullOrEmpty(hour) || string.IsNullOrEmpty(minute))
             {
-                MessageBox.Show("Please select a delivery time.");
+                CustomMessageBox.InfoShow("Please select a delivery time!");
                 return false;
             }
 
@@ -275,11 +289,23 @@ namespace Pizzeria
 
             if (selectedDateTime < DateTime.Now)
             {
-                MessageBox.Show("The selected delivery date and time cannot be in the past.");
+                CustomMessageBox.InfoShow("The selected delivery date and time cannot be in the past!");
                 return false;
             }
 
             return true;
+        }
+        
+        private void ClearFields()
+        {
+            NameTextBox.Text = string.Empty;
+            PhoneTextBox.Text = string.Empty;
+            DeliveryComboBox.SelectedIndex = -1;
+            CityTextBox.Text = string.Empty;
+            AddressTextBox.Text = string.Empty;
+            DatePicker.SelectedDate = DateTime.Today;
+            
+            InitializeTimeComboBox();
         }
     }
 }
