@@ -40,10 +40,9 @@
         </Grid>
         
         <Grid Grid.Row="1" Margin="0 0 0 0 ">
-            <Label Content="Delivery" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            <Label Content="Contact information:" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 80 0 0"/>
+            <Label Content="Contact information:" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 60 0 0"/>
             
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0 140 0 0">    
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0 120 0 0">    
                 <StackPanel Orientation="Horizontal" >
                     <Label Content="Name:" FontSize="24" FontWeight="Bold"/>
                     <TextBox x:Name="NameTextBox" FontSize="20" Width="250" Height="32"/>
@@ -56,7 +55,7 @@
                 
                 <Label Content="Delivery address:" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 30 0 0"/>
                 
-                <StackPanel Orientation="Horizontal" Margin="-26 10 0 0">
+                <StackPanel Orientation="Horizontal" Margin="-26 15 0 0">
                     <Label Content="Delivery:" FontSize="24" FontWeight="Bold"/>
                     <ComboBox x:Name="DeliveryComboBox" FontSize="20" Width="250" Height="32">
                         <ComboBoxItem Content="On-site delivery"/>
@@ -65,12 +64,12 @@
                 </StackPanel>
                 
                 <StackPanel Orientation="Horizontal" Margin="23 10 0 0 ">
-                    <Label Content="City:" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="CityLabel" Content="City:" FontSize="24" FontWeight="Bold"/>
                     <TextBox x:Name="CityTextBox" FontSize="20" Width="250" Height="32"/>
                 </StackPanel>
                 
                 <StackPanel Orientation="Horizontal" Margin="-23 10 0 0 ">
-                    <Label Content="Address:" FontSize="24" FontWeight="Bold"/>
+                    <Label x:Name="AddressLabel" Content="Address:" FontSize="24" FontWeight="Bold"/>
                     <TextBox x:Name="AddressTextBox" FontSize="20" Width="250" Height="32"/>
                 </StackPanel>
                 

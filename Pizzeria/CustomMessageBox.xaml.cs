@@ -4,13 +4,11 @@ namespace Pizzeria
 {
     public partial class CustomMessageBox 
     {
-        public CustomMessageBox(string message, string yesButtonText = "YES", string noButtonText = "NO")
+        public CustomMessageBox(string message)
         {
             InitializeComponent();
             
             MessageText.Text = message;
-            YesButton.Content = yesButtonText;
-            NoButton.Content = noButtonText;
         }
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
@@ -25,10 +23,10 @@ namespace Pizzeria
             Close();
         }
 
-        public static bool? Show(string message, string yesButtonText = "YES", string noButtonText = "NO")
+        public static bool? Show(string message)
         {
-            CustomMessageBox msgBox = new CustomMessageBox(message, yesButtonText, noButtonText);
-            return msgBox.ShowDialog();
+            CustomMessageBox messageBox = new CustomMessageBox(message);
+            return messageBox.ShowDialog();
         }
     }
 }

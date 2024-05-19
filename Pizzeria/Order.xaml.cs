@@ -165,16 +165,15 @@ namespace Pizzeria
     
             CartItem cartItem = new CartItem(product, quantity, price);
             
-            bool? result = CustomMessageBox.Show($"Add {quantity} x {product} to cart for ${price}?", "OK");
+            bool? addToCart = CustomMessageBox.Show($"Add {quantity} x {product} to cart for ${price}?");
             
-            if (result == true)
+            if (addToCart == true)
             {
                 _cartPage.AddToCart(cartItem);
             }
             
             ResetFields();
         }
-
         
         private void ResetFields()
         {

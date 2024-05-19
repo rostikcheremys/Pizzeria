@@ -8,7 +8,7 @@
     <Grid>
         <TextBlock Name="MessageText" FontSize="16" Margin="0 0 0 30" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center"/>
         
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 10 ">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 15 ">
             <Button Name="YesButton" Content="YES" Style="{DynamicResource CustomButtonStyle}" Margin="0 0 10 0" Click="YesButton_Click"/>
             <Button Name="NoButton" Content="NO" Style="{DynamicResource CustomButtonStyle}" Margin="10 0 0 0"  Click="NoButton_Click"/>
         </StackPanel>

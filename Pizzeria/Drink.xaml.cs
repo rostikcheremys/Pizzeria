@@ -82,14 +82,18 @@ namespace Pizzeria
             }
             else if (clickedButton == CoronaExtraOrder)
             {
-                NavigateToOrderPage(DrinkData.Drinks[5]);
+                bool? order = CustomMessageBox.Show("Are you already 18 years old?");
+            
+                if (order == true)
+                {
+                    NavigateToOrderPage(DrinkData.Drinks[5]);
+                }
             }
-        
         }
 
         private void NavigateToOrderPage(DrinkInfo drinkInfo)
         {
-            //Order orderPage = new Order(drinkInfo);
+            //Order orderPage = new Order(drinkInfo, _cartPage);
             //DrinkPage.Navigate(orderPage);
         }
     }
