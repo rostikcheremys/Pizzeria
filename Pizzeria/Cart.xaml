@@ -52,20 +52,53 @@
                     <Style TargetType="{x:Type ListViewItem}">
                         <Setter Property="FontSize" Value="22"/> 
                         <Setter Property="Foreground" Value="Black"/>
+                        <Setter Property="BorderBrush" Value="Gray"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="BorderThickness" Value="1,1,1,1"/>
                     </Style>
                 </ListView.Resources>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Product" Width="500" DisplayMemberBinding="{Binding Product}"/>
-                        <GridViewColumn Header="Quantity" Width="200" DisplayMemberBinding="{Binding Quantity}"/>
-                        <GridViewColumn Header="Price" Width="200" DisplayMemberBinding="{Binding Price}"/>
+                        <GridViewColumn Header="Product" Width="390" DisplayMemberBinding="{Binding Product}"/>
+                        <GridViewColumn Header="Quantity" Width="180" DisplayMemberBinding="{Binding Quantity}"/>
+                        <GridViewColumn Header="Price" Width="180" DisplayMemberBinding="{Binding Price}"/>
+                        <GridViewColumn Header="Delete" Width="140">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Width="30" Height="30" Tag="{Binding}" Click="DeleteButton_Click">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Grid>
+                                                    <Border CornerRadius="30" Background="Brown" x:Name="border">
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </Grid>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter TargetName="border" Property="Background" Value="SandyBrown"/>
+                                                    </Trigger>
+                                                    <Trigger Property="IsPressed" Value="True">
+                                                        <Setter TargetName="border" Property="RenderTransform">
+                                                            <Setter.Value>
+                                                                <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="55" CenterY="20"/>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                        <TextBlock Foreground="White" Text="×" FontSize="22" TextAlignment="Center" FontWeight="Bold" Margin="0 -2 0 6"/>
+                                    </Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
         </Grid>
         
         <Grid Grid.Row="2">
-            <TextBlock x:Name="TotalPrice" Margin="0 30 00 0" FontSize="28" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock x:Name="Price" Margin="0 30 0 0" FontSize="28" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
         
         <Grid Grid.Row="3">

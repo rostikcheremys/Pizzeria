@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Windows.Controls;
 
 namespace Pizzeria
 {
@@ -11,7 +12,7 @@ namespace Pizzeria
         private ObservableCollection<CartItem> CartItems => _cartItems;
 
         private readonly Cart _previousCartPage = null!;
-
+        
         public Cart()
         {
             InitializeComponent();
@@ -64,9 +65,20 @@ namespace Pizzeria
                 totalPrice += cartItem.Price;
             }
 
-            TotalPrice.Text = $"Total Price: ${totalPrice}";
+            Price.Text = $"Total Price: ${totalPrice}";
         }
+        
+        private double GetTotalPrice()
+        {
+            double currentPrice = 0;
 
+            foreach (CartItem cartItem in _cartItems)
+            {
+                currentPrice += cartItem.Price;
+            }
+
+            return currentPrice;
+        }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
@@ -74,9 +86,22 @@ namespace Pizzeria
             CartPage.Navigate(pizzaPage);
         }
         
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button { Tag: CartItem cartItem })
+            {
+                _cartItems.Remove(cartItem);
+                UpdateTotalPrice();
+            }
+        }
+
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
-        
+            double currentPrice = GetTotalPrice();
+            
+            Delivery deliveryPage = new Delivery(currentPrice); 
+    
+            CartPage.Navigate(deliveryPage);
         }
     }
 }

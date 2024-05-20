@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 
@@ -9,7 +10,18 @@ namespace Pizzeria
         private readonly PizzaInfo _pizzaInfo;
         private readonly Order _orderPage;
         private readonly Cart _cartPage;
-
+        
+        public Delivery(double currentOrderPrice)
+        {
+            InitializeComponent();
+            InitializeTimeComboBox();
+            Price.Text = $"Price: ${currentOrderPrice}";
+            
+            DatePicker.SelectedDate = DateTime.Today;
+            DatePicker.Language = XmlLanguage.GetLanguage("en-GB");
+            DeliveryComboBox.SelectionChanged += DeliveryComboBox_SelectionChanged;
+        }
+        
         public Delivery(double currentOrderPrice, PizzaInfo pizzaInfo, Order orderPage, Cart cartPage)
         {
             InitializeComponent();
@@ -19,12 +31,12 @@ namespace Pizzeria
             _pizzaInfo = pizzaInfo;
             _orderPage = orderPage;
             _cartPage = cartPage;
-            
+
             DatePicker.SelectedDate = DateTime.Today;
             DatePicker.Language = XmlLanguage.GetLanguage("en-GB");
             DeliveryComboBox.SelectionChanged += DeliveryComboBox_SelectionChanged;
         }
-
+       
         private PizzaInfo GetPizzaInfo()
         {
             return _pizzaInfo;
@@ -78,12 +90,12 @@ namespace Pizzeria
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
+            Order orderPage = new Order(GetPizzaInfo(), _cartPage);
+
             double currentPrice = GetCurrentPrice();
             int currentQuantity = GetCurrentQuantity();
             string selectedSize = GetCurrentSize();
             List<string?> selectedToppings = GetCurrentToppings();
-
-            Order orderPage = new Order(GetPizzaInfo(), _cartPage);
 
             orderPage.SetCurrentPrice(currentPrice);
             orderPage.SetSelectedQuantity(currentQuantity);
@@ -92,6 +104,7 @@ namespace Pizzeria
 
             DeliveryPage.Navigate(orderPage);
         }
+
         
         private void DeliveryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

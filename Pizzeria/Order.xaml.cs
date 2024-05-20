@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
@@ -16,7 +15,7 @@ namespace Pizzeria
             
             PizzaInfo pizzaInfo = pizzas;
             _cartPage = cartPage;
-            
+
             PizzaName.Content = pizzaInfo.Name;
             PizzaImage.Source = new BitmapImage(new Uri(pizzaInfo.ImagePath, UriKind.Relative));
             PizzaIngredients.Text = pizzaInfo.Ingredients;
@@ -129,7 +128,35 @@ namespace Pizzeria
         {
             return int.Parse(PizzaQuantity.Text);
         }
+        
+        private PizzaInfo GetCurrentPizzaInfo()
+        {
+            PizzaInfo pizzaInfo = new PizzaInfo(
+                PizzaName.Content.ToString(),          
+                ((BitmapImage)PizzaImage.Source).UriSource.ToString(),
+                PizzaIngredients.Text,                    
+                _basePrice                               
+            );
 
+            return pizzaInfo;
+        }
+        
+        private void ResetFields()
+        {
+            PizzaQuantity.Text = "1";
+            
+            SizeSmall.IsChecked = true;
+            SizeMedium.IsChecked = false;
+            SizeLarge.IsChecked = false;
+
+            foreach (CheckBox cb in ToppingStackPanel.Children)
+            {
+                cb.IsChecked = false;
+            }
+            
+            UpdatePriceDisplay();
+        }
+        
         private void IncreaseQuantity_Click(object sender, RoutedEventArgs e)
         {
             int currentQuantity = GetCurrentQuantity();
@@ -175,22 +202,6 @@ namespace Pizzeria
             ResetFields();
         }
         
-        private void ResetFields()
-        {
-            PizzaQuantity.Text = "1";
-            
-            SizeSmall.IsChecked = true;
-            SizeMedium.IsChecked = false;
-            SizeLarge.IsChecked = false;
-
-            foreach (CheckBox cb in ToppingStackPanel.Children)
-            {
-                cb.IsChecked = false;
-            }
-            
-            UpdatePriceDisplay();
-        }
-        
         private void OrderNowButton_Click(object sender, RoutedEventArgs e)
         {
             double currentPrice = GetCurrentPrice();
@@ -199,18 +210,5 @@ namespace Pizzeria
     
             OrderPage.Navigate(deliveryPage);
         }
-        
-        private PizzaInfo GetCurrentPizzaInfo()
-        {
-            PizzaInfo pizzaInfo = new PizzaInfo(
-                PizzaName.Content.ToString(),          
-                ((BitmapImage)PizzaImage.Source).UriSource.ToString(),
-                PizzaIngredients.Text,                    
-                _basePrice                               
-            );
-
-            return pizzaInfo;
-        }
     }
-   
 }
