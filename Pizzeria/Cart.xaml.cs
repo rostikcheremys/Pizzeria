@@ -40,9 +40,7 @@ namespace Pizzeria
     
             foreach (var cartItem in _cartItems)
             {
-                if (cartItem.Product == item.Product &&
-                    cartItem.Size == item.Size &&
-                    cartItem.Toppings.SequenceEqual(item.Toppings))
+                if (cartItem.Product == item.Product && cartItem.Size == item.Size && cartItem.Toppings.SequenceEqual(item.Toppings))
                 {
                     cartItem.Quantity += item.Quantity;
                     cartItem.Price += item.Price;
@@ -67,7 +65,7 @@ namespace Pizzeria
                 totalPrice += cartItem.Price;
             }
 
-            Price.Text = $"Total Price: ${totalPrice}";
+            Price.Text = $"Total Price: ${totalPrice:F2}";
         }
         
         private double GetTotalPrice()

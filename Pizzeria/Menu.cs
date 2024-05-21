@@ -1,16 +1,11 @@
 ﻿namespace Pizzeria
 {
-    public class Menu
+    public abstract class Menu(string? name, string imagePath, double price)
     {
-        public string? Name { get; set; }
-        public string ImagePath { get; set; }
-        public double Price { get; set; }
+        public string? Name { get; set; } = name;
+        public string ImagePath { get; set; } = imagePath;
+        public double Price { get; set; } = price;
 
-        protected Menu(string? name, double price, string imagePath)
-        {
-            Name = name;
-            ImagePath = imagePath;
-            Price = price;
-        }
+        public abstract string GetIngredients();
     }
 }

@@ -8,18 +8,19 @@ namespace Pizzeria
     {
         private readonly double _basePrice;
         private readonly Cart _cartPage;
+        private readonly Menu _menu;
 
-        public Order(PizzaInfo pizzas, Cart cartPage)
+        public Order(Menu menu, Cart cartPage)
         {
             InitializeComponent();
-            
-            PizzaInfo pizzaInfo = pizzas;
+        
+            _menu = menu;
             _cartPage = cartPage;
 
-            PizzaName.Content = pizzaInfo.Name;
-            PizzaImage.Source = new BitmapImage(new Uri(pizzaInfo.ImagePath, UriKind.Relative));
-            PizzaIngredients.Text = pizzaInfo.Ingredients;
-            _basePrice = pizzaInfo.Price;
+            ProductName.Content = _menu.Name;
+            ProductImage.Source = new BitmapImage(new Uri(_menu.ImagePath, UriKind.Relative));
+            ProductIngredients.Text = _menu.GetIngredients();
+            _basePrice = _menu.Price;
             
             SizeSmall.Checked += PizzaSize_Checked;
             SizeMedium.Checked += PizzaSize_Checked;
@@ -62,7 +63,7 @@ namespace Pizzeria
         
         private double GetCurrentPrice()
         {
-            double.TryParse(PizzaPrice.Text.Replace("Price: $", ""), out var currentPrice);
+            double.TryParse(ProductPrice.Text.Replace("Price: $", ""), out double currentPrice);
             return currentPrice;
         }
         
@@ -109,12 +110,12 @@ namespace Pizzeria
         
         public void SetCurrentPrice(double price)
         {
-            PizzaPrice.Text = $"Price: ${price}";
+            ProductPrice.Text = $"Price: ${price:F2}";
         }
         
         public void SetSelectedQuantity(int quantity)
         {
-            PizzaQuantity.Text = quantity.ToString();
+            Quantity.Text = quantity.ToString();
         }
         
         private double GetToppingsPrice()
@@ -141,7 +142,7 @@ namespace Pizzeria
             {
                 if (cb.IsChecked == true)
                 {
-                    toppings.Add(cb.Content.ToString());
+                    toppings.Add(cb.Content.ToString()!);
                 }
             }
 
@@ -153,20 +154,20 @@ namespace Pizzeria
             int quantity = GetCurrentQuantity();
             double total = (GetPrice() + GetToppingsPrice()) * quantity;
 
-            PizzaPrice.Text = $"Price: ${total}";
+            ProductPrice.Text = $"Price: ${total:F2}";
         }
 
         private int GetCurrentQuantity()
         {
-            return int.Parse(PizzaQuantity.Text);
+            return int.Parse(Quantity.Text);
         }
         
         private PizzaInfo GetCurrentPizzaInfo()
         {
             PizzaInfo pizzaInfo = new PizzaInfo(
-                PizzaName.Content.ToString(),          
-                ((BitmapImage)PizzaImage.Source).UriSource.ToString(),
-                PizzaIngredients.Text,                    
+                ProductName.Content.ToString()!,          
+                ((BitmapImage)ProductImage.Source).UriSource.ToString(),
+                ProductIngredients.Text,                    
                 _basePrice                               
             );
 
@@ -175,7 +176,7 @@ namespace Pizzeria
         
         private void ResetFields()
         {
-            PizzaQuantity.Text = "1";
+            Quantity.Text = "1";
             
             SizeSmall.IsChecked = true;
             SizeMedium.IsChecked = false;
@@ -193,7 +194,7 @@ namespace Pizzeria
         {
             int currentQuantity = GetCurrentQuantity();
             currentQuantity++;
-            PizzaQuantity.Text = currentQuantity.ToString();
+            Quantity.Text = currentQuantity.ToString();
 
             UpdatePriceDisplay();
         }
@@ -205,7 +206,7 @@ namespace Pizzeria
             if (currentQuantity > 1)
             {
                 currentQuantity--;
-                PizzaQuantity.Text = currentQuantity.ToString();
+                Quantity.Text = currentQuantity.ToString();
                 UpdatePriceDisplay();
             }
         }
@@ -218,15 +219,15 @@ namespace Pizzeria
         
         private void AddToCartButton_Click(object sender, RoutedEventArgs e)
         {
-            string product = PizzaName.Content.ToString()!;
+            string product = ProductName.Content.ToString()!;
             string size = GetSelectedSize();
             List<string> toppings = GetSelectedToppings();
-            int quantity = int.Parse(PizzaQuantity.Text);
+            int quantity = int.Parse(Quantity.Text);
             double price = GetCurrentPrice();
 
             CartItem cartItem = new CartItem(product, size, toppings, quantity, price);
             
-            bool? addToCart = CustomMessageBox.Show($"Add {quantity} x {product} to cart for ${price}?");
+            bool? addToCart = CustomMessageBox.Show($"Add {quantity} x {product} to cart for ${price:F2}?");
             
             if (addToCart == true)
             {

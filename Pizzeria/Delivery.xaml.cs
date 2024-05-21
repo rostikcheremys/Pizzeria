@@ -16,7 +16,7 @@ namespace Pizzeria
         {
             InitializeComponent();
             InitializeTimeComboBox();
-            Price.Text = $"Price: ${currentOrderPrice}";
+            Price.Text = $"Price: ${currentOrderPrice:F2}";
             _cartPage = cartPage;
             _navigationSource = "Cart";
             DatePicker.SelectedDate = DateTime.Today;
@@ -28,7 +28,7 @@ namespace Pizzeria
         {
             InitializeComponent();
             InitializeTimeComboBox();
-            Price.Text = $"Price: ${currentOrderPrice}";
+            Price.Text = $"Price: ${currentOrderPrice:F2}";
 
             _pizzaInfo = pizzaInfo;
             _orderPage = orderPage;
@@ -47,13 +47,13 @@ namespace Pizzeria
 
         private double GetCurrentPrice()
         {
-            double.TryParse(_orderPage.PizzaPrice.Text.Replace("Price: $", ""), out var currentPrice);
+            double.TryParse(_orderPage.ProductPrice.Text.Replace("Price: $", ""), out double currentPrice);
             return currentPrice;
         }
 
         private int GetCurrentQuantity()
         {
-            return int.Parse(_orderPage.PizzaQuantity.Text);
+            return int.Parse(_orderPage.Quantity.Text);
         }
 
         private string GetCurrentSize()
@@ -192,7 +192,7 @@ namespace Pizzeria
 
             if (checkValidations)
             {
-                bool confirmOrder = CustomMessageBox.Show("Would you like to confirm your order?");
+                bool confirmOrder = CustomMessageBox.Show("Do you want to confirm your order?");
 
                 if (confirmOrder)
                 {

@@ -7,6 +7,7 @@ namespace Pizzeria
     public partial class Pizza
     {
         private readonly Cart _cartPage;
+        
         public Pizza(Cart cartPage)
         {
             _cartPage = cartPage;
@@ -23,17 +24,14 @@ namespace Pizzeria
             {
                 pizzaImages[i].Source = new BitmapImage(new Uri(pizzaDetails[i].ImagePath, UriKind.Relative));
                 pizzaNames[i].Content = pizzaDetails[i].Name;
-                pizzaPrices[i].Text = $"${pizzaDetails[i].Price}";
+                pizzaPrices[i].Text = $"${pizzaDetails[i].Price:F2}";
                 pizzaIngredients[i].Text = pizzaDetails[i].Ingredients;
             }
         }
         
         private void PizzaButton_Click(object sender, RoutedEventArgs e)
         {
-            if (PizzaPage.Content is Pizza)
-            {
-                return;
-            }
+            if (PizzaPage.Content is Pizza) return;
             
             Pizza pizzaPage = new Pizza(_cartPage); 
             PizzaPage.Navigate(pizzaPage);
@@ -41,10 +39,7 @@ namespace Pizzeria
 
         private void DrinkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (PizzaPage.Content is Drink)
-            {
-                return;
-            }
+            if (PizzaPage.Content is Drink) return;
             
             Drink drinkPage = new Drink(_cartPage);
             PizzaPage.Navigate(drinkPage); 

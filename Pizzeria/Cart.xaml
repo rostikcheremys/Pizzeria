@@ -61,7 +61,13 @@
                     <GridView>
                         <GridViewColumn Header="Product" Width="390" DisplayMemberBinding="{Binding Product}"/>
                         <GridViewColumn Header="Quantity" Width="180" DisplayMemberBinding="{Binding Quantity}"/>
-                        <GridViewColumn Header="Price" Width="180" DisplayMemberBinding="{Binding Price}"/>
+                        <GridViewColumn Header="Price" Width="180">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Price, StringFormat={}{0:C2}}" d:DataContext="{d:DesignInstance }" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                         <GridViewColumn Header="Delete" Width="140">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>

@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         
         <Grid Grid.Row="0" Grid.Column="0" Margin="15 30 0 0">
-            <Image x:Name="PizzaImage" Width="600" Margin="0 35 0 0"/>
+            <Image x:Name="ProductImage" Width="600" Margin="0 35 0 0"/>
             <Button Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0 -15 0 0" Click="Back_Click">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -45,9 +45,9 @@
                 <TextBlock Foreground="White" Text="◀️" FontSize="28" TextAlignment="Center" FontWeight="Bold" Margin="0 -2 0 0"/>
             </Button>
             
-            <Label x:Name="PizzaName" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0"/>
-            <TextBlock x:Name="PizzaIngredients" FontSize="24" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 0 " />
-            <TextBlock x:Name="PizzaPrice" FontSize="30" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 -65" />
+            <Label x:Name="ProductName" FontSize="36" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 20 0 0"/>
+            <TextBlock x:Name="ProductIngredients" FontSize="24" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 0 " />
+            <TextBlock x:Name="ProductPrice" FontSize="30" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 -65" />
             
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="40" Margin="0 0 0 -135 ">
                 
@@ -76,7 +76,7 @@
                     <TextBlock Foreground="White" Text="-" FontSize="30" TextAlignment="Center" FontWeight="Bold" Margin="0 -7 0 0"/>
                 </Button>
                 
-                <TextBox x:Name="PizzaQuantity" Width="60" Text="1" FontSize="20" FontWeight="Bold" TextAlignment="Center" IsReadOnly="True" BorderBrush="White" Margin="0 4 0 0"/>
+                <TextBox x:Name="Quantity" Width="60" Text="1" FontSize="20" FontWeight="Bold" TextAlignment="Center" IsReadOnly="True" BorderBrush="White" Margin="0 4 0 0"/>
                 
                 <Button Width="40" Click="IncreaseQuantity_Click">
                     <Button.Template>

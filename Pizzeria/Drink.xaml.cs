@@ -4,9 +4,10 @@ using System.Windows.Media.Imaging;
 
 namespace Pizzeria
 {
-    public partial class Drink : Page
+    public partial class Drink
     {
         private readonly Cart _cartPage;
+        
         public Drink(Cart cartPage)
         {
             _cartPage = cartPage;
@@ -23,17 +24,14 @@ namespace Pizzeria
             {
                 drinkImages[i].Source = new BitmapImage(new Uri(drinkDetails[i].ImagePath, UriKind.Relative));
                 drinkNames[i].Content = drinkDetails[i].Name;
-                drinkPrices[i].Text = $"${drinkDetails[i].Price}";
+                drinkPrices[i].Text = $"${drinkDetails[i].Price:F2}";
                 drinkIngredients[i].Text = drinkDetails[i].Description;
             }
         }
         
         private void PizzaButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DrinkPage.Content is Pizza)
-            {
-                return;
-            }
+            if (DrinkPage.Content is Pizza) return;
             
             Pizza pizzaPage = new Pizza(_cartPage); 
             DrinkPage.Navigate(pizzaPage);
@@ -41,10 +39,7 @@ namespace Pizzeria
 
         private void DrinkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (DrinkPage.Content is Drink)
-            {
-                return;
-            }
+            if (DrinkPage.Content is Drink) return;
             
             Drink drinkPage = new Drink(_cartPage);
             DrinkPage.Navigate(drinkPage); 
@@ -93,8 +88,8 @@ namespace Pizzeria
 
         private void NavigateToOrderPage(DrinkInfo drinkInfo)
         {
-            //Order orderPage = new Order(drinkInfo, _cartPage);
-            //DrinkPage.Navigate(orderPage);
+           Order orderPage = new Order(drinkInfo, _cartPage);
+           DrinkPage.Navigate(orderPage);
         }
     }
 }
