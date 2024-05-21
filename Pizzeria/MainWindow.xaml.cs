@@ -6,6 +6,7 @@ namespace Pizzeria;
 public partial class MainWindow
 {
     private readonly  Cart _cartPage = new ();
+    
     public MainWindow()
     {
         InitializeComponent();

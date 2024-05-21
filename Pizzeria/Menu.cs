@@ -2,10 +2,10 @@
 {
     public abstract class Menu(string? name, string imagePath, double price)
     {
-        public string? Name { get; set; } = name;
-        public string ImagePath { get; set; } = imagePath;
-        public double Price { get; set; } = price;
+        public string? Name { get; } = name;
+        public string ImagePath { get; } = imagePath;
+        public double Price { get; } = price;
 
-        public abstract string GetIngredients();
+        public abstract string GetDescription();
     }
 }

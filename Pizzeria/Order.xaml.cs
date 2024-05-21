@@ -10,32 +10,60 @@ namespace Pizzeria
         private readonly Cart _cartPage;
         private readonly Menu _menu;
 
-        public Order(Menu menu, Cart cartPage)
+        public Order(Menu menu, Cart cartPage, string navigationSource)
         {
             InitializeComponent();
-        
+
             _menu = menu;
             _cartPage = cartPage;
 
-            ProductName.Content = _menu.Name;
-            ProductImage.Source = new BitmapImage(new Uri(_menu.ImagePath, UriKind.Relative));
-            ProductIngredients.Text = _menu.GetIngredients();
-            _basePrice = _menu.Price;
+            ProductName.Content = menu.Name;
+            ProductImage.Source = new BitmapImage(new Uri(menu.ImagePath, UriKind.Relative));
+            ProductDescription.Text = menu.GetDescription();
+            _basePrice = menu.Price;
             
-            SizeSmall.Checked += PizzaSize_Checked;
-            SizeMedium.Checked += PizzaSize_Checked;
-            SizeLarge.Checked += PizzaSize_Checked;
-
-            foreach (CheckBox cb in ToppingStackPanel.Children)
+            SizeSmall.Checked += Size_Checked;
+            SizeMedium.Checked += Size_Checked;
+            SizeLarge.Checked += Size_Checked;
+            
+            if (navigationSource == "Drink")
             {
-                cb.Checked += ToppingChanged;
-                cb.Unchecked += ToppingChanged;
+                SizeSmall.Content = "Small 250ml";
+                SizeMedium.Content = "Medium 400ml";
+                SizeLarge.Content = "Large 500ml";
+                LabelAddToppings.Visibility = Visibility.Collapsed;
+                ToppingStackPanel.Children.Clear();
+            }
+            else
+            {
+                foreach (CheckBox cb in ToppingStackPanel.Children)
+                {
+                    cb.Checked += ToppingChanged;
+                    cb.Unchecked += ToppingChanged;
+                }
+            }
+            
+            UpdatePriceDisplay();
+            DisplayIngredients();
+        }
+        
+        private void DisplayIngredients()
+        {
+            Menu productMenu = _menu;
+            string description = productMenu.GetDescription();
+            string? productName = productMenu.Name;
+            string[] descriptionList = description.Split(',');
+    
+            Console.WriteLine($"Description: {productName}");
+            foreach (string ingredient in descriptionList)
+            {
+                Console.WriteLine("- " + ingredient.Trim());
             }
 
-            UpdatePriceDisplay();
+            Console.WriteLine();
         }
 
-        private void PizzaSize_Checked(object sender, RoutedEventArgs e)
+        private void Size_Checked(object sender, RoutedEventArgs e)
         {
             UpdatePriceDisplay();
         }
@@ -60,7 +88,7 @@ namespace Pizzeria
             
             return _basePrice * multiplier;
         }
-        
+
         private double GetCurrentPrice()
         {
             double.TryParse(ProductPrice.Text.Replace("Price: $", ""), out double currentPrice);
@@ -167,7 +195,7 @@ namespace Pizzeria
             PizzaInfo pizzaInfo = new PizzaInfo(
                 ProductName.Content.ToString()!,          
                 ((BitmapImage)ProductImage.Source).UriSource.ToString(),
-                ProductIngredients.Text,                    
+                ProductDescription.Text,                    
                 _basePrice                               
             );
 

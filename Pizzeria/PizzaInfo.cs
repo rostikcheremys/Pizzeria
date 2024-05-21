@@ -4,7 +4,7 @@
     {
         public string Ingredients { get; } = ingredients;
 
-        public override string GetIngredients()
+        public override string GetDescription()
         {
             return Ingredients;
         }

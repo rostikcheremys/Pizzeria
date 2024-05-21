@@ -100,7 +100,7 @@ namespace Pizzeria
             }
             else if (_navigationSource == "Order")
             {
-                Order orderPage = new Order(GetPizzaInfo(), _cartPage);
+                Order orderPage = new Order(GetPizzaInfo(), _cartPage, _navigationSource);
 
                 double currentPrice = GetCurrentPrice();
                 int currentQuantity = GetCurrentQuantity();
