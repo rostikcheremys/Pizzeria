@@ -10,13 +10,15 @@ namespace Pizzeria
         private readonly PizzaInfo _pizzaInfo;
         private readonly Order _orderPage;
         private readonly Cart _cartPage;
+        private readonly string _navigationSource;
         
-        public Delivery(double currentOrderPrice)
+        public Delivery(double currentOrderPrice, Cart cartPage)
         {
             InitializeComponent();
             InitializeTimeComboBox();
             Price.Text = $"Price: ${currentOrderPrice}";
-            
+            _cartPage = cartPage;
+            _navigationSource = "Cart";
             DatePicker.SelectedDate = DateTime.Today;
             DatePicker.Language = XmlLanguage.GetLanguage("en-GB");
             DeliveryComboBox.SelectionChanged += DeliveryComboBox_SelectionChanged;
@@ -31,6 +33,7 @@ namespace Pizzeria
             _pizzaInfo = pizzaInfo;
             _orderPage = orderPage;
             _cartPage = cartPage;
+            _navigationSource = "Order";
 
             DatePicker.SelectedDate = DateTime.Today;
             DatePicker.Language = XmlLanguage.GetLanguage("en-GB");
@@ -87,24 +90,31 @@ namespace Pizzeria
 
             return toppings;
         }
-
+        
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Order orderPage = new Order(GetPizzaInfo(), _cartPage);
+            if (_navigationSource == "Cart")
+            {
+                Cart cartPage = new Cart(_cartPage);
+                DeliveryPage.Navigate(cartPage);
+            }
+            else if (_navigationSource == "Order")
+            {
+                Order orderPage = new Order(GetPizzaInfo(), _cartPage);
 
-            double currentPrice = GetCurrentPrice();
-            int currentQuantity = GetCurrentQuantity();
-            string selectedSize = GetCurrentSize();
-            List<string?> selectedToppings = GetCurrentToppings();
+                double currentPrice = GetCurrentPrice();
+                int currentQuantity = GetCurrentQuantity();
+                string selectedSize = GetCurrentSize();
+                List<string?> selectedToppings = GetCurrentToppings();
 
-            orderPage.SetCurrentPrice(currentPrice);
-            orderPage.SetSelectedQuantity(currentQuantity);
-            orderPage.SetSelectedSize(selectedSize);
-            orderPage.SetSelectedToppings(selectedToppings);
+                orderPage.SetCurrentPrice(currentPrice);
+                orderPage.SetSelectedQuantity(currentQuantity);
+                orderPage.SetSelectedSize(selectedSize);
+                orderPage.SetSelectedToppings(selectedToppings);
 
-            DeliveryPage.Navigate(orderPage);
+                DeliveryPage.Navigate(orderPage);
+            }
         }
-
         
         private void DeliveryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -81,6 +81,23 @@ namespace Pizzeria
                 SizeLarge.IsChecked = true;
             }
         }
+        
+        private string GetSelectedSize()
+        {
+            if (SizeSmall.IsChecked == true)
+            {
+                return "Small";
+            }
+            if (SizeMedium.IsChecked == true)
+            {
+                return "Medium";
+            }
+            if (SizeLarge.IsChecked == true)
+            {
+                return "Large";
+            }
+            return "Unknown";
+        }
 
         public void SetSelectedToppings(List<string?> toppings)
         {
@@ -114,6 +131,21 @@ namespace Pizzeria
             }
 
             return totalToppingsPrice;
+        }
+
+        private List<string> GetSelectedToppings()
+        {
+            List<string> toppings = new List<string>();
+
+            foreach (CheckBox cb in ToppingStackPanel.Children)
+            {
+                if (cb.IsChecked == true)
+                {
+                    toppings.Add(cb.Content.ToString());
+                }
+            }
+
+            return toppings;
         }
 
         private void UpdatePriceDisplay()
@@ -186,11 +218,13 @@ namespace Pizzeria
         
         private void AddToCartButton_Click(object sender, RoutedEventArgs e)
         {
-            string? product = PizzaName.Content.ToString();
+            string product = PizzaName.Content.ToString()!;
+            string size = GetSelectedSize();
+            List<string> toppings = GetSelectedToppings();
             int quantity = int.Parse(PizzaQuantity.Text);
             double price = GetCurrentPrice();
-    
-            CartItem cartItem = new CartItem(product, quantity, price);
+
+            CartItem cartItem = new CartItem(product, size, toppings, quantity, price);
             
             bool? addToCart = CustomMessageBox.Show($"Add {quantity} x {product} to cart for ${price}?");
             

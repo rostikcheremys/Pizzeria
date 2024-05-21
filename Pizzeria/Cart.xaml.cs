@@ -37,19 +37,21 @@ namespace Pizzeria
         public void AddToCart(CartItem item)
         {
             bool existingPizza = false;
-            
+    
             foreach (var cartItem in _cartItems)
             {
-                if (cartItem.Product == item.Product)
+                if (cartItem.Product == item.Product &&
+                    cartItem.Size == item.Size &&
+                    cartItem.Toppings.SequenceEqual(item.Toppings))
                 {
                     cartItem.Quantity += item.Quantity;
                     cartItem.Price += item.Price;
-                    
+            
                     existingPizza = true;
                     break;
                 }
             }
-            
+    
             if (!existingPizza)
             {
                 _cartItems.Add(item);
@@ -99,7 +101,7 @@ namespace Pizzeria
         {
             double currentPrice = GetTotalPrice();
             
-            Delivery deliveryPage = new Delivery(currentPrice); 
+            Delivery deliveryPage = new Delivery(currentPrice, _previousCartPage); 
     
             CartPage.Navigate(deliveryPage);
         }

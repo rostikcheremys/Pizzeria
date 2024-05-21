@@ -8,11 +8,11 @@
     <Grid>
         <Image Source="images/pizzeria.png" Stretch="UniformToFill"/>
         
-        <Button Content="Menu" FontSize="36" FontWeight="Bold" Width="180" Height="70" Margin="430 50 0 0" Foreground="White" Background="Brown" Click="MenuButton_Click">
+        <Button Content="Menu" FontSize="46" FontWeight="Bold" Width="230" Height="80" Margin="430 165 0 0" Foreground="#d42c2c" Background="White" Click="MenuButton_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>
-                        <Border CornerRadius="20" BorderBrush="White" BorderThickness="3" Background="{TemplateBinding Background}" x:Name="border">
+                        <Border CornerRadius="40" Background="{TemplateBinding Background}" x:Name="border">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
