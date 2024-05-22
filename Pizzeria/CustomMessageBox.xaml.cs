@@ -7,6 +7,7 @@ namespace Pizzeria
         public CustomMessageBox(string message)
         {
             InitializeComponent();
+            
             MessageText.Text = message;
             MinWidth = MaxWidth = 450;
             MinHeight = MaxHeight = 200;

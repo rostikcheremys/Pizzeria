@@ -129,7 +129,7 @@
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Button.Template>
-                <TextBlock Foreground="White" Text="Order" FontSize="30" TextAlignment="Center" FontWeight="Bold" Margin="0 -2 0 0"/>
+                <TextBlock Foreground="White" Text="Confirm" FontSize="30" TextAlignment="Center" FontWeight="Bold" Margin="0 -2 0 0"/>
             </Button>
         </Grid>
         <Frame Grid.Row="0" Grid.RowSpan="3" x:Name="DeliveryPage" NavigationUIVisibility="Hidden"/>

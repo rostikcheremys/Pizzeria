@@ -50,7 +50,7 @@ namespace Pizzeria
         
         private void CartButton_Click(object sender, RoutedEventArgs e)
         {
-            Cart cartPage = new Cart(_cartPage);
+            Cart cartPage = new Cart(_cartPage, _isPizzaPage);
             PizzaPage.Navigate(cartPage); 
         }
         

@@ -66,20 +66,11 @@ namespace Pizzeria
 
         private string GetCurrentSize()
         {
-            if (_orderPage.SizeSmall.IsChecked == true)
-            {
-                return "Small";
-            }
+            if (_orderPage.SizeSmall.IsChecked == true) return "Small";
 
-            if (_orderPage.SizeMedium.IsChecked == true)
-            {
-                return "Medium";
-            }
+            if (_orderPage.SizeMedium.IsChecked == true) return "Medium";
 
-            if (_orderPage.SizeLarge.IsChecked == true)
-            {
-                return "Large";
-            }
+            if (_orderPage.SizeLarge.IsChecked == true) return "Large";
 
             return null!;
         }
@@ -103,7 +94,7 @@ namespace Pizzeria
         {
             if (_previousPage == "Cart")
             {
-                Cart cartPage = new Cart(_cartPage);
+                Cart cartPage = new Cart(_cartPage, _isProductPage);
                 DeliveryPage.Navigate(cartPage);
             }
             else if (_previousPage == "Order")

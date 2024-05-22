@@ -7,23 +7,24 @@ namespace Pizzeria
     public partial class Cart 
     {
         private readonly ObservableCollection<CartItem> _cartItems = new();
-       
-        private ObservableCollection<CartItem> CartItems => _cartItems;
-
-        private readonly Cart _previousCartPage = null!;
         
+        private ObservableCollection<CartItem> CartItems => _cartItems;
+        
+        private readonly Cart _previousCartPage = null!;
+        private readonly string _isProductPage;
         
         public Cart()
         {
             InitializeComponent();
         }
         
-        public Cart(Cart previousCartPage)
+        public Cart(Cart previousCartPage, string isProductPage)
         {
             InitializeComponent();
             
             DataContext = this;
             _previousCartPage = previousCartPage;
+            _isProductPage = isProductPage;
             CardListView.ItemsSource = _cartItems;
            
             foreach (var item in previousCartPage.CartItems)
@@ -36,24 +37,34 @@ namespace Pizzeria
         
         public void AddToCart(CartItem item)
         {
-            bool existingPizza = false;
-    
+            bool existingItem = false;
+
             foreach (var cartItem in _cartItems)
             {
-                if (cartItem.Product == item.Product && cartItem.Size == item.Size && cartItem.Toppings.SequenceEqual(item.Toppings))
+                if (IsSameItem(cartItem, item))
                 {
                     cartItem.Quantity += item.Quantity;
                     cartItem.Price += item.Price;
-            
-                    existingPizza = true;
+
+                    existingItem = true;
                     break;
                 }
             }
-    
-            if (!existingPizza)
+
+            if (!existingItem)
             {
                 _cartItems.Add(item);
             }
+        }
+
+        private bool IsSameItem(CartItem existingItem, CartItem newItem)
+        {
+            if (_isProductPage == "Pizza")
+            {
+                return existingItem.Product == newItem.Product && existingItem.Size == newItem.Size && existingItem.Toppings.SequenceEqual(newItem.Toppings);
+            }
+            
+            return existingItem.Product == newItem.Product && existingItem.Size == newItem.Size;
         }
         
         private void UpdateTotalPrice()

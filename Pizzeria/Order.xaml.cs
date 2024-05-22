@@ -139,7 +139,7 @@ namespace Pizzeria
             
             if (SizeLarge.IsChecked == true)  return "Large";
             
-            return "";
+            return null!;
         }
         
         public void SetSelectedSize(string size)
@@ -231,6 +231,7 @@ namespace Pizzeria
             {
                 currentQuantity--;
                 Quantity.Text = currentQuantity.ToString();
+                
                 UpdatePriceDisplay();
             }
         }
@@ -254,22 +255,32 @@ namespace Pizzeria
         {
             string product = ProductName.Content.ToString()!;
             string size = GetSelectedSize();
-            List<string> toppings = GetSelectedToppings();
             int quantity = int.Parse(Quantity.Text);
             double price = GetCurrentPrice();
 
-            CartItem cartItem = new CartItem(product, size, toppings, quantity, price);
-            
+            CartItem cartItem = CreateCartItem(product, size, quantity, price);
+
             bool? addToCart = CustomMessageBox.Show($"Add {quantity} x {product} to cart for ${price:F2}?");
-            
+
             if (addToCart == true)
             {
                 _cartPage.AddToCart(cartItem);
             }
-            
+
             ResetFields();
         }
-        
+
+        private CartItem CreateCartItem(string product, string size, int quantity, double price)
+        {
+            if (_isProductPage == "Pizza")
+            {
+                List<string> toppings = GetSelectedToppings();
+                return new CartItem(product, size, toppings, quantity, price);
+            }
+
+            return new CartItem(product, size, quantity, price);
+        }
+
         private void OrderNowButton_Click(object sender, RoutedEventArgs e)
         {
             double currentPrice = GetCurrentPrice();
