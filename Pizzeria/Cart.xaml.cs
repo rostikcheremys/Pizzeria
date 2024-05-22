@@ -1,7 +1,6 @@
 ﻿using System.Windows;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Windows.Controls;
+using System.Collections.ObjectModel;
 
 namespace Pizzeria
 {
@@ -12,6 +11,7 @@ namespace Pizzeria
         private ObservableCollection<CartItem> CartItems => _cartItems;
 
         private readonly Cart _previousCartPage = null!;
+        
         
         public Cart()
         {

@@ -7,14 +7,14 @@ namespace Pizzeria
     public partial class Drink
     {
         private readonly Cart _cartPage;
-        private readonly string _navigationSource;
-        
+        private readonly string _isDrinkPage;
+       
         public Drink(Cart cartPage)
         {
             InitializeComponent();
             
             _cartPage = cartPage;
-            _navigationSource = "Drink";
+            _isDrinkPage = "Drink";
            
             List<DrinkInfo> drinkDetails = DrinkData.Drinks;
             
@@ -91,7 +91,7 @@ namespace Pizzeria
 
         private void NavigateToOrderPage(DrinkInfo drinkInfo)
         {
-           Order orderPage = new Order(drinkInfo, _cartPage, _navigationSource);
+           Order orderPage = new Order(drinkInfo, _cartPage, _isDrinkPage);
            DrinkPage.Navigate(orderPage);
         }
     }

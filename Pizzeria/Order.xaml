@@ -108,9 +108,9 @@
         <Grid Grid.Row="0" Grid.Column="1" Margin=" 10 70 0 0">
             <Label Content="Select Size:" FontSize="28" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10 70 0 0" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 170 0 0">
-                <RadioButton x:Name="SizeSmall" Content="Small" FontSize="20"  Style="{DynamicResource CustomRadioButton}" IsChecked="True"/>
-                <RadioButton x:Name="SizeMedium" Content="Medium" FontSize="20" Margin="30 0 30 0" Style="{DynamicResource CustomRadioButton}"/>
-                <RadioButton x:Name="SizeLarge" Content="Large" FontSize="20" Style="{DynamicResource CustomRadioButton}"/>
+                <RadioButton x:Name="SizeSmall" Content="Small 25cm" FontSize="20"  Style="{DynamicResource CustomRadioButton}" IsChecked="True"/>
+                <RadioButton x:Name="SizeMedium" Content="Medium 35cm" FontSize="20" Margin="30 0 30 0" Style="{DynamicResource CustomRadioButton}"/>
+                <RadioButton x:Name="SizeLarge" Content="Large 45cm" FontSize="20" Style="{DynamicResource CustomRadioButton}"/>
             </StackPanel>
             <Label x:Name="LabelAddToppings" Content="Add Toppings:" FontSize="28" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 -60 0 10" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 70 0 0">

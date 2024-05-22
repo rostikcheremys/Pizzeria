@@ -9,13 +9,15 @@ namespace Pizzeria
         private readonly double _basePrice;
         private readonly Cart _cartPage;
         private readonly Menu _menu;
+        private readonly string _isProductPage;
 
-        public Order(Menu menu, Cart cartPage, string navigationSource)
+        public Order(Menu menu, Cart cartPage, string isProductPage)
         {
             InitializeComponent();
 
             _menu = menu;
             _cartPage = cartPage;
+            _isProductPage = isProductPage;
 
             ProductName.Content = menu.Name;
             ProductImage.Source = new BitmapImage(new Uri(menu.ImagePath, UriKind.Relative));
@@ -26,21 +28,21 @@ namespace Pizzeria
             SizeMedium.Checked += Size_Checked;
             SizeLarge.Checked += Size_Checked;
             
-            if (navigationSource == "Drink")
-            {
-                SizeSmall.Content = "Small 250ml";
-                SizeMedium.Content = "Medium 400ml";
-                SizeLarge.Content = "Large 500ml";
-                LabelAddToppings.Visibility = Visibility.Collapsed;
-                ToppingStackPanel.Children.Clear();
-            }
-            else
+            if (isProductPage == "Pizza")
             {
                 foreach (CheckBox cb in ToppingStackPanel.Children)
                 {
                     cb.Checked += ToppingChanged;
                     cb.Unchecked += ToppingChanged;
                 }
+            }
+            else
+            {
+                SizeSmall.Content = "Small 250ml";
+                SizeMedium.Content = "Medium 400ml";
+                SizeLarge.Content = "Large 500ml";
+                LabelAddToppings.Visibility = Visibility.Collapsed;
+                ToppingStackPanel.Children.Clear();
             }
             
             UpdatePriceDisplay();
@@ -72,78 +74,45 @@ namespace Pizzeria
         {
             UpdatePriceDisplay();
         }
+        
+        private void UpdatePriceDisplay()
+        {
+            int quantity = GetCurrentQuantity();
+            double total = (GetPrice() + GetToppingsPrice()) * quantity;
+
+            ProductPrice.Text = $"Price: ${total:F2}";
+        }
 
         private double GetPrice()
         {
             double multiplier = 1.0;
             
-            if (SizeMedium.IsChecked == true)
-            {
-                multiplier = 1.5;
-            }
-            else if (SizeLarge.IsChecked == true)
-            {
-                multiplier = 2.0;
-            }
+            if (SizeMedium.IsChecked == true)  multiplier = 1.5;
+           
+            else if (SizeLarge.IsChecked == true)  multiplier = 2.0;
             
             return _basePrice * multiplier;
         }
-
+        
+        private int GetCurrentQuantity()
+        {
+            return int.Parse(Quantity.Text);
+        }
+        
+        public void SetSelectedQuantity(int quantity)
+        {
+            Quantity.Text = quantity.ToString();
+        }
+       
         private double GetCurrentPrice()
         {
             double.TryParse(ProductPrice.Text.Replace("Price: $", ""), out double currentPrice);
             return currentPrice;
         }
         
-        public void SetSelectedSize(string size)
-        {
-            if (size == "Small")
-            {
-                SizeSmall.IsChecked = true;
-            }
-            else if (size == "Medium")
-            {
-                SizeMedium.IsChecked = true;
-            }
-            else if (size == "Large")
-            {
-                SizeLarge.IsChecked = true;
-            }
-        }
-        
-        private string GetSelectedSize()
-        {
-            if (SizeSmall.IsChecked == true)
-            {
-                return "Small";
-            }
-            if (SizeMedium.IsChecked == true)
-            {
-                return "Medium";
-            }
-            if (SizeLarge.IsChecked == true)
-            {
-                return "Large";
-            }
-            return "Unknown";
-        }
-
-        public void SetSelectedToppings(List<string?> toppings)
-        {
-            foreach (CheckBox cb in ToppingStackPanel.Children)
-            {
-                cb.IsChecked = toppings.Contains(cb.Content.ToString());
-            }
-        }
-        
         public void SetCurrentPrice(double price)
         {
             ProductPrice.Text = $"Price: ${price:F2}";
-        }
-        
-        public void SetSelectedQuantity(int quantity)
-        {
-            Quantity.Text = quantity.ToString();
         }
         
         private double GetToppingsPrice()
@@ -161,7 +130,27 @@ namespace Pizzeria
 
             return totalToppingsPrice;
         }
-
+        
+        private string GetSelectedSize()
+        {
+            if (SizeSmall.IsChecked == true)  return "Small";
+           
+            if (SizeMedium.IsChecked == true)  return "Medium";
+            
+            if (SizeLarge.IsChecked == true)  return "Large";
+            
+            return "";
+        }
+        
+        public void SetSelectedSize(string size)
+        {
+            if (size == "Small") SizeSmall.IsChecked = true;
+            
+            else if (size == "Medium") SizeMedium.IsChecked = true;
+            
+            else if (size == "Large")  SizeLarge.IsChecked = true;
+        }
+        
         private List<string> GetSelectedToppings()
         {
             List<string> toppings = new List<string>();
@@ -177,17 +166,12 @@ namespace Pizzeria
             return toppings;
         }
 
-        private void UpdatePriceDisplay()
+        public void SetSelectedToppings(List<string?> toppings)
         {
-            int quantity = GetCurrentQuantity();
-            double total = (GetPrice() + GetToppingsPrice()) * quantity;
-
-            ProductPrice.Text = $"Price: ${total:F2}";
-        }
-
-        private int GetCurrentQuantity()
-        {
-            return int.Parse(Quantity.Text);
+            foreach (CheckBox cb in ToppingStackPanel.Children)
+            {
+                cb.IsChecked = toppings.Contains(cb.Content.ToString());
+            }
         }
         
         private PizzaInfo GetCurrentPizzaInfo()
@@ -200,6 +184,18 @@ namespace Pizzeria
             );
 
             return pizzaInfo;
+        }
+
+        private DrinkInfo GetCurrentDrinkInfo()
+        {
+            DrinkInfo drinkInfo = new DrinkInfo(
+                ProductName.Content.ToString()!,          
+                ((BitmapImage)ProductImage.Source).UriSource.ToString(),
+                ProductDescription.Text,                    
+                _basePrice                               
+            );
+
+            return drinkInfo;
         }
         
         private void ResetFields()
@@ -241,8 +237,17 @@ namespace Pizzeria
         
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            Pizza pizzaPage = new Pizza(_cartPage);
-            OrderPage.Navigate(pizzaPage);
+            if (_isProductPage == "Pizza")
+            {
+                Pizza pizzaPage = new Pizza(_cartPage);
+                OrderPage.Navigate(pizzaPage);
+            }
+            else
+            {   
+                Drink drinkPage = new Drink(_cartPage);
+                OrderPage.Navigate(drinkPage);
+            }
+            
         }
         
         private void AddToCartButton_Click(object sender, RoutedEventArgs e)
@@ -268,10 +273,19 @@ namespace Pizzeria
         private void OrderNowButton_Click(object sender, RoutedEventArgs e)
         {
             double currentPrice = GetCurrentPrice();
-            PizzaInfo currentPizzaInfo = GetCurrentPizzaInfo(); 
-            Delivery deliveryPage = new Delivery(currentPrice, currentPizzaInfo, this, _cartPage); 
-    
-            OrderPage.Navigate(deliveryPage);
+
+            if (_isProductPage == "Pizza")
+            {
+                PizzaInfo currentPizzaInfo = GetCurrentPizzaInfo();
+                Delivery deliveryPage = new Delivery(currentPrice, currentPizzaInfo, this, _cartPage);
+                OrderPage.Navigate(deliveryPage);
+            }
+            else
+            {
+                DrinkInfo currentDrinkInfo = GetCurrentDrinkInfo();
+                Delivery deliveryPage = new Delivery(currentPrice, currentDrinkInfo, this, _cartPage);
+                OrderPage.Navigate(deliveryPage);
+            }
         }
     }
 }

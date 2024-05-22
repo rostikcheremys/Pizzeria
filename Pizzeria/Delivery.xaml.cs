@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 
@@ -8,43 +7,52 @@ namespace Pizzeria
     public partial class Delivery
     {
         private readonly PizzaInfo _pizzaInfo;
+        private readonly DrinkInfo _drinkInfo;
         private readonly Order _orderPage;
         private readonly Cart _cartPage;
-        private readonly string _navigationSource;
+        private readonly string _previousPage;
+        private readonly string _isProductPage;
         
         public Delivery(double currentOrderPrice, Cart cartPage)
         {
             InitializeComponent();
             InitializeTimeComboBox();
+            
             Price.Text = $"Price: ${currentOrderPrice:F2}";
             _cartPage = cartPage;
-            _navigationSource = "Cart";
+            _previousPage = "Cart";
+            
             DatePicker.SelectedDate = DateTime.Today;
             DatePicker.Language = XmlLanguage.GetLanguage("en-GB");
             DeliveryComboBox.SelectionChanged += DeliveryComboBox_SelectionChanged;
         }
         
-        public Delivery(double currentOrderPrice, PizzaInfo pizzaInfo, Order orderPage, Cart cartPage)
+        public Delivery(double currentOrderPrice, PizzaInfo pizzaInfo, Order orderPage, Cart cartPage) : this(currentOrderPrice, cartPage)
         {
-            InitializeComponent();
-            InitializeTimeComboBox();
-            Price.Text = $"Price: ${currentOrderPrice:F2}";
-
             _pizzaInfo = pizzaInfo;
             _orderPage = orderPage;
-            _cartPage = cartPage;
-            _navigationSource = "Order";
-
-            DatePicker.SelectedDate = DateTime.Today;
-            DatePicker.Language = XmlLanguage.GetLanguage("en-GB");
-            DeliveryComboBox.SelectionChanged += DeliveryComboBox_SelectionChanged;
+            _previousPage = "Order";
+            _isProductPage = "Pizza";
         }
-       
+
+        public Delivery(double currentOrderPrice, DrinkInfo drinkInfo, Order orderPage, Cart cartPage) : this(currentOrderPrice, cartPage)
+        {
+            _drinkInfo = drinkInfo;
+            _orderPage = orderPage;
+            _previousPage = "Order";
+            _isProductPage = "Drink";
+        }
+
         private PizzaInfo GetPizzaInfo()
         {
             return _pizzaInfo;
         }
-
+        
+        private DrinkInfo GetDrinkInfo()
+        {
+            return _drinkInfo;
+        }
+        
         private double GetCurrentPrice()
         {
             double.TryParse(_orderPage.ProductPrice.Text.Replace("Price: $", ""), out double currentPrice);
@@ -93,26 +101,43 @@ namespace Pizzeria
         
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_navigationSource == "Cart")
+            if (_previousPage == "Cart")
             {
                 Cart cartPage = new Cart(_cartPage);
                 DeliveryPage.Navigate(cartPage);
             }
-            else if (_navigationSource == "Order")
+            else if (_previousPage == "Order")
             {
-                Order orderPage = new Order(GetPizzaInfo(), _cartPage, _navigationSource);
+                if (_isProductPage == "Pizza")
+                {
+                    Order orderPage = new Order(GetPizzaInfo(), _cartPage, _isProductPage);
 
-                double currentPrice = GetCurrentPrice();
-                int currentQuantity = GetCurrentQuantity();
-                string selectedSize = GetCurrentSize();
-                List<string?> selectedToppings = GetCurrentToppings();
+                    double currentPrice = GetCurrentPrice();
+                    int currentQuantity = GetCurrentQuantity();
+                    string selectedSize = GetCurrentSize();
+                    List<string?> selectedToppings = GetCurrentToppings();
 
-                orderPage.SetCurrentPrice(currentPrice);
-                orderPage.SetSelectedQuantity(currentQuantity);
-                orderPage.SetSelectedSize(selectedSize);
-                orderPage.SetSelectedToppings(selectedToppings);
+                    orderPage.SetCurrentPrice(currentPrice);
+                    orderPage.SetSelectedQuantity(currentQuantity);
+                    orderPage.SetSelectedSize(selectedSize);
+                    orderPage.SetSelectedToppings(selectedToppings);
 
-                DeliveryPage.Navigate(orderPage);
+                    DeliveryPage.Navigate(orderPage);
+                }
+                else
+                {
+                    Order orderPage = new Order(GetDrinkInfo(), _cartPage, _isProductPage);
+
+                    double currentPrice = GetCurrentPrice();
+                    int currentQuantity = GetCurrentQuantity();
+                    string selectedSize = GetCurrentSize();
+
+                    orderPage.SetCurrentPrice(currentPrice);
+                    orderPage.SetSelectedQuantity(currentQuantity);
+                    orderPage.SetSelectedSize(selectedSize);
+
+                    DeliveryPage.Navigate(orderPage);
+                }
             }
         }
         
