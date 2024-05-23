@@ -8,7 +8,7 @@
     <Grid>
         <Image Source="images/pizzeria.png" Stretch="UniformToFill"/>
         
-        <Button Content="Menu" FontSize="46" FontWeight="Bold" Width="230" Height="80" Margin="430 165 0 0" Foreground="#d42c2c" Background="White" Click="MenuButton_Click">
+        <Button Content="Menu" FontSize="46" FontWeight="Bold" Width="230" Height="80" Foreground="#b92525" Background="White" VerticalAlignment="Bottom" Margin="0 0 0 50" Click="MenuButton_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>

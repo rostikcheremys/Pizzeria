@@ -13,7 +13,7 @@ namespace Pizzeria
         private readonly string _previousPage;
         private readonly string _isProductPage;
         
-        public Delivery(double currentOrderPrice, Cart cartPage)
+        public Delivery(double currentOrderPrice, string isProductPage, Cart cartPage)
         {
             InitializeComponent();
             InitializeTimeComboBox();
@@ -21,13 +21,14 @@ namespace Pizzeria
             Price.Text = $"Price: ${currentOrderPrice:F2}";
             _cartPage = cartPage;
             _previousPage = "Cart";
+            _isProductPage = isProductPage; 
             
             DatePicker.SelectedDate = DateTime.Today;
             DatePicker.Language = XmlLanguage.GetLanguage("en-GB");
             DeliveryComboBox.SelectionChanged += DeliveryComboBox_SelectionChanged;
         }
         
-        public Delivery(double currentOrderPrice, PizzaInfo pizzaInfo, Order orderPage, Cart cartPage) : this(currentOrderPrice, cartPage)
+        public Delivery(double currentOrderPrice, string isProductPage, PizzaInfo pizzaInfo, Order orderPage, Cart cartPage) : this(currentOrderPrice, isProductPage, cartPage)
         {
             _pizzaInfo = pizzaInfo;
             _orderPage = orderPage;
@@ -35,7 +36,7 @@ namespace Pizzeria
             _isProductPage = "Pizza";
         }
 
-        public Delivery(double currentOrderPrice, DrinkInfo drinkInfo, Order orderPage, Cart cartPage) : this(currentOrderPrice, cartPage)
+        public Delivery(double currentOrderPrice,  string isProductPage, DrinkInfo drinkInfo, Order orderPage, Cart cartPage) : this(currentOrderPrice, isProductPage, cartPage)
         {
             _drinkInfo = drinkInfo;
             _orderPage = orderPage;
@@ -213,7 +214,20 @@ namespace Pizzeria
                 if (confirmOrder)
                 {
                     CustomMessageBox.InfoShow("Order accepted. Wait for a call to confirm the delivery time.");
+                    
+                    InitializeTimeComboBox();
                     ClearFields();
+                    
+                    if (_isProductPage == "Pizza")
+                    {
+                        Pizza pizzaPage = new Pizza(_cartPage);
+                        DeliveryPage.Navigate(pizzaPage);
+                    }
+                    else
+                    {   
+                        Drink drinkPage = new Drink(_cartPage);
+                        DeliveryPage.Navigate(drinkPage);
+                    }
                 }
             }
         }
@@ -343,8 +357,7 @@ namespace Pizzeria
             CityTextBox.Text = string.Empty;
             AddressTextBox.Text = string.Empty;
             DatePicker.SelectedDate = DateTime.Today;
-            
-            InitializeTimeComboBox();
+            _cartPage.ClearCart();
         }
     }
 }

@@ -66,8 +66,8 @@ namespace Pizzeria
             
             return existingItem.Product == newItem.Product && existingItem.Size == newItem.Size;
         }
-        
-        private void UpdateTotalPrice()
+
+        public void UpdateTotalPrice()
         {
             double totalPrice = 0;
 
@@ -90,11 +90,26 @@ namespace Pizzeria
 
             return currentPrice;
         }
-
+        
+        public void ClearCart()
+        {
+            _cartItems.Clear();
+            UpdateTotalPrice();
+        }
+        
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Pizza pizzaPage = new Pizza(this);
-            CartPage.Navigate(pizzaPage);
+            if (_isProductPage == "Pizza")
+            {
+                Pizza pizzaPage = new Pizza(this);
+                CartPage.Navigate(pizzaPage);
+            }
+            else
+            {
+                Drink drinkPage = new Drink(this);
+                CartPage.Navigate(drinkPage);
+            }
+           
         }
         
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -109,10 +124,16 @@ namespace Pizzeria
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {
             double currentPrice = GetTotalPrice();
-            
-            Delivery deliveryPage = new Delivery(currentPrice, _previousCartPage); 
-    
-            CartPage.Navigate(deliveryPage);
+
+            if (currentPrice == 0)
+            {
+                CustomMessageBox.InfoShow("Order cannot be $0!");
+            }
+            else
+            {
+                Delivery deliveryPage = new Delivery(currentPrice,_isProductPage, _previousCartPage); 
+                CartPage.Navigate(deliveryPage);
+            }
         }
     }
 }

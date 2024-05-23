@@ -248,7 +248,6 @@ namespace Pizzeria
                 Drink drinkPage = new Drink(_cartPage);
                 OrderPage.Navigate(drinkPage);
             }
-            
         }
         
         private void AddToCartButton_Click(object sender, RoutedEventArgs e)
@@ -288,13 +287,13 @@ namespace Pizzeria
             if (_isProductPage == "Pizza")
             {
                 PizzaInfo currentPizzaInfo = GetCurrentPizzaInfo();
-                Delivery deliveryPage = new Delivery(currentPrice, currentPizzaInfo, this, _cartPage);
+                Delivery deliveryPage = new Delivery(currentPrice, _isProductPage, currentPizzaInfo, this, _cartPage);
                 OrderPage.Navigate(deliveryPage);
             }
             else
             {
                 DrinkInfo currentDrinkInfo = GetCurrentDrinkInfo();
-                Delivery deliveryPage = new Delivery(currentPrice, currentDrinkInfo, this, _cartPage);
+                Delivery deliveryPage = new Delivery(currentPrice, _isProductPage, currentDrinkInfo, this, _cartPage);
                 OrderPage.Navigate(deliveryPage);
             }
         }

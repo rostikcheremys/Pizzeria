@@ -28,7 +28,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Grid>
-                            <Border CornerRadius="20" Background="Brown" x:Name="border">
+                            <Border CornerRadius="20" Background="#b92525" x:Name="border">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </Grid>

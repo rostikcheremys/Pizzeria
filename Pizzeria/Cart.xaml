@@ -18,7 +18,7 @@
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
-                            <Border CornerRadius="20" Background="Brown" x:Name="border">
+                            <Border CornerRadius="20" Background="#b92525" x:Name="border">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </Grid>
@@ -40,13 +40,13 @@
             </Button>
         </Grid>
         
-        <Grid Grid.Row="1" VerticalAlignment="Bottom" Margin="0 15 0 0">
-            <ListView x:Name="CardListView" Height="600" Width="900" BorderBrush="Brown" BorderThickness="3"> 
+        <Grid Grid.Row="1" VerticalAlignment="Bottom" Margin="5 15 0 0">
+            <ListView x:Name="CardListView" Height="600" Width="900" BorderBrush="#b92525" BorderThickness="3"> 
                 <ListView.Resources>
                     <Style TargetType="{x:Type GridViewColumnHeader}">
                         <Setter Property="FontSize" Value="28"/> 
                         <Setter Property="FontWeight" Value="Bold"/> 
-                        <Setter Property="Background" Value="Brown"/> 
+                        <Setter Property="Background" Value="#b92525"/> 
                         <Setter Property="Foreground" Value="White"/>
                     </Style>
                     <Style TargetType="{x:Type ListViewItem}">
@@ -75,7 +75,7 @@
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
                                                 <Grid>
-                                                    <Border CornerRadius="30" Background="Brown" x:Name="border">
+                                                    <Border CornerRadius="30" Background="#b92525" x:Name="border">
                                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                     </Border>
                                                 </Grid>
@@ -112,7 +112,7 @@
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Grid>
-                            <Border CornerRadius="30" Background="Brown" x:Name="border">
+                            <Border CornerRadius="30" Background="#b92525" x:Name="border">
                                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             </Border>
                         </Grid>
