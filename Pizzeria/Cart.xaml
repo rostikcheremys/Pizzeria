@@ -59,9 +59,10 @@
                 </ListView.Resources>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Product" Width="390" DisplayMemberBinding="{Binding Product}"/>
-                        <GridViewColumn Header="Quantity" Width="180" DisplayMemberBinding="{Binding Quantity}"/>
-                        <GridViewColumn Header="Price" Width="180">
+                        <GridViewColumn Header="Product" Width="280" DisplayMemberBinding="{Binding Product}"/>
+                        <GridViewColumn Header="Size" Width="170" DisplayMemberBinding="{Binding Size}"/>
+                        <GridViewColumn Header="Quantity" Width="150" DisplayMemberBinding="{Binding Quantity}"/>
+                        <GridViewColumn Header="Price" Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Price, StringFormat={}{0:C2}}" d:DataContext="{d:DesignInstance }" />
