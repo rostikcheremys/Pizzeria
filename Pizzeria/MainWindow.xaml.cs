@@ -5,8 +5,8 @@ namespace Pizzeria;
 
 public partial class MainWindow
 {
-    private readonly  Cart _cartPage = new ();
-    
+    private readonly Cart _cartPage = new ();
+    private readonly Order _orderPage;
     public MainWindow()
     {
         InitializeComponent();
@@ -19,7 +19,7 @@ public partial class MainWindow
     
     private void MenuButton_Click(object sender, RoutedEventArgs e)
     {
-        Pizza pizzaPage = new Pizza(_cartPage);
+        Pizza pizzaPage = new Pizza(_cartPage, _orderPage);
         MainPage.Navigate(pizzaPage);
     }
 }

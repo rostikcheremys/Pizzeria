@@ -1,6 +1,6 @@
 ﻿namespace Pizzeria
 {
-    public class DrinkInfo(string? name, string imagePath, string description, double price) : Menu(name, imagePath, price)
+    public class DrinkInfo(string? productName, string imagePath, string description, double price) : Menu(productName, imagePath, price)
     {
         public string Description { get; } = description;
         

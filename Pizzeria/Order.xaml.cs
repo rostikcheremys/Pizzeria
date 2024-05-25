@@ -19,7 +19,7 @@ namespace Pizzeria
             _cartPage = cartPage;
             _isProductPage = isProductPage;
 
-            ProductName.Content = menu.Name;
+            ProductName.Content = menu.ProductName;
             ProductImage.Source = new BitmapImage(new Uri(menu.ImagePath, UriKind.Relative));
             ProductDescription.Text = menu.GetDescription();
             _basePrice = menu.Price;
@@ -46,25 +46,8 @@ namespace Pizzeria
             }
             
             UpdatePriceDisplay();
-            DisplayIngredients();
         }
         
-        private void DisplayIngredients()
-        {
-            Menu productMenu = _menu;
-            string description = productMenu.GetDescription();
-            string? productName = productMenu.Name;
-            string[] descriptionList = description.Split(',');
-    
-            Console.WriteLine($"Description: {productName}");
-            foreach (string ingredient in descriptionList)
-            {
-                Console.WriteLine("- " + ingredient.Trim());
-            }
-
-            Console.WriteLine();
-        }
-
         private void Size_Checked(object sender, RoutedEventArgs e)
         {
             UpdatePriceDisplay();
@@ -93,8 +76,8 @@ namespace Pizzeria
             
             return _basePrice * multiplier;
         }
-        
-        private int GetCurrentQuantity()
+
+        public int GetCurrentQuantity()
         {
             return int.Parse(Quantity.Text);
         }
@@ -130,8 +113,8 @@ namespace Pizzeria
 
             return totalToppingsPrice;
         }
-        
-        private string GetSelectedSize()
+
+        public string GetSelectedSize()
         {
             if (SizeSmall.IsChecked == true)  return "Small";
            
@@ -150,8 +133,8 @@ namespace Pizzeria
             
             else if (size == "Large")  SizeLarge.IsChecked = true;
         }
-        
-        private List<string> GetSelectedToppings()
+
+        public List<string> GetSelectedToppings()
         {
             List<string> toppings = new List<string>();
 
@@ -166,7 +149,7 @@ namespace Pizzeria
             return toppings;
         }
 
-        public void SetSelectedToppings(List<string?> toppings)
+        public void SetSelectedToppings(List<string> toppings)
         {
             foreach (CheckBox cb in ToppingStackPanel.Children)
             {
@@ -240,12 +223,12 @@ namespace Pizzeria
         {
             if (_isProductPage == "Pizza")
             {
-                Pizza pizzaPage = new Pizza(_cartPage);
+                Pizza pizzaPage = new Pizza(_cartPage, this);
                 OrderPage.Navigate(pizzaPage);
             }
             else
             {   
-                Drink drinkPage = new Drink(_cartPage);
+                Drink drinkPage = new Drink(_cartPage, this);
                 OrderPage.Navigate(drinkPage);
             }
         }
@@ -264,6 +247,10 @@ namespace Pizzeria
             if (addToCart == true)
             {
                 _cartPage.AddToCart(cartItem);
+            }
+            else
+            {
+                return;
             }
 
             ResetFields();

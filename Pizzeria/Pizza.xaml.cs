@@ -8,12 +8,15 @@ namespace Pizzeria
     {
         private readonly Cart _cartPage; 
         private readonly string _isPizzaPage;
+        private readonly Order _orderPage;
+
         
-        public Pizza(Cart cartPage)
+        public Pizza(Cart cartPage, Order orderPage)
         {
             InitializeComponent();
             
             _cartPage = cartPage;
+            _orderPage = orderPage;
             _isPizzaPage = "Pizza";
            
             List<PizzaInfo> pizzaDetails = PizzaData.Pizzas;
@@ -26,7 +29,7 @@ namespace Pizzeria
             for (int i = 0; i < pizzaDetails.Count; i++)
             {
                 pizzaImages[i].Source = new BitmapImage(new Uri(pizzaDetails[i].ImagePath, UriKind.Relative));
-                pizzaNames[i].Content = pizzaDetails[i].Name;
+                pizzaNames[i].Content = pizzaDetails[i].ProductName;
                 pizzaPrices[i].Text = $"${pizzaDetails[i].Price:F2}";
                 pizzaIngredients[i].Text = pizzaDetails[i].Ingredients;
             }
@@ -36,7 +39,7 @@ namespace Pizzeria
         {
             if (PizzaPage.Content is Pizza) return;
             
-            Pizza pizzaPage = new Pizza(_cartPage); 
+            Pizza pizzaPage = new Pizza(_cartPage, _orderPage); 
             PizzaPage.Navigate(pizzaPage);
         }
 
@@ -44,13 +47,13 @@ namespace Pizzeria
         {
             if (PizzaPage.Content is Drink) return;
             
-            Drink drinkPage = new Drink(_cartPage);
+            Drink drinkPage = new Drink(_cartPage, _orderPage);
             PizzaPage.Navigate(drinkPage); 
         }
         
         private void CartButton_Click(object sender, RoutedEventArgs e)
         {
-            Cart cartPage = new Cart(_cartPage, _isPizzaPage);
+            Cart cartPage = new Cart(_cartPage, _isPizzaPage, _orderPage);
             PizzaPage.Navigate(cartPage); 
         }
         

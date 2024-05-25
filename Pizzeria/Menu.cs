@@ -1,8 +1,8 @@
 ﻿namespace Pizzeria
 {
-    public abstract class Menu(string? name, string imagePath, double price)
+    public abstract class Menu(string? productName, string imagePath, double price)
     {
-        public string? Name { get; } = name;
+        public string? ProductName { get; } = productName;
         public string ImagePath { get; } = imagePath;
         public double Price { get; } = price;
 

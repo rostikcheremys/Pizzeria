@@ -56,3 +56,6 @@ D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Cart.baml
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Cart.g.cs
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\CustomMessageBox.g.cs
 D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\CustomMessageBox.baml
+D:\Programming\OOP\Pizzeria\Pizzeria\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria.csproj.AssemblyReference.cache
+D:\Programming\OOP\Pizzeria\Pizzeria\obj\Debug\net8.0-windows\Pizzeria.csproj.Up2Date
