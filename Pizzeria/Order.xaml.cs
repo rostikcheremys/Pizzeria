@@ -1,14 +1,16 @@
 ﻿using System.Windows;
+using Pizzeria.PizzeriaInfo;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using Menu = Pizzeria.PizzeriaInfo.Menu;
 
 namespace Pizzeria
 {
     public partial class Order
     {
-        private readonly double _basePrice;
-        private readonly Cart _cartPage;
         private readonly Menu _menu;
+        private readonly Cart _cartPage;
+        private readonly double _price;
         private readonly string _isProductPage;
 
         public Order(Menu menu, Cart cartPage, string isProductPage)
@@ -22,7 +24,7 @@ namespace Pizzeria
             ProductName.Content = menu.ProductName;
             ProductImage.Source = new BitmapImage(new Uri(menu.ImagePath, UriKind.Relative));
             ProductDescription.Text = menu.GetDescription();
-            _basePrice = menu.Price;
+            _price = menu.Price;
             
             SizeSmall.Checked += Size_Checked;
             SizeMedium.Checked += Size_Checked;
@@ -74,7 +76,7 @@ namespace Pizzeria
            
             else if (SizeLarge.IsChecked == true)  multiplier = 2.0;
             
-            return _basePrice * multiplier;
+            return _price * multiplier;
         }
 
         public int GetCurrentQuantity()
@@ -163,7 +165,7 @@ namespace Pizzeria
                 ProductName.Content.ToString()!,          
                 ((BitmapImage)ProductImage.Source).UriSource.ToString(),
                 ProductDescription.Text,                    
-                _basePrice                               
+                _price                               
             );
 
             return pizzaInfo;
@@ -175,7 +177,7 @@ namespace Pizzeria
                 ProductName.Content.ToString()!,          
                 ((BitmapImage)ProductImage.Source).UriSource.ToString(),
                 ProductDescription.Text,                    
-                _basePrice                               
+                _price                               
             );
 
             return drinkInfo;
@@ -240,13 +242,13 @@ namespace Pizzeria
             int quantity = int.Parse(Quantity.Text);
             double price = GetCurrentPrice();
 
-            CartItem cartItem = CreateCartItem(product, size, quantity, price);
+            CartInfo cartInfo = CreateCartInfo(product, size, quantity, price);
 
             bool? addToCart = CustomMessageBox.Show($"Add {quantity} x {product} to cart for ${price:F2}?");
 
             if (addToCart == true)
             {
-                _cartPage.AddToCart(cartItem);
+                _cartPage.AddToCart(cartInfo);
             }
             else
             {
@@ -256,15 +258,15 @@ namespace Pizzeria
             ResetFields();
         }
 
-        private CartItem CreateCartItem(string product, string size, int quantity, double price)
+        private CartInfo CreateCartInfo(string product, string size, int quantity, double price)
         {
             if (_isProductPage == "Pizza")
             {
                 List<string> toppings = GetSelectedToppings();
-                return new CartItem(product, size, toppings, quantity, price);
+                return new CartInfo(product, size, toppings, quantity, price);
             }
 
-            return new CartItem(product, size, quantity, price);
+            return new CartInfo(product, size, quantity, price);
         }
 
         private void OrderNowButton_Click(object sender, RoutedEventArgs e)

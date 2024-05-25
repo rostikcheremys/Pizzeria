@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Pizzeria.PizzeriaInfo;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
 
@@ -6,9 +7,9 @@ namespace Pizzeria
 {
     public partial class Cart 
     {
-        private readonly ObservableCollection<CartItem> _cartItems = new();
+        private readonly ObservableCollection<CartInfo> _cartInfo = new();
 
-        public ObservableCollection<CartItem> CartItems => _cartItems;
+        public ObservableCollection<CartInfo> CartInfo => _cartInfo;
         private readonly Cart _previousCartPage = null!;
         private readonly Order _orderPage;
         private readonly string _isProductPage;
@@ -27,27 +28,27 @@ namespace Pizzeria
             _previousCartPage = previousCartPage;
             _isProductPage = isProductPage;
             _orderPage = orderPage;
-            CardListView.ItemsSource = _cartItems;
+            CardListView.ItemsSource = _cartInfo;
    
-            foreach (var item in previousCartPage.CartItems)
+            foreach (CartInfo cartInfo in previousCartPage._cartInfo)
             {
-                _cartItems.Add(item);
+                _cartInfo.Add(cartInfo);
             }
     
             UpdateTotalPrice();
         }
 
         
-        public void AddToCart(CartItem item)
+        public void AddToCart(CartInfo cartInfo)
         {
             bool existingItem = false;
 
-            foreach (var cartItem in _cartItems)
+            foreach (CartInfo cartItem in _cartInfo)
             {
-                if (IsSameItem(cartItem, item))
+                if (IsSameItem(cartItem, cartInfo))
                 {
-                    cartItem.Quantity += item.Quantity;
-                    cartItem.Price += item.Price;
+                    cartItem.Quantity += cartInfo.Quantity;
+                    cartItem.Price += cartInfo.Price;
 
                     existingItem = true;
                     break;
@@ -56,27 +57,27 @@ namespace Pizzeria
 
             if (!existingItem)
             {
-                _cartItems.Add(item);
+                _cartInfo.Add(cartInfo);
             }
         }
 
-        private bool IsSameItem(CartItem existingItem, CartItem newItem)
+        private bool IsSameItem(CartInfo existingInfo, CartInfo newInfo)
         {
             if (_isProductPage == "Pizza")
             {
-                return existingItem.Product == newItem.Product && existingItem.Size == newItem.Size && existingItem.Toppings.SequenceEqual(newItem.Toppings);
+                return existingInfo.Product == newInfo.Product && existingInfo.Size == newInfo.Size && existingInfo.Toppings.SequenceEqual(newInfo.Toppings);
             }
             
-            return existingItem.Product == newItem.Product && existingItem.Size == newItem.Size;
+            return existingInfo.Product == newInfo.Product && existingInfo.Size == newInfo.Size;
         }
 
         public void UpdateTotalPrice()
         {
             double totalPrice = 0;
 
-            foreach (CartItem cartItem in _cartItems)
+            foreach (CartInfo cartInfo in _cartInfo)
             {
-                totalPrice += cartItem.Price;
+                totalPrice += cartInfo.Price;
             }
 
             Price.Text = $"Total Price: ${totalPrice:F2}";
@@ -86,9 +87,9 @@ namespace Pizzeria
         {
             double currentPrice = 0;
 
-            foreach (CartItem cartItem in _cartItems)
+            foreach (CartInfo cartInfo in _cartInfo)
             {
-                currentPrice += cartItem.Price;
+                currentPrice += cartInfo.Price;
             }
 
             return currentPrice;
@@ -96,7 +97,7 @@ namespace Pizzeria
         
         public void ClearCart()
         {
-            _cartItems.Clear();
+            _cartInfo.Clear();
             UpdateTotalPrice();
         }
         
@@ -117,9 +118,9 @@ namespace Pizzeria
         
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button { Tag: CartItem cartItem })
+            if (sender is Button { Tag: CartInfo cartInfo })
             {
-                _cartItems.Remove(cartItem);
+                _cartInfo.Remove(cartInfo);
                 UpdateTotalPrice();
             }
         }

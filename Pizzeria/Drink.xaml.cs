@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using Pizzeria.ProductData;
+using Pizzeria.PizzeriaInfo;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
@@ -7,8 +9,8 @@ namespace Pizzeria
     public partial class Drink
     {
         private readonly Cart _cartPage;
-        private readonly string _isDrinkPage;
         private readonly Order _orderPage;
+        private readonly string _isDrinkPage;
        
         public Drink(Cart cartPage, Order orderPage)
         {

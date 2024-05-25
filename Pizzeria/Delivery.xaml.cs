@@ -1,18 +1,20 @@
 ﻿using System.IO;
 using System.Windows;
 using Newtonsoft.Json;
-using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Markup;
-using Formatting = System.Xml.Formatting;
+using Pizzeria.PizzeriaInfo;
+using System.Windows.Controls;
+using System.Text.RegularExpressions;
 
 namespace Pizzeria
 {
     public partial class Delivery
     {
+        private readonly Cart _cartPage;
+        private readonly Order _orderPage;
         private readonly PizzaInfo _pizzaInfo;
         private readonly DrinkInfo _drinkInfo;
-        private readonly Order _orderPage;
-        private readonly Cart _cartPage;
         private readonly string _previousPage;
         private readonly string _isProductPage;
       
@@ -30,104 +32,6 @@ namespace Pizzeria
             DatePicker.SelectedDate = DateTime.Today;
             DatePicker.Language = XmlLanguage.GetLanguage("en-GB");
             DeliveryComboBox.SelectionChanged += DeliveryComboBox_SelectionChanged;
-        }
-
-        private void SaveOrderData(string filePath)
-        {
-            List<DeliveryInfo> orderDetailsList;
-            
-            if (_orderPage == null)
-            { 
-                MessageBox.Show("Order page is not initialized!");
-                return;
-            }
-
-            if (File.Exists(filePath))
-            {
-                try
-                {
-                    string existingJson = File.ReadAllText(filePath);
-                    orderDetailsList = JsonConvert.DeserializeObject<List<DeliveryInfo>>(existingJson) ?? new List<DeliveryInfo>();
-                }
-                catch (JsonSerializationException)
-                {
-                    orderDetailsList = new List<DeliveryInfo>();
-                }
-            }
-            else
-            {
-                orderDetailsList = new List<DeliveryInfo>();
-            }
-
-            if (_previousPage == "Cart")
-            {
-                foreach (var cartItem in _cartPage.CartItems)
-                {
-                    DeliveryInfo orderDetails = new DeliveryInfo
-                    {
-                        Name = NameTextBox.Text,
-                        Phone = PhoneTextBox.Text,
-                        DeliveryOption = ((ComboBoxItem)DeliveryComboBox.SelectedItem)?.Content.ToString(),
-                        DeliveryDate = DatePicker.SelectedDate ?? DateTime.Today,
-                        DeliveryTime = $"{HourComboBox.Text}:{MinuteComboBox.Text}",
-                        OrderInfo = 
-                        [
-                            new PizzaDetails
-                            {
-                                ProductName = cartItem.Product,
-                                ProductSize = cartItem.Size,
-                                ProductToppings= cartItem.Toppings.ToList(),
-                                ProductQuantity = cartItem.Quantity,
-                                ProductPrice = cartItem.Price
-                            }
-                        ]
-                    };
-                    orderDetailsList.Add(orderDetails);
-                }
-            }
-            else
-            {
-                DeliveryInfo orderDetails = new DeliveryInfo
-                {
-                    Name = NameTextBox.Text,
-                    Phone = PhoneTextBox.Text,
-                    DeliveryOption = ((ComboBoxItem)DeliveryComboBox.SelectedItem)?.Content.ToString(),
-                    City = CityTextBox.Text,
-                    Address = AddressTextBox.Text,
-                    DeliveryDate = DatePicker.SelectedDate ?? DateTime.Today,
-                    DeliveryTime = $"{HourComboBox.Text}:{MinuteComboBox.Text}",
-                };
-                
-                if (_isProductPage == "Pizza")
-                {
-                    PizzaDetails pizzaDetails = new PizzaDetails
-                    {
-                        ProductName = GetPizzaInfo()?.ProductName,
-                        ProductSize = GetCurrentSize(),
-                        ProductToppings = GetCurrentToppings().Where(t => !string.IsNullOrEmpty(t)).ToList(),
-                        ProductQuantity = GetCurrentQuantity(),
-                        ProductPrice = GetCurrentPrice()
-                    };
-                    orderDetails.OrderInfo.Add(pizzaDetails);
-                }
-                else
-                {
-                    DrinkDetails drinkDetails = new DrinkDetails
-                    {
-                        ProductName = GetDrinkInfo()?.ProductName,
-                        ProductSize = GetCurrentSize(),
-                        ProductQuantity = GetCurrentQuantity(),
-                        ProductPrice = GetCurrentPrice()
-                    };
-                    orderDetails.OrderInfo.Add(drinkDetails);
-                }
-            
-                orderDetailsList.Add(orderDetails);
-            }
-            
-            string updatedJson = JsonConvert.SerializeObject(orderDetailsList, Newtonsoft.Json.Formatting.Indented);
-            
-            File.WriteAllText(filePath, updatedJson);
         }
         
         public Delivery(double currentOrderPrice, string isProductPage, PizzaInfo pizzaInfo, Order orderPage, Cart cartPage) : this(currentOrderPrice, isProductPage, orderPage, cartPage)
@@ -268,12 +172,8 @@ namespace Pizzeria
         {
             HourComboBox.Items.Clear();
             MinuteComboBox.Items.Clear();
-            
-            DateTime now = DateTime.Now;
 
-            int currentHour = DatePicker.SelectedDate.HasValue && DatePicker.SelectedDate.Value.Date == now.Date ? now.Hour : 0;
-
-            for (int hour = currentHour; hour < 24; hour++)
+            for (int hour = 0; hour < 24; hour++)
             {
                 HourComboBox.Items.Add(hour.ToString("D2"));
             }
@@ -346,7 +246,7 @@ namespace Pizzeria
                 return false;
             }
             
-            if (System.Text.RegularExpressions.Regex.IsMatch(name, @"\d"))
+            if (Regex.IsMatch(name, @"\d"))
             {
                 CustomMessageBox.InfoShow("Name should not contain any digits!");
                 return false;
@@ -365,7 +265,7 @@ namespace Pizzeria
                 return false;
             }
             
-            if (!System.Text.RegularExpressions.Regex.IsMatch(phone, @"^\d+$"))
+            if (!Regex.IsMatch(phone, @"^\d+$"))
             {
                 CustomMessageBox.InfoShow("Phone number should contain only digits!");
                 return false;
@@ -399,7 +299,7 @@ namespace Pizzeria
                 return false;
             }
 
-            if (System.Text.RegularExpressions.Regex.IsMatch(city, @"\d"))
+            if (Regex.IsMatch(city, @"\d"))
             {
                 CustomMessageBox.InfoShow("City should not contain any digits!");
                 return false;
@@ -453,6 +353,16 @@ namespace Pizzeria
             return true;
         }
         
+        private void NumericTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextNumeric(e.Text);
+        }
+
+        private bool IsTextNumeric(string text)
+        {
+            return Regex.IsMatch(text, @"^[0-9]*(?:\[0-9]*)?$");
+        }
+        
         private void ClearFields()
         {
             NameTextBox.Text = string.Empty;
@@ -462,6 +372,111 @@ namespace Pizzeria
             AddressTextBox.Text = string.Empty;
             DatePicker.SelectedDate = DateTime.Today;
             _cartPage.ClearCart();
+        }
+        
+        private void SaveOrderData(string filePath)
+        {
+            List<DeliveryInfo> deliveryInfoList;
+
+            if (File.Exists(filePath))
+            {
+                try
+                {
+                    string existingJson = File.ReadAllText(filePath);
+                    deliveryInfoList = JsonConvert.DeserializeObject<List<DeliveryInfo>>(existingJson) ?? new List<DeliveryInfo>();
+                }
+                catch (JsonSerializationException)
+                {
+                    deliveryInfoList = new List<DeliveryInfo>();
+                }
+            }
+            else
+            {
+                deliveryInfoList = new List<DeliveryInfo>();
+            }
+                
+            double totalPrice = 0.0;
+            
+            if (_previousPage == "Cart")
+            {
+                DeliveryInfo deliveryInfo = new DeliveryInfo
+                {
+                    OrderDate = DateTime.Today,
+                    OrderTime = DateTime.Now.TimeOfDay,
+                    Name = NameTextBox.Text,
+                    Phone = PhoneTextBox.Text,
+                    DeliveryOption = ((ComboBoxItem)DeliveryComboBox.SelectedItem)?.Content.ToString(),
+                    City = CityTextBox.Text ?? "",
+                    Address = AddressTextBox.Text ?? "",
+                    DeliveryDate = DatePicker.SelectedDate ?? DateTime.Today,
+                    DeliveryTime = $"{HourComboBox.Text}:{MinuteComboBox.Text}",
+                    OrderInfo = new List<OrderInfo>()
+                };
+                
+                foreach (CartInfo cartInfo in _cartPage.CartInfo)
+                {
+                    deliveryInfo.OrderInfo.Add(new PizzaDetails
+                    {
+                        ProductName = cartInfo.Product,
+                        ProductSize = cartInfo.Size,
+                        ProductToppings = cartInfo.Toppings.ToList(),
+                        ProductQuantity = cartInfo.Quantity,
+                        ProductPrice = cartInfo.Price
+                    });
+                    
+                    totalPrice += cartInfo.Price;
+                }
+                
+                deliveryInfo.TotalPrice = totalPrice;
+                deliveryInfoList.Add(deliveryInfo);
+            }
+            else
+            {
+                DeliveryInfo deliveryInfo = new DeliveryInfo
+                {
+                    OrderDate = DateTime.Today,
+                    Name = NameTextBox.Text,
+                    Phone = PhoneTextBox.Text,
+                    DeliveryOption = ((ComboBoxItem)DeliveryComboBox.SelectedItem)?.Content.ToString(),
+                    City = CityTextBox.Text,
+                    Address = AddressTextBox.Text,
+                    DeliveryDate = DatePicker.SelectedDate ?? DateTime.Today,
+                    DeliveryTime = $"{HourComboBox.Text}:{MinuteComboBox.Text}",
+                    TotalPrice = GetCurrentPrice()
+                };
+                
+                if (_isProductPage == "Pizza")
+                {
+                    PizzaDetails pizzaDetails = new PizzaDetails
+                    {
+                        ProductName = GetPizzaInfo()?.ProductName,
+                        ProductSize = GetCurrentSize(),
+                        ProductToppings = GetCurrentToppings().Where(t => !string.IsNullOrEmpty(t)).ToList()!,
+                        ProductQuantity = GetCurrentQuantity(),
+                        ProductPrice = GetCurrentPrice()
+                    };
+
+                    deliveryInfo.OrderInfo.Add(pizzaDetails);
+                }
+                else
+                {
+                    DrinkDetails drinkDetails = new DrinkDetails
+                    {
+                        ProductName = GetDrinkInfo()?.ProductName,
+                        ProductSize = GetCurrentSize(),
+                        ProductQuantity = GetCurrentQuantity(),
+                        ProductPrice = GetCurrentPrice()
+                    };
+                    
+                    deliveryInfo.OrderInfo.Add(drinkDetails);
+                }
+                
+                deliveryInfoList.Add(deliveryInfo);
+            }
+            
+            string updatedJson = JsonConvert.SerializeObject(deliveryInfoList, Newtonsoft.Json.Formatting.Indented);
+            
+            File.WriteAllText(filePath, updatedJson);
         }
     }
 }
