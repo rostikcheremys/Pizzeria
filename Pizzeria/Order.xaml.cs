@@ -2,29 +2,28 @@
 using Pizzeria.PizzeriaInfo;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using Menu = Pizzeria.PizzeriaInfo.Menu;
 
 namespace Pizzeria
 {
     public partial class Order
     {
-        private readonly Menu _menu;
+        private readonly MenuInfo _menuInfo;
         private readonly Cart _cartPage;
         private readonly double _price;
         private readonly string _isProductPage;
 
-        public Order(Menu menu, Cart cartPage, string isProductPage)
+        public Order(MenuInfo menuInfo, Cart cartPage, string isProductPage)
         {
             InitializeComponent();
 
-            _menu = menu;
+            _menuInfo = menuInfo;
             _cartPage = cartPage;
             _isProductPage = isProductPage;
 
-            ProductName.Content = menu.ProductName;
-            ProductImage.Source = new BitmapImage(new Uri(menu.ImagePath, UriKind.Relative));
-            ProductDescription.Text = menu.GetDescription();
-            _price = menu.Price;
+            ProductName.Content = menuInfo.ProductName;
+            ProductImage.Source = new BitmapImage(new Uri(menuInfo.ImagePath, UriKind.Relative));
+            ProductDescription.Text = menuInfo.GetDescription();
+            _price = menuInfo.Price;
             
             SizeSmall.Checked += Size_Checked;
             SizeMedium.Checked += Size_Checked;
