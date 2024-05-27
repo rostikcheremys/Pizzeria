@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "D:\\Programming\\OOP\\Pizzeria\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|D:\\Programming\\OOP\\Pizzeria\\pizzeria\\delivery.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|solutionrelative:pizzeria\\delivery.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|d:\\programming\\oop\\pizzeria\\pizzeria\\classdiagram.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
+      "RelativeMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|solutionrelative:pizzeria\\classdiagram.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|d:\\programming\\oop\\pizzeria\\pizzeria\\delivery.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|d:\\programming\\oop\\pizzeria\\pizzeria\\order.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|solutionrelative:pizzeria\\order.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|D:\\Programming\\OOP\\Pizzeria\\pizzeria\\delivery.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|solutionrelative:pizzeria\\delivery.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|D:\\Programming\\OOP\\Pizzeria\\pizzeria\\pizzeriainfo\\drinkdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|solutionrelative:pizzeria\\pizzeriainfo\\drinkdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|D:\\Programming\\OOP\\Pizzeria\\pizzeria\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|solutionrelative:pizzeria\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|D:\\Programming\\OOP\\Pizzeria\\pizzeria\\productdata\\pizzadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|solutionrelative:pizzeria\\productdata\\pizzadata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|D:\\Programming\\OOP\\Pizzeria\\pizzeria\\order.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|solutionrelative:pizzeria\\order.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|D:\\Programming\\OOP\\Pizzeria\\pizzeria\\pizza.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF706A17-2069-439F-BFB7-147081FF5B88}|Pizzeria\\Pizzeria.csproj|solutionrelative:pizzeria\\pizza.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,55 +38,95 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Order.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Order.xaml.cs",
+              "RelativeDocumentMoniker": "Pizzeria\\Order.xaml.cs",
+              "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Order.xaml.cs",
+              "RelativeToolTip": "Pizzeria\\Order.xaml.cs",
+              "ViewState": "AQIAAI8AAAAAAAAAAAAmwLgAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T12:56:43.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DrinkDetails.cs",
+              "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\PizzeriaInfo\\DrinkDetails.cs",
+              "RelativeDocumentMoniker": "Pizzeria\\PizzeriaInfo\\DrinkDetails.cs",
+              "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\PizzeriaInfo\\DrinkDetails.cs",
+              "RelativeToolTip": "Pizzeria\\PizzeriaInfo\\DrinkDetails.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T11:34:04.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PizzaData.cs",
+              "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\ProductData\\PizzaData.cs",
+              "RelativeDocumentMoniker": "Pizzeria\\ProductData\\PizzaData.cs",
+              "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\ProductData\\PizzaData.cs",
+              "RelativeToolTip": "Pizzeria\\ProductData\\PizzaData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T22:22:23.916Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Pizzeria\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Pizzeria\\MainWindow.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T22:19:25.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClassDiagram.cd",
+              "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\ClassDiagram.cd",
+              "RelativeDocumentMoniker": "Pizzeria\\ClassDiagram.cd",
+              "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\ClassDiagram.cd",
+              "RelativeToolTip": "Pizzeria\\ClassDiagram.cd",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
+              "WhenOpened": "2024-05-26T22:18:31.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Delivery.xaml.cs",
               "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Delivery.xaml.cs",
               "RelativeDocumentMoniker": "Pizzeria\\Delivery.xaml.cs",
               "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Delivery.xaml.cs",
               "RelativeToolTip": "Pizzeria\\Delivery.xaml.cs",
-              "ViewState": "AQIAAPsAAAAAAAAAAAAmwBoBAAAJAAAA",
+              "ViewState": "AQIAAPgAAAAAAAAAAAAmwBoBAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-19T12:22:27.911Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Delivery.xaml",
-              "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Delivery.xaml",
-              "RelativeDocumentMoniker": "Pizzeria\\Delivery.xaml",
-              "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Delivery.xaml",
-              "RelativeToolTip": "Pizzeria\\Delivery.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-19T11:44:56.109Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Order.xaml",
               "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Order.xaml",
               "RelativeDocumentMoniker": "Pizzeria\\Order.xaml",
-              "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Order.xaml*",
-              "RelativeToolTip": "Pizzeria\\Order.xaml*",
+              "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Order.xaml",
+              "RelativeToolTip": "Pizzeria\\Order.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-05-04T11:06:15.276Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Pizza.xaml.cs",
-              "DocumentMoniker": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Pizza.xaml.cs",
-              "RelativeDocumentMoniker": "Pizzeria\\Pizza.xaml.cs",
-              "ToolTip": "D:\\Programming\\OOP\\Pizzeria\\Pizzeria\\Pizza.xaml.cs",
-              "RelativeToolTip": "Pizzeria\\Pizza.xaml.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T21:40:36.854Z"
             }
           ]
         }
